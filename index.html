@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CV — Mohammed</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="controls">
+    <button onclick="setLanguage('ar')">🇸🇦 العربية</button>
+    <button onclick="setLanguage('en')">🇬🇧 English</button>
+    <button onclick="toggleTheme()">🌞 / 🌙</button>
+  </div>
+
+  <main class="container">
+    <header>
+      <h1 id="name"></h1>
+      <p id="title"></p>
+      <p id="location"></p>
+      <ul id="contacts"></ul>
+    </header>
+
+    <section>
+      <h2 id="summaryTitle"></h2>
+      <p id="summary"></p>
+    </section>
+
+    <section>
+      <h2 id="skillsTitle"></h2>
+      <div id="skills" class="grid"></div>
+    </section>
+
+    <section>
+      <h2 id="educationTitle"></h2>
+      <div id="education"></div>
+    </section>
+
+    <section>
+      <h2 id="experienceTitle"></h2>
+      <div id="experience"></div>
+    </section>
+
+    <section>
+      <h2 id="languagesTitle"></h2>
+      <ul id="languages"></ul>
+    </section>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

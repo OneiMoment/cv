@@ -1,0 +1,27 @@
+:root {
+  --bg: #f9f9f9;
+  --card: #ffffff;
+  --text: #222;
+  --muted: #555;
+  --accent: #0078d7;
+  --border: #ddd;
+}
+
+[data-theme="dark"] {
+  --bg: #0b0f14;
+  --card: #111722;
+  --text: #e6eaf0;
+  --muted: #9aa4b2;
+  --accent: #4fc3f7;
+  --border: #1c2533;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+.container { max-width: 900px; margin: auto

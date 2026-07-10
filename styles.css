@@ -59,7 +59,8 @@ body {
 .control-group {
   display: flex;
   gap: 8px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  white-space: nowrap;
 }
 
 button {
@@ -72,6 +73,7 @@ button {
   font-size: 14px;
   transition: all 0.3s;
   font-weight: 500;
+  min-width: fit-content;
 }
 
 button:hover {
@@ -81,11 +83,30 @@ button:hover {
   transform: translateY(-2px);
 }
 
+.lang-btn,
+.theme-btn {
+  width: 100px;
+  text-align: center;
+}
+
 .pdf-btn,
 .search-btn {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 5px;
+  width: fit-content;
+  min-width: 45px;
+}
+
+.pdf-btn i,
+.search-btn i {
+  display: inline;
+}
+
+.pdf-btn span,
+.search-btn span {
+  display: inline;
 }
 
 /* Search Bar */
@@ -385,7 +406,6 @@ section p {
 
   .controls {
     padding: 10px;
-    flex-direction: column;
   }
 
   .control-group {
@@ -435,6 +455,26 @@ section p {
   .education-item h3,
   .experience-item h3 {
     font-size: 14px;
+  }
+
+  .controls {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .control-group {
+    width: 100%;
+  }
+
+  button {
+    width: 100%;
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  .lang-btn,
+  .theme-btn {
+    width: 100%;
   }
 }
 

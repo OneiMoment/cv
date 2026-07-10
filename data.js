@@ -252,7 +252,7 @@ const cvData = {
     ],
     experience: [
       { 
-        company: "Government Agency - Ministry of Government Services", 
+        company: "Industrial sector entity", 
         role: "IT Manager & Government Services Director", 
         period: "2022 — Present",
         details: "Leading a multidisciplinary technical team and managing government infrastructure",
@@ -275,7 +275,7 @@ const cvData = {
         ]
       },
       { 
-        company: "Al-Otaibi Trading & Contracting Company", 
+        company: "Construction sector entity - with the Ministry of Municipal and Rural Affairs", 
         role: "Executive Manager of Contracts & Projects", 
         period: "2006 — 2016",
         details: "Management of engineering, technical and contracting projects",

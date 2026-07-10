@@ -3,14 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="سيرة ذاتية ديناميكية احترافية - Dynamic CV" />
+  <meta name="theme-color" content="#0078d7" />
   <title>CV — Mohammed</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="controls">
-    <button onclick="setLanguage('ar')">🇸🇦 العربية</button>
-    <button onclick="setLanguage('en')">🇬🇧 English</button>
-    <button onclick="toggleTheme()">🌞 / 🌙</button>
+    <div class="control-group">
+      <button onclick="setLanguage('ar')" class="lang-btn">🇸🇦 العربية</button>
+      <button onclick="setLanguage('en')" class="lang-btn">🇬🇧 English</button>
+      <button onclick="toggleTheme()" class="theme-btn">🌞 / 🌙</button>
+    </div>
+    <div class="control-group">
+      <button onclick="downloadPDF()" class="pdf-btn"><i class="fas fa-download"></i> <span id="pdfLabel">PDF</span></button>
+      <button onclick="toggleSearch()" class="search-btn"><i class="fas fa-search"></i></button>
+    </div>
+  </div>
+
+  <div id="searchBar" class="search-bar hidden">
+    <input type="text" id="searchInput" placeholder="ابحث عن مهارة أو خبرة..." onkeyup="filterContent()" />
   </div>
 
   <main class="container">
@@ -26,17 +39,22 @@
       <p id="summary"></p>
     </section>
 
-    <section>
+    <section id="skillsSection">
       <h2 id="skillsTitle"></h2>
-      <div id="skills" class="grid"></div>
+      <div id="skills" class="skills-container"></div>
     </section>
 
-    <section>
+    <section id="certificationsSection" class="hidden">
+      <h2 id="certificationsTitle"></h2>
+      <div id="certifications" class="certifications-container"></div>
+    </section>
+
+    <section id="educationSection">
       <h2 id="educationTitle"></h2>
       <div id="education"></div>
     </section>
 
-    <section>
+    <section id="experienceSection">
       <h2 id="experienceTitle"></h2>
       <div id="experience"></div>
     </section>
@@ -49,5 +67,6 @@
 
   <script src="data.js"></script>
   <script src="script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </body>
 </html>

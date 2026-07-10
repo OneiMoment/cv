@@ -292,7 +292,7 @@ const cvData = {
     ],
     languages: [
       { name: "Arabic", level: "Native" },
-      { name: "English", level: "Good (IELTS 5.0)" }
+      { name: "English", level: "Excellent" }
     ]
   }
 };

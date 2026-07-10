@@ -23,7 +23,7 @@ const cvData = {
       { 
         label: "أنظمة التشغيل", 
         items: [
-          { name: "Linux", level: 85 },
+          { name: "Linux", level: 90 },
           { name: "Windows", level: 95 },
           { name: "macOS", level: 95 }
         ] 
@@ -157,7 +157,7 @@ const cvData = {
       languages: "Languages"
     },
     personal: {
-      name: "Mohammed Abdullah Al-Otaibi",
+      name: "Mohammed Abdullah Al Otaibi",
       title: "IT Manager & Government Services Specialist",
       location: "Jeddah, Saudi Arabia",
       email: "mohammed@alotaibi.site",
@@ -173,7 +173,7 @@ const cvData = {
         items: [
           { name: "Linux", level: 90 },
           { name: "Windows", level: 95 },
-          { name: "macOS", level: 80 }
+          { name: "macOS", level: 95 }
         ] 
       },
       { 

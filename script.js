@@ -90,7 +90,7 @@ function downloadPDF() {
 }
 
 (function() {
-  const savedTheme = localStorage.getItem("theme") || "light";
+  const savedTheme = localStorage.getItem("theme") || "dark";
   const savedLang = localStorage.getItem('language') || 'ar';
   document.documentElement.setAttribute("data-theme", savedTheme);
   currentLang = savedLang;

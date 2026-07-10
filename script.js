@@ -1,5 +1,46 @@
 let currentLang = 'ar';
 
+// DOM Cache for Performance Optimization
+const domCache = {
+  searchBar: null,
+  searchInput: null,
+  skillsEl: null,
+  eduEl: null,
+  expEl: null,
+  cersEl: null
+};
+
+// Initialize DOM Cache
+function initDOMCache() {
+  domCache.searchBar = document.getElementById('searchBar');
+  domCache.searchInput = document.getElementById('searchInput');
+  domCache.skillsEl = document.getElementById('skills');
+  domCache.eduEl = document.getElementById('education');
+  domCache.expEl = document.getElementById('experience');
+  domCache.cersEl = document.getElementById('certifications');
+}
+
+// Debounce function for performance optimization
+function debounce(func, wait) {
+  let timeout;
+  return function(...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(this, args), wait);
+  };
+}
+
+// Throttle function
+function throttle(func, limit) {
+  let inThrottle;
+  return function(...args) {
+    if (!inThrottle) {
+      func.apply(this, args);
+      inThrottle = true;
+      setTimeout(() => (inThrottle = false), limit);
+    }
+  };
+}
+
 function setLanguage(lang) {
   currentLang = lang;
   localStorage.setItem('language', lang);
@@ -18,15 +59,15 @@ function toggleTheme() {
 }
 
 function toggleSearch() {
-  const searchBar = document.getElementById('searchBar');
-  searchBar.classList.toggle('hidden');
-  if (!searchBar.classList.contains('hidden')) {
-    document.getElementById('searchInput').focus();
+  domCache.searchBar.classList.toggle('hidden');
+  if (!domCache.searchBar.classList.contains('hidden')) {
+    domCache.searchInput.focus();
   }
 }
 
+// Optimized filter function
 function filterContent() {
-  const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+  const searchTerm = domCache.searchInput.value.toLowerCase();
   
   if (!searchTerm) {
     document.querySelectorAll('.skill-category, .education-item, .experience-item, .certification-card').forEach(el => {
@@ -36,46 +77,16 @@ function filterContent() {
     return;
   }
 
-  document.querySelectorAll('.skill-category').forEach(el => {
+  // Single query for better performance
+  document.querySelectorAll('.skill-category, .education-item, .experience-item, .certification-card').forEach(el => {
     const text = el.textContent.toLowerCase();
-    if (text.includes(searchTerm)) {
-      el.style.display = '';
-      el.style.opacity = '1';
-    } else {
-      el.style.opacity = '0.3';
-    }
-  });
-
-  document.querySelectorAll('.education-item').forEach(el => {
-    const text = el.textContent.toLowerCase();
-    if (text.includes(searchTerm)) {
-      el.style.display = '';
-      el.style.opacity = '1';
-    } else {
-      el.style.opacity = '0.3';
-    }
-  });
-
-  document.querySelectorAll('.experience-item').forEach(el => {
-    const text = el.textContent.toLowerCase();
-    if (text.includes(searchTerm)) {
-      el.style.display = '';
-      el.style.opacity = '1';
-    } else {
-      el.style.opacity = '0.3';
-    }
-  });
-
-  document.querySelectorAll('.certification-card').forEach(el => {
-    const text = el.textContent.toLowerCase();
-    if (text.includes(searchTerm)) {
-      el.style.display = '';
-      el.style.opacity = '1';
-    } else {
-      el.style.opacity = '0.3';
-    }
+    el.style.opacity = text.includes(searchTerm) ? '1' : '0.3';
+    el.style.display = '';
   });
 }
+
+// Debounced filter function
+const debouncedFilter = debounce(filterContent, 300);
 
 function downloadPDF() {
   const element = document.querySelector('main');
@@ -89,6 +100,7 @@ function downloadPDF() {
   html2pdf().set(opt).from(element).save();
 }
 
+// Initialize theme and language on page load
 (function() {
   const savedTheme = localStorage.getItem("theme") || "dark";
   const savedLang = localStorage.getItem('language') || 'ar';
@@ -130,8 +142,7 @@ function renderCV() {
 
   // Skills with Progress Bars
   document.getElementById('skillsTitle').textContent = d.labels.skills;
-  const skillsEl = document.getElementById('skills');
-  skillsEl.innerHTML = "";
+  domCache.skillsEl.innerHTML = "";
   d.skills.forEach((category, idx) => {
     const div = document.createElement('div');
     div.className = 'skill-category';
@@ -152,7 +163,7 @@ function renderCV() {
     });
     
     div.innerHTML = skillsHTML;
-    skillsEl.appendChild(div);
+    domCache.skillsEl.appendChild(div);
   });
 
   // Certifications
@@ -160,8 +171,7 @@ function renderCV() {
   if (d.certifications && d.certifications.length > 0) {
     certSection.classList.remove('hidden');
     document.getElementById('certificationsTitle').textContent = d.labels.certifications;
-    const certsEl = document.getElementById('certifications');
-    certsEl.innerHTML = "";
+    domCache.cersEl.innerHTML = "";
     d.certifications.forEach(cert => {
       const div = document.createElement('div');
       div.className = 'certification-card';
@@ -171,7 +181,7 @@ function renderCV() {
         <p>${cert.date}</p>
         ${cert.url ? `<a href="${cert.url}" target="_blank" rel="noopener">📎 ${currentLang === 'ar' ? 'عرض الشهادة' : 'View Certificate'}</a>` : ''}
       `;
-      certsEl.appendChild(div);
+      domCache.cersEl.appendChild(div);
     });
   } else {
     certSection.classList.add('hidden');
@@ -179,8 +189,7 @@ function renderCV() {
 
   // Education
   document.getElementById('educationTitle').textContent = d.labels.education;
-  const eduEl = document.getElementById('education');
-  eduEl.innerHTML = "";
+  domCache.eduEl.innerHTML = "";
   d.education.forEach(e => {
     const div = document.createElement('div');
     div.className = 'education-item';
@@ -189,13 +198,12 @@ function renderCV() {
       <p><strong>${e.institution}</strong> — ${e.year}</p>
       ${e.details ? `<p class="details-text">${e.details}</p>` : ''}
     `;
-    eduEl.appendChild(div);
+    domCache.eduEl.appendChild(div);
   });
 
   // Experience
   document.getElementById('experienceTitle').textContent = d.labels.experience;
-  const expEl = document.getElementById('experience');
-  expEl.innerHTML = "";
+  domCache.expEl.innerHTML = "";
   d.experience.forEach(x => {
     const div = document.createElement('div');
     div.className = 'experience-item';
@@ -213,7 +221,7 @@ function renderCV() {
       ${x.details ? `<p class="details-text">${x.details}</p>` : ''}
       ${achievementsHTML}
     `;
-    expEl.appendChild(div);
+    domCache.expEl.appendChild(div);
   });
 
   // Languages
@@ -227,12 +235,15 @@ function renderCV() {
   });
 
   // Update search bar placeholder
-  const searchInput = document.getElementById('searchInput');
   if (currentLang === 'ar') {
-    searchInput.placeholder = 'ابحث عن مهارة أو خبرة...';
+    domCache.searchInput.placeholder = 'ابحث عن مهارة أو خبرة...';
   } else {
-    searchInput.placeholder = 'Search for skills or experience...';
+    domCache.searchInput.placeholder = 'Search for skills or experience...';
   }
 }
 
-renderCV();
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', function() {
+  initDOMCache();
+  renderCV();
+});

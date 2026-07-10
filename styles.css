@@ -151,9 +151,41 @@ button:hover {
 /* Header */
 header {
   margin-bottom: 40px;
-  text-align: center;
   padding-bottom: 30px;
   border-bottom: 2px solid var(--border);
+}
+
+.header-content {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+  text-align: right;
+}
+
+.profile-image-wrapper {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 3px solid var(--accent);
+  box-shadow: 0 4px 12px rgba(0, 120, 215, 0.2);
+  transition: all 0.3s ease;
+}
+
+.profile-image:hover {
+  transform: scale(1.05) translateZ(0);
+  box-shadow: 0 6px 20px rgba(0, 120, 215, 0.3);
+}
+
+.header-text {
+  flex: 1;
 }
 
 header h1 {
@@ -173,7 +205,7 @@ header ul {
   padding: 0;
   margin: 15px 0 0 0;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   flex-wrap: wrap;
   gap: 15px;
 }
@@ -413,6 +445,20 @@ section p {
     padding: 20px 15px;
   }
 
+  .header-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .profile-image-wrapper {
+    justify-content: center;
+  }
+
+  header ul {
+    justify-content: center;
+  }
+
   header h1 {
     font-size: 24px;
   }
@@ -457,6 +503,12 @@ section p {
 @media (max-width: 480px) {
   .container {
     padding: 15px 10px;
+  }
+
+  .profile-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 10px;
   }
 
   header h1 {
@@ -523,6 +575,11 @@ section p {
     padding: 10px;
   }
 
+  .profile-image {
+    width: 100px;
+    height: 100px;
+  }
+
   header h1 {
     font-size: 18px;
   }
@@ -582,5 +639,9 @@ section p {
 
   button {
     display: none;
+  }
+
+  .profile-image {
+    border-color: black;
   }
 }

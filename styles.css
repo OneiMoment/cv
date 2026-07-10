@@ -36,8 +36,11 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: "Inter", -apple-system, "Segoe UI", Arial, sans-serif;
+  font-size: 16px;
   line-height: 1.6;
   transition: background-color 0.3s, color 0.3s;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Controls */
@@ -71,16 +74,17 @@ button {
   cursor: pointer;
   border-radius: 5px;
   font-size: 14px;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
   font-weight: 500;
   min-width: fit-content;
+  transform: translateZ(0);
 }
 
 button:hover {
   background: var(--accent);
   color: white;
   border-color: var(--accent);
-  transform: translateY(-2px);
+  transform: translateY(-2px) translateZ(0);
 }
 
 .lang-btn,
@@ -220,12 +224,13 @@ section p {
   padding: 20px;
   border-radius: 8px;
   border: 1px solid var(--border);
-  transition: all 0.3s;
+  transition: all 0.3s ease;
+  contain: layout;
 }
 
 .skill-category:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transform: translateY(-3px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transform: translateY(-3px) translateZ(0);
 }
 
 .skill-category h3 {
@@ -269,6 +274,8 @@ section p {
   background: linear-gradient(90deg, var(--accent), #00d4ff);
   transition: width 0.6s ease;
   border-radius: 4px;
+  will-change: width;
+  transform: translateZ(0);
 }
 
 /* Certifications */
@@ -283,12 +290,12 @@ section p {
   padding: 15px;
   border-radius: 8px;
   border-left: 4px solid var(--accent);
-  transition: all 0.3s;
+  transition: all 0.3s ease;
 }
 
 .certification-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transform: translateX(5px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transform: translateX(5px) translateZ(0);
 }
 
 .certification-card h3 {
@@ -324,13 +331,13 @@ section p {
   margin-bottom: 15px;
   border-radius: 8px;
   border-left: 4px solid var(--accent);
-  transition: all 0.3s;
+  transition: all 0.3s ease;
 }
 
 .education-item:hover,
 .experience-item:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transform: translateX(5px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transform: translateX(5px) translateZ(0);
 }
 
 .education-item h3,
@@ -381,15 +388,26 @@ section p {
   border: 1px solid var(--border);
   text-align: center;
   font-weight: 500;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
 }
 
 #languages li:hover {
   border-color: var(--accent);
-  box-shadow: 0 4px 12px rgba(0, 120, 215, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 120, 215, 0.1);
 }
 
 /* Responsive Design */
+@media (max-width: 1200px) {
+  .container {
+    max-width: 100%;
+    padding: 35px 25px;
+  }
+
+  .skills-container {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+
 @media (max-width: 768px) {
   .container {
     padding: 20px 15px;
@@ -406,11 +424,12 @@ section p {
 
   .controls {
     padding: 10px;
+    gap: 6px;
   }
 
   .control-group {
-    width: 100%;
-    justify-content: center;
+    width: 48%;
+    justify-content: space-between;
   }
 
   section h2 {
@@ -426,7 +445,8 @@ section p {
   }
 
   button {
-    width: 100%;
+    min-height: 44px;
+    padding: 10px 12px;
   }
 
   .search-bar input {
@@ -441,6 +461,10 @@ section p {
 
   header h1 {
     font-size: 20px;
+  }
+
+  header p {
+    font-size: 14px;
   }
 
   section h2 {
@@ -459,22 +483,75 @@ section p {
 
   .controls {
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
+    padding: 8px;
   }
 
   .control-group {
     width: 100%;
+    justify-content: center;
   }
 
   button {
     width: 100%;
     font-size: 12px;
-    padding: 6px 10px;
+    padding: 10px 8px;
+    min-height: 44px;
   }
 
   .lang-btn,
   .theme-btn {
     width: 100%;
+  }
+
+  .skills-container {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .skill-category {
+    padding: 15px;
+  }
+
+  #languages {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 320px) {
+  .container {
+    padding: 10px;
+  }
+
+  header h1 {
+    font-size: 18px;
+  }
+
+  header p {
+    font-size: 13px;
+  }
+
+  section h2 {
+    font-size: 16px;
+  }
+
+  button {
+    font-size: 11px;
+    padding: 8px 6px;
+  }
+
+  .controls {
+    gap: 4px;
+    padding: 6px;
+  }
+
+  .search-bar {
+    padding: 10px 8px;
+  }
+
+  .search-bar input {
+    font-size: 13px;
+    padding: 8px 10px;
   }
 }
 

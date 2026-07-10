@@ -2,15 +2,30 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="description" content="سيرة ذاتية ديناميكية احترافية - Dynamic CV" />
   <meta name="author" content="محمد عبدالله العتيبي" />
   <meta name="theme-color" content="#0078d7" />
   <title>CV — Mohammed</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
+  <!-- Preload Critical Resources -->
+  <link rel="preload" as="style" href="styles.css" />
+  <link rel="preload" as="script" href="data.js" />
+  
+  <!-- Stylesheet -->
   <link rel="stylesheet" href="styles.css" />
+  
+  <!-- Font Awesome - Lazy Load -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'" />
 </head>
 <body>
+  <!-- Fallback for JavaScript disabled -->
+  <noscript>
+    <div style="padding: 20px; text-align: center; font-family: Arial, sans-serif;">
+      <p>JavaScript مطلوب لعرض السيرة الذاتية | JavaScript is required to display the CV</p>
+    </div>
+  </noscript>
+
   <div class="controls">
     <div class="control-group">
       <button onclick="setLanguage('ar')" class="lang-btn">🇸🇦 العربية</button>
@@ -24,7 +39,7 @@
   </div>
 
   <div id="searchBar" class="search-bar hidden">
-    <input type="text" id="searchInput" placeholder="ابحث عن مهارة أو خبرة..." onkeyup="filterContent()" />
+    <input type="text" id="searchInput" placeholder="ابحث عن مهارة أو خبرة..." onkeyup="debouncedFilter()" />
   </div>
 
   <main class="container">

@@ -7,7 +7,8 @@ const domCache = {
   skillsEl: null,
   eduEl: null,
   expEl: null,
-  cersEl: null
+  cersEl: null,
+  profileImage: null
 };
 
 // Initialize DOM Cache
@@ -18,6 +19,7 @@ function initDOMCache() {
   domCache.eduEl = document.getElementById('education');
   domCache.expEl = document.getElementById('experience');
   domCache.cersEl = document.getElementById('certifications');
+  domCache.profileImage = document.getElementById('profileImage');
 }
 
 // Debounce function for performance optimization
@@ -121,6 +123,12 @@ function renderCV() {
     pdfLabel.textContent = 'تحميل PDF';
   } else {
     pdfLabel.textContent = 'PDF';
+  }
+
+  // Profile Image - Use image from data or fallback
+  if (d.personal.image) {
+    domCache.profileImage.src = d.personal.image;
+    domCache.profileImage.alt = d.personal.name;
   }
 
   // Header

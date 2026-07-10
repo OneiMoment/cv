@@ -23,9 +23,9 @@ const cvData = {
       { 
         label: "أنظمة التشغيل", 
         items: [
-          { name: "Linux", level: 90 },
+          { name: "Linux", level: 85 },
           { name: "Windows", level: 95 },
-          { name: "macOS", level: 80 }
+          { name: "macOS", level: 95 }
         ] 
       },
       { 

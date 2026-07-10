@@ -9,10 +9,10 @@ const cvData = {
       languages: "اللغات"
     },
     personal: {
-      name: "محمد عبدالله العثيبي",
+      name: "محمد عبدالله العتيبي",
       title: "مدير مشاريع وتقنية معلومات والخدمات الحكومية",
       location: "جدة، المملكة العربية السعودية",
-      email: "mohammed.alotaibi1@outlook.com",
+      email: "mohammed@alotaibi.site",
       phone: "+966 583809000",
       github: "https://github.com/OneiMoment",
       linkedin: "https://www.linkedin.com/in/your-username",
@@ -104,7 +104,7 @@ const cvData = {
     ],
     experience: [
       { 
-        company: "جهة حكومية - وزارة الخدمات الحكومية", 
+        company: "جهة قطاع خاص - مع وزارة الشؤون البلدية", 
         role: "مدير تقنية المعلومات والخدمات الحكومية", 
         period: "2022 — الآن",
         details: "قيادة فريق تقني متعدد التخصصات وإدارة البنية التحتية الحكومية",
@@ -144,7 +144,7 @@ const cvData = {
     ],
     languages: [
       { name: "العربية", level: "اللغة الأم" },
-      { name: "الإنجليزية", level: "جيد (IELTS 5.0)" }
+      { name: "الإنجليزية", level: "ممتازة" }
     ]
   },
   en: {
@@ -160,7 +160,7 @@ const cvData = {
       name: "Mohammed Abdullah Al-Otaibi",
       title: "IT Manager & Government Services Specialist",
       location: "Jeddah, Saudi Arabia",
-      email: "mohammed.alotaibi1@outlook.com",
+      email: "mohammed@alotaibi.site",
       phone: "+966 583809000",
       github: "https://github.com/OneiMoment",
       linkedin: "https://www.linkedin.com/in/your-username",

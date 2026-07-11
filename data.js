@@ -109,21 +109,17 @@ const cvData = {
         period: "2022 — الآن",
         details: "قيادة فريق تقني متعدد التخصصات وإدارة البنية التحتية الحكومية",
         achievements: [
-          "إدارة البنية التحتية للشبكات اللاسلكية و Ethernet و Fiber",
-          "تأسيس وإدارة أجهزة الحاسب وتثبيت البرامج والتطبيقات",
-          "إدارة الأنظمة التشغيلية المختلفة (Linux, Windows, macOS)",
-          "تصميم وإدارة حلول Cloud PC و Virtual PC",
-          "تأسيس وإدارة سيرفرات البيانات والشبكات",
-          "إدارة أنظمة الجدران النارية (Firewalls)",
-          "إدارة خدمات VPN والمستودعات",
-          "تأسيس وإدارة أنظمة البدل الهاتفي PBX والخطوط الصوتية VOIP",
-          "تأسيس وإدارة سيرفرات البريد الإلكتروني والرسائل النصية SMS والمستودعات",
-          "تأسيس وإدارة أنظمة ERP ووصل وربطها بأنظمة المستودعات",
-          "توزيع صلاحيات المستخدمين وإدارة حسابات البريد والمستودعات",
-          "تأسيس وإدارة أنظمة البحث والتطوير والتحسين بالتواصل بالتحليل",
-          "تأسيس إدارة أنظمة الموارد البشرية والمتابعة من داخل المنشأة",
-          "تأسيس وإدارة أنظمة كاملة المشاريع والتقارير والخطط",
-          "إدارة المشاريع والخدمات الحكومية مع وزارة العمل وغيرها"
+          "ﺗﺄﺳﻴﺲ وإدارة أﻧﻈﻤﺔ اﻟﺸﺒﻜﺔ اﻟﻜﺘﺮوﻧﻴﺔ ﻣﻦ Fiber و Ethernet و Wireless Network.",
+          "ﺗﺄﺳﻴﺲ وإدارة أﺟﻬﺰة اﻟﺤﺎﺳﺐ اﻟﻲ واﻟﻄﺎﺑﻌﺎت ﻣﻦ ﺗﺠﻤﻴﻊ وﺗﺮﻛﻴﺐ وﺻﻴﺎﻧﺔ ﺑﺘﺄﻣﻴﻨﻬﺎ وﺗﺜﻴﺒﺖ اﻟﺒﺮاﻣﺞ اﻟﻤﻜﺘﺒﻴﺔ واﻟﺤﻤﺎﻳﺔ وﺗﺜﺒﻴﺖ اﻧﻈﻤﺔ اﻟﺘﺸﻐﻴﻠﻴﺔ ﻣﺜـﻞ Windows و Linux و macOS و Cloud PC و virtual PC.",
+          "ﺗﺄﺳﻴﺲ وإدارة أﺟﻬﺰة اﻟﺮاوﺗﺮ وأﺟﻬﺰة firewalls واﻟﺘﺤﻜﻢ ﺑﻤﺮور اﻟﺒﻴﺎﻧﺎت واﻻﺗﺼﺎﻻت واﻻﻧﺘﺮﻧﺖ ورﺑﻂ اﻟﻤﻮاﻗﻊ واﻟﻤﺴﺘﻮدﻋﺎت ب VPN.",
+          "ﺗﺄﺳﻴﺲ وإدارة ﺳﻴﺮﻓﺮات اﻟﺴﻨﺘﺮاﻻت PBX وﺗﺤﻮﻳﻼت اﻟﻤﻮﻇﻔﻴﻦ ب VOIP ورﺑﻄﻬﺎ ﺑﺄرﻗﺎم اﻟﻤﻨﺸﺄة.",
+          "ﺗﺄﺳﻴﺲ وإدارة ﺳﻴﺮﻓﺮات اﻟـ NAS و SAN واﻟﺒﻴﺎﻧﺎت اﻟﻤﺎﻟﻴﺔ واﻟﻤﺤﺎﺳﺒﻴﺔ وﺗﺄﻣﻴﻨﻬﺎ ورﺑﻄﻬﺎ ﻣﻊ أﻧﻈﻤﺔ ERP.",
+          "ﺗﻮزﻳﻊ اﻟﺼﻼﺣﻴﺎت ﻟﻠﻤﻮﻇﻔﻴﻦ ﻋﻠﻰ ﻛﻞ اﻟﻤﺴﺘﻮﻳﺎت.",
+          "ﺗﺄﺳﻴﺲ وإدارة أﻧﻈﻤﺔ ﻛﺎﻣﻴﺮات اﻟﻤﺮاﻗﺒﺔ.",
+          "ﺗﺄﺳﻴﺲ وإدارة أﻧﻈﻤﺔ اﻟﺒﺼـﻤﺔ واﻟﺤﻀـﻮر واﻻﻧﺼﺮاف واﻟﺘﺤﻜﻢ ﺑﺎﻟﻮﺻـﻮل ﺑﺎﺑﻮاب، وإﺿﺎﻓﺔ وﺗﺤﺪﻳﺚ ﺑﻴﺎﻧﺎت اﻟﻤﻮﻇﻔﻴﻦ ورﺑﻂ اﺟﻬﺰة ﻓﻲ داﺧﻞ اﻟﻤﻨﺸﺄة وﺧﺎرﺟﻬﺎ ﻓﻲ ﺣﺎل ﺗﻌﺪد اﻟﻤﻮاﻗﻊ.",
+          "ﺗﺄﺳﻴﺲ وإدارة أﻧﻈﻤﺔ اﻟﻌﻤﻞ ﻋﻦ ﺑﻌـﺪ ﻣﺜـﻞ teams واﻟﺘﺨﺰﻳﻦ اﻟﺴﺤﺎﺑﻲ ورﺑﻄﻬﺎ ﺑﺴﻴﺮﻓﺮ اﻳﻤﻴﻞ اﻟﺨﺎص ﺑﺎﻟﻤﻨﺸﺄة.",
+          "إدارة اﻟﺨﺪﻣﺎت اﻟﺤﻜﻮﻣﻴﺔ ﻟﻠﻤﻨﺸﺄة ﻣﺜﻞ أﺑﺸﺮ واﻟﺘﺄﻣﻴﻨﺎت اﺟﺘﻤﺎﻋﻴﺔ و وزارة اﻟﻌﻤﻞ وﻏﻴﺮﻫﺎ.",
+          "تأسيس إدارة أنظمة الموارد البشرية والمتابعة من داخل المنشأة"
         ]
       },
       { 
@@ -132,13 +128,13 @@ const cvData = {
         period: "2016 — 2006",
         details: "إدارة المشاريع الهندسية والتقنية والمقاولات",
         achievements: [
-          "حضور فتح المظاريات والمفاوضات في الجهات الحكومية",
-          "تجميع العقود وتنسيقها واستلام مواقع المشاريع",
-          "إعداد وتنسيق خطط المشاريع والإشراف والمتابعة",
-          "تأسيس وتدريب فريق العمل والمهارات والكفاءات",
-          "تصنيف الحالات والكفاءات والمهارات للعمل بالمشاريع",
-          "إعداد المتطلبات والموازنات والبحث اللازم للمشاريع",
-          "معالجة وتحسين المشاريع ومتابعة المراحل المختلفة"
+          "ﺣﻀﻮر ﻓﺘﺢ اﻟﻤﻈﺎرﻳﻒ واﻟﻤﻨﺎﻗﺼﺎت ﻓﻲ اﻟﺠﻬﺎت اﻟﺤﻜﻮﻣﻴﺔ.",
+          "ﺗﻮﻗﻴﻊ اﻟﻌﻘﻮد واﺳﺘﻼم ﻣﻮاﻗﻊ اﻟﻤﺸﺎرﻳﻊ ﺑﻤﺤﺎﺿﺮ رﺳﻤﻴﺔ.",
+          "إعداد وتنسيق الخطط لتنفيذ مشاريع الاﻧﺎرة في طرق ومناطق السكنية والإشراف على استخراج ﺮﺧﺺالحفر اللازمة.",
+          "ﺗﺴﻜﻴﻦ وﺗﺠﻬﻴﺰ اﻟﻌﻤﺎﻟﺔ واﻟﻜﺎدر اﻟﻔﻨﻲ وﺗﻮﻓﻴﺮ اﻟﻤﻌﺪات واﻟﻤﻮاد اﻟﻼزﻣﺔ وﺻﺮف وإﻋﺪاد ﻣﺴﻴﺮات اﻟﺮواﺗﺐ. ",
+          "إﻋﺪاد اﻟﻤﺴﺘﺨﻠﺼﺎت اﻟﻤﺎﻟﻴﺔ ﻣﻦ اﻟﺒﻠﺪﻳﺎت والاﻣﺎﻧﺎت وﻣﺤﺎﺿﺮ اﻟﺘﺴﻠﻴﻢ اﻟﻨﻬﺎﺋﻲ وﻣﺘﺎﺑﻌﺔ ﺻﺮف اﻟﻤﺴﺘﺨﻠﺼﺎت اﻟﺨﺘﺎﻣﻴﺔ.",
+          "إعداد المتطلبات والموازنات والبحث اللازم للمشاريع. ",
+          "معالجة وتحسين المشاريع ومتابعة المراحل المختلفة. "
         ]
       }
     ],
@@ -257,21 +253,17 @@ const cvData = {
         period: "2022 — Present",
         details: "Leading a multidisciplinary technical team and managing government infrastructure",
         achievements: [
-          "Management of wireless networks, Ethernet and Fiber infrastructure",
-          "Installation and management of computer systems and software",
-          "Administration of various operating systems (Linux, Windows, macOS)",
-          "Design and management of Cloud PC and Virtual PC solutions",
-          "Establishment and management of database and network servers",
-          "Administration of firewall systems",
-          "VPN services and storage management",
-          "Establishment and management of PBX telephone exchange and VOIP services",
-          "Setup and management of email servers, SMS and storage systems",
-          "Installation and management of ERP systems",
-          "User access management and email account administration",
-          "Research and development systems management",
-          "Human resources systems management",
-          "Project and reporting systems management",
-          "Government services management with various ministries"
+          "Establish and manage networks from Fiber, Ethernet, and Wireless Network.",
+          "Establish and manage computers and printers from our collection, installation, maintenance, and security, and install software, security, and install operating systems such as Windows, Linux, macOS, Cloud PC, and virtual PC.",
+          "Establish and manage routers and firewalls, and control data, communications, the Internet, website connections, and warehouses via VPN.",
+          "Establish and manage PBX internet servers and convert employees via VOIP, and connect them to the establishment's numbers.",
+          "Establish and manage NAS and SAN internet servers, financial and accounting data, and security, and connect them to ERP systems.",
+          "Distribute privileges to employees at all levels.",
+          "Establish and manage monitoring cameras systems.",
+          "Establish and manage camera, presence, departure, and control of access via doors, add and update employee data, and connect devices inside and outside the establishment in case of site expansion.",
+          "Establish and manage remote work systems such as teams, cash storage, and connect them to the establishment's private email servers.",
+          "Establish and manage remote work systems such as teams, cash storage, and connect them to the establishment's private email servers.",
+          "Human resources systems management"
         ]
       },
       { 
@@ -280,13 +272,13 @@ const cvData = {
         period: "2006 — 2016",
         details: "Management of engineering, technical and contracting projects",
         achievements: [
-          "Attending bid openings and negotiations with government agencies",
-          "Compilation and coordination of contracts",
-          "Project planning and supervision",
-          "Team building and skills development",
-          "Case classification and competency assessment",
-          "Project requirements and budget preparation",
-          "Project improvement and phase management"
+          "Attendance at the opening of tenders and negotiations in the governmental departments.",
+          "Signing contracts and receiving the locations of the projects in official papers.",
+          "Preparing and coordinating plans to implement lighting projects in residential roads and areas and supervising the extraction of necessary drilling permits.",
+          "Housing and preparing the workers and technical staff and providing the necessary equipment and materials and issuing and preparing the schedules of the salaries.",
+          "Preparation of financial statements from municipalities, ‏municipality, final delivery reports and follow-up on the disbursement of the acquired assets.",
+          "Project requirements and budget preparation. ",
+          "Project improvement and phase management. "
         ]
       }
     ],

@@ -157,7 +157,7 @@ const cvData = {
       title: "IT Manager & Government Services Specialist",
       location: "Jeddah, Saudi Arabia",
       email: "mohammed@alotaibi.site",
-      phone: "+966 583809000",
+      phone: "+966583809000",
       github: "https://github.com/OneiMoment",
       linkedin: "https://www.linkedin.com/in/your-username",
       birthDate: "November 21, 1985"

@@ -13,7 +13,7 @@ const cvData = {
       title: "مدير مشاريع وتقنية معلومات والخدمات الحكومية",
       location: "جدة، المملكة العربية السعودية",
       email: "mohammed@alotaibi.site",
-      phone: "+966 583809000",
+      phone: "+966583809000",
       github: "https://github.com/OneiMoment",
       linkedin: "https://www.linkedin.com/in/your-username",
       birthDate: "21 نوفمبر 1985"

@@ -87,7 +87,7 @@ const cvData = {
         degree: "دبلوم تقنية المعلومات - تخصص الشبكات", 
         institution: "معهد العالمية للحاسب والتقنية", 
         year: "2009 - 2007",
-        details: "درجة 100 من 82 بمعدل ممتاز"
+        details: "درجة 82 من 100 بمعدل جيد جداً"
       },
       { 
         degree: "دبلوم علوم الحاسب - تخصص تقنية الشبكات", 
@@ -231,7 +231,7 @@ const cvData = {
         degree: "Diploma in Information Technology - Network Specialization", 
         institution: "Al-Alamiah Institute for Computers and Technology", 
         year: "2007 - 2009",
-        details: "Score 100 out of 82 with excellent grade"
+        details: "Score 82 out of 100 with very good grade"
       },
       { 
         degree: "Diploma in Computer Science - Network Technology Specialization", 

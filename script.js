@@ -137,16 +137,16 @@ function renderCV() {
   }
 
   // Header
-  document.getElementById('name').textContent = d.personal.name;
-  document.getElementById('title').textContent = d.personal.title;
-  document.getElementById('location').textContent = d.personal.location;
+  document.getElementById('name').textContent = d.personal?.name || d.en?.personal?.name || '';
+  document.getElementById('title').textContent = d.personal?.title || d.en?.personal?.title || '';
+  document.getElementById('location').textContent = d.personal?.location || d.en?.personal?.location || '';
 
-  const contacts = document.getElementById('contacts');
-  contacts.innerHTML = `
-    <li>📧 <a href="mailto:${d.personal.email}">${d.personal.email}</a></li>
-    <li>📞 ${d.personal.phone}</li>
-    <li>💻 <a href="${d.personal.github}" target="_blank" rel="noopener">GitHub</a></li>
-    <li>🔗 <a href="${d.personal.linkedin}" target="_blank" rel="noopener">LinkedIn</a></li>
+  const contactsEl = document.getElementById('contacts');
+  contactsEl.innerHTML = `
+      <li>📧 <a href="mailto:${d.personal?.email || d.en?.personal?.email}">${d.personal?.email || d.en?.personal?.email}</a></li>
+      <li>📞 ${d.personal?.phone || d.en?.personal?.phone}</li>
+      <li>💻 <a href="${d.personal?.github || d.en?.personal?.github}" target="_blank" rel="noopener">${d.personal?.github || d.en?.personal?.github}</a></li>
+      <li>🔗 <a href="${d.personal?.linkedin || d.en?.personal?.linkedin}" target="_blank" rel="noopener">${d.personal?.linkedin || d.en?.personal?.linkedin}</a></li>
   `;
 
   // Summary

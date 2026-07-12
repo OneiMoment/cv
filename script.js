@@ -150,8 +150,8 @@ function renderCV() {
   `;
 
   // Summary
-  document.getElementById('summaryTitle').textContent = d.labels.summary;
-  document.getElementById('summary').textContent = d.summary;
+  document.getElementById('summaryTitle').textContent = d.labels.summary || d.en?.labels?.summary || '';
+  document.getElementById('summary').textContent = d.summary || d.en?.summary || '';
 
   // Skills with Progress Bars
   document.getElementById('skillsTitle').textContent = d.labels.skills;

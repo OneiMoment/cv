@@ -99,7 +99,12 @@ function downloadPDF() {
     html2canvas: { scale: 2 },
     jsPDF: { orientation: 'portrait', unit: 'mm', format: 'a4' }
   };
+  try {
   html2pdf().set(opt).from(element).save();
+  } catch (error) {
+  console.error("Error generating PDF:", error);
+  alert("Failed to generate PDF. Please try again.");
+  }
 }
 
 // Initialize theme and language on page load

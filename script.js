@@ -129,38 +129,6 @@ function renderCV() {
   } else {
     pdfLabel.textContent = 'PDF';
   }
-
-  // Update Footer Languages and Content
-const trFooterEl = document.getElementById('tr_footer');
-if (trFooterEl) {
-  const dateSpan = trFooterEl.querySelector('.date');
-  const authorArSpan = trFooterEl.querySelector('[data-i18n-author]');
-  const authorEnSpan = trFooterEl.querySelector('[lang="en"][data-i18n-author]');
-
-  // Assuming d contains i18n data for the footer content (DATE, AUTHOR_AR, AUTHOR_EN)
-  if (d.footer) { 
-    dateSpan.textContent = d.footer.date || '2024'; // Placeholder logic
-
-    let textContent;
-    if (currentLang === 'ar') {
-      // For Arabic, display the specific AR author content
-      authorArSpan.textContent = d.footer.nameAr || 'Placeholder Name Ar'; 
-      textContent = `${dateSpan.textContent} | ${authorArSpan.textContent} &mdash; Generator`;
-    } else {
-      // For English, display the specific EN author content
-      authorEnSpan.textContent = d.footer.nameEn || 'Placeholder Name En'; 
-      textContent = `${dateSpan.textContent} | ${authorEnSpan.textContent} &mdash; Generator`;
-    }
-    trFooterEl.innerHTML = dateSpan.outerHTML + ' | <span data-i18n-author>' + textContent + '</span>';
-  } else {
-
-      // Fallback if d.footer structure is missing: just update the date part generically
-      dateSpan.textContent = '2024';
-  }
-
-  // Since we are updating innerHTML here, reset visibility status for filtering consistency.
-  trFooterEl.style.display = '';
-
   
   // Profile Image - Use image from data or fallback
   if (d.personal.image) {

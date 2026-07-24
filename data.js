@@ -13,7 +13,7 @@ const cvData = {
       title: "مدير مشاريع وتقنية معلومات والخدمات الحكومية",
       location: "جدة، المملكة العربية السعودية",
       email: "mohammed@alotaibi.site",
-      phone: "<a href="tel:+966583809000">+966 583809000</a>",
+      phone: "+966583809000",
       github: "https://github.com/OneiMoment",
       linkedin: "https://www.linkedin.com/in/your-username",
       birthDate: "21 نوفمبر 1985"
@@ -106,7 +106,7 @@ const cvData = {
       { 
         company: "جهة قطاع صناعي", 
         role: "مدير تقنية المعلومات والخدمات الحكومية", 
-        period: "2022 — الآن",
+        period: "2022 — 2016",
         details: "قيادة فريق تقني متعدد التخصصات وإدارة البنية التحتية الحكومية",
         achievements: [
           "ﺗﺄﺳﻴﺲ وإدارة أﻧﻈﻤﺔ اﻟﺸﺒﻜﺔ اﻟﻜﺘﺮوﻧﻴﺔ ﻣﻦ Fiber و Ethernet و Wireless Network.",
@@ -125,7 +125,7 @@ const cvData = {
       { 
         company: "جهة قطاع مقاولات - مع وزارة الشؤون البلدية والقروية", 
         role: "مدير تنفيذي للعقد والمشاريع", 
-        period: "2016 — 2006",
+        period: "2016 — 2003",
         details: "إدارة المشاريع الهندسية والتقنية والمقاولات",
         achievements: [
           "ﺣﻀﻮر ﻓﺘﺢ اﻟﻤﻈﺎرﻳﻒ واﻟﻤﻨﺎﻗﺼﺎت ﻓﻲ اﻟﺠﻬﺎت اﻟﺤﻜﻮﻣﻴﺔ.",
@@ -157,7 +157,7 @@ const cvData = {
       title: "IT Manager & Government Services Specialist",
       location: "Jeddah, Saudi Arabia",
       email: "mohammed@alotaibi.site",
-      phone: "<a href="tel:+966583809000">+966 583809000</a>",
+      phone: "+966583809000",
       github: "https://github.com/OneiMoment",
       linkedin: "https://www.linkedin.com/in/your-username",
       birthDate: "November 21, 1985"
@@ -250,7 +250,7 @@ const cvData = {
       { 
         company: "Industrial sector entity", 
         role: "IT Manager & Government Services Director", 
-        period: "2022 — Present",
+        period: "2016 — 2022",
         details: "Leading a multidisciplinary technical team and managing government infrastructure",
         achievements: [
           "Establish and manage networks from Fiber, Ethernet, and Wireless Network.",
@@ -269,7 +269,7 @@ const cvData = {
       { 
         company: "Construction sector entity - with the Ministry of Municipal and Rural Affairs", 
         role: "Executive Manager of Contracts & Projects", 
-        period: "2006 — 2016",
+        period: "2003 — 2016",
         details: "Management of engineering, technical and contracting projects",
         achievements: [
           "Attendance at the opening of tenders and negotiations in the governmental departments.",

@@ -261,8 +261,7 @@ const cvData = {
           "Distribute privileges to employees at all levels.",
           "Establish and manage monitoring cameras systems.",
           "Establish and manage camera, presence, departure, and control of access via doors, add and update employee data, and connect devices inside and outside the establishment in case of site expansion.",
-          "Establish and manage remote work systems such as teams, cash storage, and connect them to the establishment's private email servers.",
-          "Establish and manage remote work systems such as teams, cash storage, and connect them to the establishment's private email servers.",
+          "Establish and manage remote work systems such as teams, cloud storage, and connect them to the establishment's private email servers.",
           "Human resources systems management"
         ]
       },

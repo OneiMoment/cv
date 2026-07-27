@@ -321,7 +321,7 @@ section p {
   background: var(--card);
   padding: 15px;
   border-radius: 8px;
-  border-left: 4px solid var(--accent);
+  border-inline-start: 4px solid var(--accent);
   transition: all 0.3s ease;
 }
 
@@ -362,7 +362,7 @@ section p {
   padding: 20px;
   margin-bottom: 15px;
   border-radius: 8px;
-  border-left: 4px solid var(--accent);
+  border-inline-start: 4px solid var(--accent);
   transition: all 0.3s ease;
 }
 
@@ -395,7 +395,7 @@ section p {
 
 .achievements {
   margin-top: 10px;
-  padding-left: 20px;
+  padding-inline-start: 20px;
 }
 
 .achievements li {

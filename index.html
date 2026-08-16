@@ -42,7 +42,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=2.4" />
   
   <!-- Structured Data: Schema.org JSON-LD -->
   <script type="application/ld+json">
@@ -70,7 +70,7 @@
 </head>
 <body>
   <!-- Accessibility Skip Link -->
-  <a href="#mainContent" class="skip-link">تخطي إلى المحتوى الرئيسي</a>
+  <a href="#mainContent" class="skip-link" id="skipLink">تخطي إلى المحتوى الرئيسي</a>
 
   <!-- Top Floating Navigation & Action Bar -->
   <header class="app-header no-print">
@@ -161,11 +161,15 @@
             <i class="fa-solid fa-location-dot"></i>
             <span id="heroLocation">جدة، المملكة العربية السعودية</span>
           </div>
+<<<<<<< Updated upstream
           <a class="contact-chip" id="chipEmail" href="mailto:mohammed@alotaibi.site" title="انقر للمراسلة أو النسخ">
+=======
+          <a class="contact-chip" id="chipEmail" href="mailto:mohammed@alotaibi.site">
+>>>>>>> Stashed changes
             <i class="fa-solid fa-envelope"></i>
             <span id="heroEmail">mohammed@alotaibi.site</span>
           </a>
-          <a class="contact-chip" id="chipPhone" href="tel:+966583809000" title="انقر للاتصال">
+          <a class="contact-chip" id="chipPhone" href="tel:+966583809000">
             <i class="fa-solid fa-phone"></i>
             <span id="heroPhone" dir="ltr">+966 58 380 9000</span>
           </a>
@@ -269,12 +273,43 @@
     <footer class="cv-footer">
       <div class="footer-content">
         <p><span id="footerCopyright">© 2026</span> • <strong id="footerAuthor">محمد عبدالله العتيبي</strong></p>
-        <p class="footer-sub">سيرة ذاتية تفاعلية مطابقة لمعايير أنظمة التوظيف الحديثة</p>
+        <p class="footer-sub" id="footerSub">سيرة ذاتية تفاعلية مطابقة لمعايير أنظمة التوظيف الحديثة</p>
       </div>
     </footer>
 
   </main>
 
+<<<<<<< Updated upstream
+=======
+  <!-- Interactive QR Code Modal -->
+  <div id="qrModal" class="modal-backdrop hidden" onclick="handleModalBackdropClick(event)">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="qrModalTitle" class="modal-title">رمز الاستجابة السريعة (QR Code)</h3>
+        <button id="qrModalCloseBtn" class="modal-close-btn" onclick="closeQrModal()" aria-label="إغلاق">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="qr-code-frame">
+          <canvas id="qrCanvas" width="240" height="240"></canvas>
+        </div>
+        <p id="qrModalScanHint" class="qr-scan-hint">امسح الرمز بكاميرا هاتفك لفتح السيرة الذاتية ومشاركتها فوراً</p>
+        <div class="modal-actions">
+          <button class="btn btn-primary" onclick="downloadQrImage()">
+            <i class="fa-solid fa-download"></i>
+            <span id="qrDownloadText">تحميل صورة الرمز</span>
+          </button>
+          <button class="btn" onclick="copyProfileLink()">
+            <i class="fa-solid fa-copy"></i>
+            <span id="qrCopyLinkText">نسخ الرابط</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+>>>>>>> Stashed changes
   <!-- Interactive Toast Notification -->
   <div id="toastNotification" class="toast-notification hidden" role="status" aria-live="polite">
     <i class="fa-solid fa-circle-check"></i>
@@ -282,15 +317,20 @@
   </div>
 
   <!-- Application Logic & Data -->
-  <script src="data.js"></script>
-  <script src="script.js"></script>
+  <script src="data.js?v=2.4"></script>
+  <script src="script.js?v=2.4"></script>
 
   <!-- Service Worker Registration for Offline PWA -->
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
+<<<<<<< Updated upstream
         navigator.serviceWorker.register('sw.js').catch(err => {
           console.debug('ServiceWorker registration optional notice:', err);
+=======
+        navigator.serviceWorker.register('sw.js?v=2.4').catch(err => {
+          console.debug('ServiceWorker registration notice:', err);
+>>>>>>> Stashed changes
         });
       });
     }

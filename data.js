@@ -1,6 +1,8 @@
 const cvData = {
   ar: {
     labels: {
+      navBrand: "السيرة الذاتية المهنية",
+      skipToContent: "تخطي إلى المحتوى الرئيسي",
       summary: "الملخص المهني",
       metricsTitle: "أبرز المؤشرات المهنية",
       skills: "المهارات التقنية والإدارية",
@@ -14,11 +16,31 @@ const cvData = {
       printCv: "طباعة السيرة",
       saveVCard: "حفظ كجهة اتصال",
       shareProfile: "مشاركة السيرة",
+<<<<<<< Updated upstream
+=======
+      qrCodeBtn: "عرض رمز QR",
+      qrTitle: "رمز الاستجابة السريعة (QR Code)",
+      qrScanHint: "امسح الرمز بكاميرا هاتفك لفتح السيرة الذاتية ومشاركتها فوراً",
+      qrDownload: "تحميل صورة الرمز",
+      qrCopyLink: "نسخ الرابط",
+      close: "إغلاق",
+>>>>>>> Stashed changes
       searchPlaceholder: "ابحث في المهارات، المشاريع، والخبرات...",
+      searchToggle: "فتح البحث",
+      searchClear: "مسح البحث",
+      themeToggle: "تبديل الوضع الليلي / النهاري",
       viewCert: "عرض الشهادة",
       viewProject: "تفاصيل المشروع",
       filterAll: "الكل",
       copied: "تم النسخ إلى الحافظة بنجاح!",
+      vcardDownloaded: "تم تجهيز ملف جهة الاتصال (vCard) للتحميل!",
+      qrDownloaded: "تم تحميل صورة رمز QR بنجاح!",
+      searchResults: "تم العثور على ({count}) نتيجة مطابقة",
+      footerSub: "سيرة ذاتية تفاعلية مطابقة لمعايير أنظمة التوظيف الحديثة (ATS)",
+      emailTooltip: "انقر للمراسلة عبر البريد الإلكتروني",
+      phoneTooltip: "انقر للاتصال المباشر",
+      linkedinTooltip: "زيارة الملف المهني على LinkedIn",
+      githubTooltip: "زيارة المستودع والمشاريع على GitHub",
       present: "حتى الآن"
     },
     personal: {
@@ -200,6 +222,8 @@ const cvData = {
   },
   en: {
     labels: {
+      navBrand: "Professional Resume",
+      skipToContent: "Skip to main content",
       summary: "Professional Summary",
       metricsTitle: "Key Highlights & Performance",
       skills: "Technical & Management Skills",
@@ -213,11 +237,31 @@ const cvData = {
       printCv: "Print CV",
       saveVCard: "Save Contact (vCard)",
       shareProfile: "Share Profile",
+<<<<<<< Updated upstream
+=======
+      qrCodeBtn: "View QR Code",
+      qrTitle: "Scan QR Code",
+      qrScanHint: "Scan with your smartphone camera to open and share this CV instantly",
+      qrDownload: "Download QR Image",
+      qrCopyLink: "Copy Link",
+      close: "Close",
+>>>>>>> Stashed changes
       searchPlaceholder: "Search skills, projects, experience...",
+      searchToggle: "Open Search",
+      searchClear: "Clear Search",
+      themeToggle: "Toggle Dark / Light Theme",
       viewCert: "View Credential",
       viewProject: "Project Details",
       filterAll: "All",
       copied: "Copied to clipboard!",
+      vcardDownloaded: "Contact card (vCard) downloaded!",
+      qrDownloaded: "QR Code image downloaded successfully!",
+      searchResults: "Found ({count}) matching results",
+      footerSub: "Interactive CV compliant with modern ATS recruitment standards",
+      emailTooltip: "Click to send email",
+      phoneTooltip: "Click to call directly",
+      linkedinTooltip: "Visit LinkedIn profile",
+      githubTooltip: "Visit GitHub repository & code",
       present: "Present"
     },
     personal: {

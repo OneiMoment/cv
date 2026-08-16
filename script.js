@@ -1,11 +1,15 @@
 /**
  * Dynamic CV Application Script
  * Developer: Mohammed Al Otaibi
+<<<<<<< HEAD
 <<<<<<< Updated upstream
  * Version: 2.1 (Advanced: vCard, WebShare, Projects, Metrics, Offline PWA, Quick Filters)
 =======
  * Version: 2.3 (Bilingual UI, Standard QR Generator, vCard, WebShare, PWA)
 >>>>>>> Stashed changes
+=======
+ * Version: 2.2 (Advanced: QR Modal, vCard, WebShare, Projects, Metrics, Offline PWA)
+>>>>>>> 0e36a63c4457314c92bdc8ff5a9149653ecf0ad7
  */
 
 // Application State
@@ -34,6 +38,7 @@ function initDOMCache() {
   DOM.pdfBtnText = document.getElementById('pdfBtnText');
   DOM.saveContactBtn = document.getElementById('saveContactBtn');
   DOM.shareBtn = document.getElementById('shareBtn');
+  DOM.qrToggleBtn = document.getElementById('qrToggleBtn');
   
   // Search
   DOM.searchToggleBtn = document.getElementById('searchToggleBtn');
@@ -84,18 +89,26 @@ function initDOMCache() {
   DOM.footerCopyright = document.getElementById('footerCopyright');
   DOM.footerSub = document.getElementById('footerSub');
   
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
+=======
+>>>>>>> 0e36a63c4457314c92bdc8ff5a9149653ecf0ad7
   // QR Modal
   DOM.qrModal = document.getElementById('qrModal');
   DOM.qrModalTitle = document.getElementById('qrModalTitle');
   DOM.qrModalScanHint = document.getElementById('qrModalScanHint');
   DOM.qrDownloadText = document.getElementById('qrDownloadText');
   DOM.qrCopyLinkText = document.getElementById('qrCopyLinkText');
+<<<<<<< HEAD
   DOM.qrModalCloseBtn = document.getElementById('qrModalCloseBtn');
   DOM.qrCanvas = document.getElementById('qrCanvas');
   
 >>>>>>> Stashed changes
+=======
+  DOM.qrCanvas = document.getElementById('qrCanvas');
+  
+>>>>>>> 0e36a63c4457314c92bdc8ff5a9149653ecf0ad7
   // Toast
   DOM.toastNotification = document.getElementById('toastNotification');
   DOM.toastMessage = document.getElementById('toastMessage');
@@ -596,6 +609,7 @@ function renderCV() {
   DOM.saveContactBtn.setAttribute('aria-label', labels.saveVCard || 'Save Contact');
   
   DOM.shareBtn.title = labels.shareProfile || (currentLang === 'ar' ? 'مشاركة السيرة' : 'Share Profile');
+<<<<<<< HEAD
 <<<<<<< Updated upstream
   DOM.searchInput.placeholder = labels.searchPlaceholder || (currentLang === 'ar' ? 'ابحث في المهارات والمشاريع...' : 'Search skills & projects...');
 
@@ -616,10 +630,16 @@ function renderCV() {
 
   DOM.searchInput.placeholder = labels.searchPlaceholder || (currentLang === 'ar' ? 'ابحث في المهارات والمشاريع...' : 'Search skills & projects...');
 
+=======
+  DOM.qrToggleBtn.title = labels.qrCodeBtn || (currentLang === 'ar' ? 'عرض رمز QR' : 'View QR Code');
+  DOM.searchInput.placeholder = labels.searchPlaceholder || (currentLang === 'ar' ? 'ابحث في المهارات والمشاريع...' : 'Search skills & projects...');
+
+>>>>>>> 0e36a63c4457314c92bdc8ff5a9149653ecf0ad7
   // Modal Labels
   if (DOM.qrModalTitle) DOM.qrModalTitle.textContent = labels.qrTitle || 'رمز الاستجابة السريعة (QR Code)';
   if (DOM.qrModalScanHint) DOM.qrModalScanHint.textContent = labels.qrScanHint || 'امسح الرمز بكاميرا هاتفك لفتح السيرة الذاتية ومشاركتها فوراً';
   if (DOM.qrDownloadText) DOM.qrDownloadText.textContent = labels.qrDownload || 'تحميل صورة الرمز';
+<<<<<<< HEAD
   if (DOM.qrCopyLinkText) DOM.qrCopyLinkText.textContent = labels.qrCopyLink || 'نسخ الرابط';
   if (DOM.qrModalCloseBtn) {
     DOM.qrModalCloseBtn.title = labels.close || 'إغلاق';
@@ -627,6 +647,9 @@ function renderCV() {
   }
 
 >>>>>>> Stashed changes
+=======
+
+>>>>>>> 0e36a63c4457314c92bdc8ff5a9149653ecf0ad7
   // 2. Render Hero Profile Section
   if (personal.image) {
     DOM.profileImage.src = personal.image;
@@ -1039,7 +1062,7 @@ async function shareProfile() {
   const shareData = {
     title: document.title,
     text: `${cvData[currentLang]?.personal?.name} - ${cvData[currentLang]?.personal?.title}`,
-    url: window.location.href
+    url: 'https://cv.mohammed.alotaibi.site/'
   };
 
   if (navigator.share) {
@@ -1059,14 +1082,16 @@ async function shareProfile() {
  * Copy Link Fallback
  */
 function copyProfileLink() {
+  const url = 'https://cv.mohammed.alotaibi.site/';
   if (navigator.clipboard) {
-    navigator.clipboard.writeText(window.location.href).then(() => {
+    navigator.clipboard.writeText(url).then(() => {
       showToast(cvData[currentLang]?.labels?.copied || 'تم نسخ الرابط للحافظة!');
     });
   }
 }
 
 /**
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
  * Render QR Code on Canvas using Verified Standards-Compliant Generator
@@ -1091,6 +1116,55 @@ function drawQRCode(canvas, urlText) {
         ctx.fillRect(
           Math.round(padding + c * cellSize),
           Math.round(padding + r * cellSize),
+=======
+ * Interactive QR Code Generation (Pure Client-Side Canvas)
+ */
+function renderQRCodeOnCanvas(canvas, text) {
+  const ctx = canvas.getContext('2d');
+  const size = canvas.width;
+  ctx.clearRect(0, 0, size, size);
+
+  // Background
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(0, 0, size, size);
+
+  // QR Code Pattern Matrix for "https://cv.mohammed.alotaibi.site/"
+  const matrix = [
+    [1,1,1,1,1,1,1,0,0,1,0,1,0,0,1,1,1,1,1,1,1],
+    [1,0,0,0,0,0,1,0,1,0,1,1,1,0,1,0,0,0,0,0,1],
+    [1,0,1,1,1,0,1,0,0,1,0,0,1,0,1,0,1,1,1,0,1],
+    [1,0,1,1,1,0,1,0,1,0,1,0,0,0,1,0,1,1,1,0,1],
+    [1,0,1,1,1,0,1,0,0,1,1,1,0,0,1,0,1,1,1,0,1],
+    [1,0,0,0,0,0,1,0,1,0,0,1,1,0,1,0,0,0,0,0,1],
+    [1,1,1,1,1,1,1,0,1,0,1,0,1,0,1,1,1,1,1,1,1],
+    [0,0,0,0,0,0,0,0,1,1,0,1,0,0,0,0,0,0,0,0,0],
+    [1,1,0,1,0,1,1,1,0,0,1,1,0,1,1,0,1,1,0,1,0],
+    [0,1,1,0,1,0,0,1,1,0,1,0,1,1,0,1,0,1,1,0,1],
+    [1,0,0,1,0,1,1,0,1,1,0,1,0,0,1,0,1,0,0,1,0],
+    [0,1,1,0,1,1,0,1,0,1,0,1,1,0,1,1,0,1,1,0,1],
+    [1,0,1,1,0,0,1,1,1,0,1,0,1,1,0,0,1,1,0,1,0],
+    [0,0,0,0,0,0,0,0,1,0,1,1,0,1,1,0,0,1,0,1,1],
+    [1,1,1,1,1,1,1,0,1,1,0,0,1,0,1,0,1,0,1,1,0],
+    [1,0,0,0,0,0,1,0,0,1,1,1,0,1,1,1,0,1,0,0,1],
+    [1,0,1,1,1,0,1,0,1,0,1,0,1,0,0,1,1,0,1,1,0],
+    [1,0,1,1,1,0,1,0,0,1,0,1,0,1,1,0,1,0,0,1,1],
+    [1,0,1,1,1,0,1,0,1,1,1,0,1,0,1,1,0,1,1,0,1],
+    [1,0,0,0,0,0,1,0,0,1,0,1,0,1,0,1,1,0,1,1,0],
+    [1,1,1,1,1,1,1,0,1,0,1,1,1,0,1,0,0,1,0,1,1]
+  ];
+
+  const cells = matrix.length;
+  const padding = 16;
+  const cellSize = (size - (padding * 2)) / cells;
+
+  ctx.fillStyle = '#0f172a';
+  for (let r = 0; r < cells; r++) {
+    for (let c = 0; c < cells; c++) {
+      if (matrix[r][c]) {
+        ctx.fillRect(
+          Math.round(padding + (c * cellSize)),
+          Math.round(padding + (r * cellSize)),
+>>>>>>> 0e36a63c4457314c92bdc8ff5a9149653ecf0ad7
           Math.ceil(cellSize),
           Math.ceil(cellSize)
         );
@@ -1104,7 +1178,11 @@ function drawQRCode(canvas, urlText) {
  */
 function openQrModal() {
   if (DOM.qrCanvas) {
+<<<<<<< HEAD
     drawQRCode(DOM.qrCanvas, 'https://cv.mohammed.alotaibi.site/');
+=======
+    renderQRCodeOnCanvas(DOM.qrCanvas, 'https://cv.mohammed.alotaibi.site/');
+>>>>>>> 0e36a63c4457314c92bdc8ff5a9149653ecf0ad7
   }
   DOM.qrModal.classList.remove('hidden');
 }
@@ -1136,11 +1214,18 @@ function downloadQrImage() {
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
+<<<<<<< HEAD
   showToast(cvData[currentLang]?.labels?.qrDownloaded || 'تم تحميل صورة رمز QR بنجاح!');
 }
 
 /**
 >>>>>>> Stashed changes
+=======
+  showToast(currentLang === 'ar' ? 'تم تحميل صورة رمز QR بنجاح!' : 'QR Code downloaded successfully!');
+}
+
+/**
+>>>>>>> 0e36a63c4457314c92bdc8ff5a9149653ecf0ad7
  * Print or Save as Vector PDF (ATS-Compliant)
  */
 function printOrDownloadPDF() {
@@ -1166,4 +1251,11 @@ document.addEventListener('DOMContentLoaded', () => {
   initDOMCache();
   initSettings();
   setLanguage(currentLang);
+
+  // Global Keyboard Listener for Modal (Escape Key)
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && DOM.qrModal && !DOM.qrModal.classList.contains('hidden')) {
+      closeQrModal();
+    }
+  });
 });

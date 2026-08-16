@@ -16,15 +16,22 @@ const cvData = {
       printCv: "طباعة السيرة",
       saveVCard: "حفظ كجهة اتصال",
       shareProfile: "مشاركة السيرة",
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
+=======
+>>>>>>> 0e36a63c4457314c92bdc8ff5a9149653ecf0ad7
       qrCodeBtn: "عرض رمز QR",
       qrTitle: "رمز الاستجابة السريعة (QR Code)",
       qrScanHint: "امسح الرمز بكاميرا هاتفك لفتح السيرة الذاتية ومشاركتها فوراً",
       qrDownload: "تحميل صورة الرمز",
+<<<<<<< HEAD
       qrCopyLink: "نسخ الرابط",
       close: "إغلاق",
 >>>>>>> Stashed changes
+=======
+      close: "إغلاق",
+>>>>>>> 0e36a63c4457314c92bdc8ff5a9149653ecf0ad7
       searchPlaceholder: "ابحث في المهارات، المشاريع، والخبرات...",
       searchToggle: "فتح البحث",
       searchClear: "مسح البحث",
@@ -237,15 +244,22 @@ const cvData = {
       printCv: "Print CV",
       saveVCard: "Save Contact (vCard)",
       shareProfile: "Share Profile",
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
+=======
+>>>>>>> 0e36a63c4457314c92bdc8ff5a9149653ecf0ad7
       qrCodeBtn: "View QR Code",
       qrTitle: "Scan QR Code",
       qrScanHint: "Scan with your smartphone camera to open and share this CV instantly",
       qrDownload: "Download QR Image",
+<<<<<<< HEAD
       qrCopyLink: "Copy Link",
       close: "Close",
 >>>>>>> Stashed changes
+=======
+      close: "Close",
+>>>>>>> 0e36a63c4457314c92bdc8ff5a9149653ecf0ad7
       searchPlaceholder: "Search skills, projects, experience...",
       searchToggle: "Open Search",
       searchClear: "Clear Search",

@@ -96,6 +96,11 @@
           <i class="fa-solid fa-magnifying-glass"></i>
         </button>
 
+        <!-- QR Code Modal Button -->
+        <button id="qrToggleBtn" class="btn btn-icon" onclick="openQrModal()" title="عرض رمز QR" aria-label="عرض رمز QR">
+          <i class="fa-solid fa-qrcode"></i>
+        </button>
+
         <!-- Save vCard Contact Button -->
         <button id="saveContactBtn" class="btn btn-icon" onclick="saveContactVCard()" title="حفظ كجهة اتصال" aria-label="حفظ كجهة اتصال">
           <i class="fa-solid fa-address-card"></i>
@@ -161,11 +166,15 @@
             <i class="fa-solid fa-location-dot"></i>
             <span id="heroLocation">جدة، المملكة العربية السعودية</span>
           </div>
+<<<<<<< HEAD
 <<<<<<< Updated upstream
           <a class="contact-chip" id="chipEmail" href="mailto:mohammed@alotaibi.site" title="انقر للمراسلة أو النسخ">
 =======
           <a class="contact-chip" id="chipEmail" href="mailto:mohammed@alotaibi.site">
 >>>>>>> Stashed changes
+=======
+          <a class="contact-chip" id="chipEmail" href="mailto:mohammed@alotaibi.site" title="انقر للمراسلة">
+>>>>>>> 0e36a63c4457314c92bdc8ff5a9149653ecf0ad7
             <i class="fa-solid fa-envelope"></i>
             <span id="heroEmail">mohammed@alotaibi.site</span>
           </a>
@@ -279,20 +288,31 @@
 
   </main>
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
+=======
+>>>>>>> 0e36a63c4457314c92bdc8ff5a9149653ecf0ad7
   <!-- Interactive QR Code Modal -->
   <div id="qrModal" class="modal-backdrop hidden" onclick="handleModalBackdropClick(event)">
     <div class="modal-card">
       <div class="modal-header">
         <h3 id="qrModalTitle" class="modal-title">رمز الاستجابة السريعة (QR Code)</h3>
+<<<<<<< HEAD
         <button id="qrModalCloseBtn" class="modal-close-btn" onclick="closeQrModal()" aria-label="إغلاق">
+=======
+        <button class="modal-close-btn" onclick="closeQrModal()" aria-label="إغلاق">
+>>>>>>> 0e36a63c4457314c92bdc8ff5a9149653ecf0ad7
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
       <div class="modal-body">
         <div class="qr-code-frame">
+<<<<<<< HEAD
           <canvas id="qrCanvas" width="240" height="240"></canvas>
+=======
+          <canvas id="qrCanvas" width="220" height="220"></canvas>
+>>>>>>> 0e36a63c4457314c92bdc8ff5a9149653ecf0ad7
         </div>
         <p id="qrModalScanHint" class="qr-scan-hint">امسح الرمز بكاميرا هاتفك لفتح السيرة الذاتية ومشاركتها فوراً</p>
         <div class="modal-actions">
@@ -309,7 +329,10 @@
     </div>
   </div>
 
+<<<<<<< HEAD
 >>>>>>> Stashed changes
+=======
+>>>>>>> 0e36a63c4457314c92bdc8ff5a9149653ecf0ad7
   <!-- Interactive Toast Notification -->
   <div id="toastNotification" class="toast-notification hidden" role="status" aria-live="polite">
     <i class="fa-solid fa-circle-check"></i>
@@ -326,11 +349,15 @@
       window.addEventListener('load', () => {
 <<<<<<< Updated upstream
         navigator.serviceWorker.register('sw.js').catch(err => {
+<<<<<<< HEAD
           console.debug('ServiceWorker registration optional notice:', err);
 =======
         navigator.serviceWorker.register('sw.js?v=2.4').catch(err => {
           console.debug('ServiceWorker registration notice:', err);
 >>>>>>> Stashed changes
+=======
+          console.debug('ServiceWorker registration notice:', err);
+>>>>>>> 0e36a63c4457314c92bdc8ff5a9149653ecf0ad7
         });
       });
     }

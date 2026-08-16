@@ -41,8 +41,11 @@
   <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   
+  <!-- QR Code Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=2.5" />
+  <link rel="stylesheet" href="styles.css?v=2.6" />
   
   <!-- Structured Data: Schema.org JSON-LD -->
   <script type="application/ld+json">
@@ -291,7 +294,7 @@
       </div>
       <div class="modal-body">
         <div class="qr-code-frame">
-          <canvas id="qrCanvas" width="240" height="240"></canvas>
+          <div id="qrcodeContainer"></div>
         </div>
         <p id="qrModalScanHint" class="qr-scan-hint">امسح الرمز بكاميرا هاتفك لفتح السيرة الذاتية ومشاركتها فوراً</p>
         <div class="modal-actions">
@@ -320,14 +323,14 @@
   </button>
 
   <!-- Application Logic & Data -->
-  <script src="data.js?v=2.5"></script>
-  <script src="script.js?v=2.5"></script>
+  <script src="data.js?v=2.6"></script>
+  <script src="script.js?v=2.6"></script>
 
   <!-- Service Worker Registration for Offline PWA -->
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=2.5').catch(err => {
+        navigator.serviceWorker.register('sw.js?v=2.6').catch(err => {
           console.debug('ServiceWorker registration notice:', err);
         });
       });

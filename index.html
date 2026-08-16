@@ -96,6 +96,11 @@
           <i class="fa-solid fa-magnifying-glass"></i>
         </button>
 
+        <!-- QR Code Modal Button -->
+        <button id="qrToggleBtn" class="btn btn-icon" onclick="openQrModal()" title="عرض رمز QR" aria-label="عرض رمز QR">
+          <i class="fa-solid fa-qrcode"></i>
+        </button>
+
         <!-- Save vCard Contact Button -->
         <button id="saveContactBtn" class="btn btn-icon" onclick="saveContactVCard()" title="حفظ كجهة اتصال" aria-label="حفظ كجهة اتصال">
           <i class="fa-solid fa-address-card"></i>
@@ -161,7 +166,7 @@
             <i class="fa-solid fa-location-dot"></i>
             <span id="heroLocation">جدة، المملكة العربية السعودية</span>
           </div>
-          <a class="contact-chip" id="chipEmail" href="mailto:mohammed@alotaibi.site" title="انقر للمراسلة أو النسخ">
+          <a class="contact-chip" id="chipEmail" href="mailto:mohammed@alotaibi.site" title="انقر للمراسلة">
             <i class="fa-solid fa-envelope"></i>
             <span id="heroEmail">mohammed@alotaibi.site</span>
           </a>
@@ -275,6 +280,34 @@
 
   </main>
 
+  <!-- Interactive QR Code Modal -->
+  <div id="qrModal" class="modal-backdrop hidden" onclick="handleModalBackdropClick(event)">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="qrModalTitle" class="modal-title">رمز الاستجابة السريعة (QR Code)</h3>
+        <button class="modal-close-btn" onclick="closeQrModal()" aria-label="إغلاق">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="qr-code-frame">
+          <canvas id="qrCanvas" width="220" height="220"></canvas>
+        </div>
+        <p id="qrModalScanHint" class="qr-scan-hint">امسح الرمز بكاميرا هاتفك لفتح السيرة الذاتية ومشاركتها فوراً</p>
+        <div class="modal-actions">
+          <button class="btn btn-primary" onclick="downloadQrImage()">
+            <i class="fa-solid fa-download"></i>
+            <span id="qrDownloadText">تحميل صورة الرمز</span>
+          </button>
+          <button class="btn" onclick="copyProfileLink()">
+            <i class="fa-solid fa-copy"></i>
+            <span id="qrCopyLinkText">نسخ الرابط</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Interactive Toast Notification -->
   <div id="toastNotification" class="toast-notification hidden" role="status" aria-live="polite">
     <i class="fa-solid fa-circle-check"></i>
@@ -290,7 +323,7 @@
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('sw.js').catch(err => {
-          console.debug('ServiceWorker registration optional notice:', err);
+          console.debug('ServiceWorker registration notice:', err);
         });
       });
     }

@@ -1,105 +1,299 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="description" content="سيرة ذاتية ديناميكية احترافية - Dynamic CV" />
-  <meta name="author" content="محمد عبدالله العتيبي" />
-  <meta name="theme-color" content="#0078d7" />
-  <title>CV — Mohammed</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>محمد عبدالله العتيبي | سيرة ذاتية تفاعلية - IT & Project Management</title>
   
-  <!-- Preload Critical Resources -->
-  <link rel="preload" as="style" href="styles.css" />
-  <link rel="preload" as="script" href="data.js" />
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="السيرة الذاتية المهنية لمحمد عبدالله العتيبي - مدير مشاريع وتقنية معلومات ومتخصص بالخدمات الحكومية والبنية التحتية والشبكات في المملكة العربية السعودية." />
+  <meta name="keywords" content="محمد العتيبي, سيرة ذاتية, مدير تقنية معلومات, إدارة مشاريع, شبكات, خدمات حكومية, جدة, السعودية, IT Manager, Project Management, CV" />
+  <meta name="author" content="محمد عبدالله العتيبي" />
+  <meta name="theme-color" content="#0284c7" />
+  <link rel="canonical" href="https://cv.mohammed.alotaibi.site/" />
+  
+  <!-- Open Graph / Facebook / LinkedIn / WhatsApp -->
+  <meta property="og:type" content="profile" />
+  <meta property="og:title" content="محمد عبدالله العتيبي | سيرة ذاتية تفاعلية" />
+  <meta property="og:description" content="مدير مشاريع وتقنية معلومات وخبير البنية التحتية والخدمات الحكومية - جدة، المملكة العربية السعودية." />
+  <meta property="og:url" content="https://cv.mohammed.alotaibi.site/" />
+  <meta property="og:image" content="images/profile.JPG" />
+  <meta property="og:site_name" content="Mohammed Al Otaibi CV" />
+  
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="محمد عبدالله العتيبي | سيرة ذاتية تفاعلية" />
+  <meta name="twitter:description" content="مدير مشاريع وتقنية معلومات وخبير البنية التحتية والخدمات الحكومية." />
+  <meta name="twitter:image" content="images/profile.JPG" />
+  
+  <!-- Favicons and Web App Manifest -->
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png" />
+  <link rel="manifest" href="images/site.webmanifest" />
+  
+  <!-- Google Fonts: Cairo (Arabic) & Inter (English) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   
   <!-- Stylesheet -->
   <link rel="stylesheet" href="styles.css" />
   
-  <!-- Font Awesome - Lazy Load -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'" />
-<link rel="android-chrome-512x512" sizes="512x512" href="/images/android-chrome-512x512.png">
-<link rel="android-chrome-192x192" sizes="192x192" href="/images/android-chrome-192x192.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-<link rel="manifest" href="/images/site.webmanifest">
+  <!-- Structured Data: Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "محمد عبدالله العتيبي",
+    "alternateName": "Mohammed Abdullah Al Otaibi",
+    "jobTitle": "مدير مشاريع وتقنية معلومات والخدمات الحكومية",
+    "telephone": "+966583809000",
+    "email": "mailto:mohammed@alotaibi.site",
+    "url": "https://cv.mohammed.alotaibi.site",
+    "image": "https://cv.mohammed.alotaibi.site/images/profile.JPG",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Jeddah",
+      "addressCountry": "Saudi Arabia"
+    },
+    "sameAs": [
+      "https://github.com/OneiMoment",
+      "https://www.linkedin.com/in/OneiMoment"
+    ]
+  }
+  </script>
 </head>
 <body>
-  <!-- Fallback for JavaScript disabled -->
-  <noscript>
-    <div style="padding: 20px; text-align: center; font-family: Arial, sans-serif;">
-      <p>JavaScript مطلوب لعرض السيرة الذاتية | JavaScript is required to display the CV</p>
-    </div>
-  </noscript>
+  <!-- Accessibility Skip Link -->
+  <a href="#mainContent" class="skip-link">تخطي إلى المحتوى الرئيسي</a>
 
-  <div class="controls">
-    <div class="control-group">
-      <button onclick="setLanguage('ar')" class="lang-btn">🇸🇦 العربية</button>
-      <button onclick="setLanguage('en')" class="lang-btn">🇬🇧 English</button>
-      <button onclick="toggleTheme()" class="theme-btn">🌞 / 🌙</button>
-    </div>
-    <div class="control-group">
-      <button onclick="downloadPDF()" class="pdf-btn"><i class="fas fa-download"></i> <span id="pdfLabel">PDF</span></button>
-      <button onclick="toggleSearch()" class="search-btn"><i class="fas fa-search"></i></button>
-    </div>
-  </div>
+  <!-- Top Floating Navigation & Action Bar -->
+  <header class="app-header no-print">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <span class="brand-badge"><i class="fa-solid fa-id-card"></i></span>
+        <span class="brand-name" id="navBrandName">السيرة الذاتية</span>
+      </div>
 
-  <div id="searchBar" class="search-bar hidden">
-    <input type="text" id="searchInput" placeholder="ابحث عن مهارة أو خبرة..." onkeyup="debouncedFilter()" />
-  </div>
-
-  <main class="container">
-    <header>
-      <div class="header-content">
-        <div class="profile-image-wrapper">
-          <img id="profileImage" src="/images/apple-touch-icon.png" alt="محمد عبدالله العتيبي" class="profile-image" loading="lazy" />
+      <div class="nav-actions">
+        <!-- Language Switcher -->
+        <div class="lang-switch-group" role="group" aria-label="Language selection">
+          <button id="btnAr" class="btn btn-tab active" onclick="setLanguage('ar')" aria-pressed="true">
+            🇸🇦 العربية
+          </button>
+          <button id="btnEn" class="btn btn-tab" onclick="setLanguage('en')" aria-pressed="false">
+            🇬🇧 English
+          </button>
         </div>
-        <div class="header-text">
-          <h1 id="name">جاري التحميل...</h1>
-          <p id="title"></p>
-          <p id="location"></p>
-          <ul id="contacts"></ul>
+
+        <!-- Search Toggle Button -->
+        <button id="searchToggleBtn" class="btn btn-icon" onclick="toggleSearch()" title="بحث" aria-label="فتح البحث">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+
+        <!-- Save vCard Contact Button -->
+        <button id="saveContactBtn" class="btn btn-icon" onclick="saveContactVCard()" title="حفظ كجهة اتصال" aria-label="حفظ كجهة اتصال">
+          <i class="fa-solid fa-address-card"></i>
+        </button>
+
+        <!-- Share Profile Button -->
+        <button id="shareBtn" class="btn btn-icon" onclick="shareProfile()" title="مشاركة السيرة" aria-label="مشاركة السيرة">
+          <i class="fa-solid fa-share-nodes"></i>
+        </button>
+
+        <!-- Theme Switcher -->
+        <button id="themeToggleBtn" class="btn btn-icon" onclick="toggleTheme()" title="تبديل المظهر" aria-label="تبديل الوضع الليلي">
+          <i class="fa-solid fa-sun icon-sun"></i>
+          <i class="fa-solid fa-moon icon-moon"></i>
+        </button>
+
+        <!-- Print / PDF Action -->
+        <button id="printBtn" class="btn btn-primary" onclick="printOrDownloadPDF()" title="تحميل أو طباعة">
+          <i class="fa-solid fa-file-arrow-down"></i>
+          <span id="pdfBtnText">تحميل PDF</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Collapsible Live Search Bar -->
+    <div id="searchBarContainer" class="search-drawer hidden">
+      <div class="search-inner">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input 
+          type="text" 
+          id="searchInput" 
+          placeholder="ابحث عن مهارة، شركة، شهادة، أو تقنية..." 
+          oninput="handleSearch(this.value)"
+          autocomplete="off"
+        />
+        <button id="clearSearchBtn" class="btn-clear hidden" onclick="clearSearch()" aria-label="مسح البحث">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div id="searchResultsCount" class="search-results-info hidden"></div>
+    </div>
+  </header>
+
+  <!-- Main CV Container -->
+  <main id="mainContent" class="cv-wrapper">
+    
+    <!-- Hero / Profile Header Card -->
+    <section class="profile-hero-card" id="heroCard">
+      <div class="profile-avatar-area">
+        <div class="avatar-ring">
+          <img id="profileImage" src="images/profile.JPG" alt="صورة الملف الشخصي" class="avatar-img" />
         </div>
       </div>
-    </header>
+      
+      <div class="profile-meta-area">
+        <div class="profile-title-group">
+          <h1 id="heroName" class="hero-name">محمد عبدالله العتيبي</h1>
+          <p id="heroTitle" class="hero-subtitle">مدير مشاريع وتقنية معلومات والخدمات الحكومية</p>
+        </div>
+        
+        <div class="profile-chips-grid">
+          <div class="contact-chip" id="chipLocation">
+            <i class="fa-solid fa-location-dot"></i>
+            <span id="heroLocation">جدة، المملكة العربية السعودية</span>
+          </div>
+          <a class="contact-chip" id="chipEmail" href="mailto:mohammed@alotaibi.site" title="انقر للمراسلة أو النسخ">
+            <i class="fa-solid fa-envelope"></i>
+            <span id="heroEmail">mohammed@alotaibi.site</span>
+          </a>
+          <a class="contact-chip" id="chipPhone" href="tel:+966583809000" title="انقر للاتصال">
+            <i class="fa-solid fa-phone"></i>
+            <span id="heroPhone" dir="ltr">+966 58 380 9000</span>
+          </a>
+          <a class="contact-chip" id="chipLinkedin" href="https://www.linkedin.com/in/OneiMoment" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-linkedin"></i>
+            <span>LinkedIn</span>
+          </a>
+          <a class="contact-chip" id="chipGithub" href="https://github.com/OneiMoment" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-github"></i>
+            <span>GitHub</span>
+          </a>
+        </div>
 
-    <section>
-      <h2 id="summaryTitle"></h2>
-      <p id="summary"></p>
+        <!-- Highlights & Performance Metrics Bar -->
+        <div class="metrics-grid" id="metricsContainer"></div>
+      </div>
     </section>
 
-    <section id="skillsSection">
-      <h2 id="skillsTitle"></h2>
-      <div id="skills" class="skills-container"></div>
+    <!-- Professional Summary -->
+    <section class="cv-section" id="summarySection">
+      <div class="section-header">
+        <span class="section-icon"><i class="fa-solid fa-user-tie"></i></span>
+        <h2 id="summaryHeading" class="section-title">الملخص المهني</h2>
+      </div>
+      <div class="section-body">
+        <p id="summaryText" class="summary-paragraph"></p>
+      </div>
     </section>
 
-    <section id="certificationsSection" class="hidden">
-      <h2 id="certificationsTitle"></h2>
-      <div id="certifications" class="certifications-container"></div>
+    <!-- Featured Projects Section -->
+    <section class="cv-section" id="projectsSection">
+      <div class="section-header">
+        <span class="section-icon"><i class="fa-solid fa-diagram-project"></i></span>
+        <h2 id="projectsHeading" class="section-title">المشاريع والمبادرات البارزة</h2>
+      </div>
+      <div class="section-body">
+        <div id="projectsGrid" class="projects-grid"></div>
+      </div>
     </section>
 
-    <section id="educationSection">
-      <h2 id="educationTitle"></h2>
-      <div id="education"></div>
+    <!-- Skills Section with Filter Pills -->
+    <section class="cv-section" id="skillsSection">
+      <div class="section-header section-header-split">
+        <div class="header-left">
+          <span class="section-icon"><i class="fa-solid fa-layer-group"></i></span>
+          <h2 id="skillsHeading" class="section-title">المهارات التقنية والإدارية</h2>
+        </div>
+        <!-- Category Filter Pills -->
+        <div class="skill-filters-wrapper no-print" id="skillFilters"></div>
+      </div>
+      <div class="section-body">
+        <div id="skillsGrid" class="skills-categories-grid"></div>
+      </div>
     </section>
 
-    <section id="experienceSection">
-      <h2 id="experienceTitle"></h2>
-      <div id="experience"></div>
+    <!-- Work Experience Section -->
+    <section class="cv-section" id="experienceSection">
+      <div class="section-header">
+        <span class="section-icon"><i class="fa-solid fa-briefcase"></i></span>
+        <h2 id="experienceHeading" class="section-title">الخبرات المهنية</h2>
+      </div>
+      <div class="section-body">
+        <div id="experienceTimeline" class="timeline-container"></div>
+      </div>
     </section>
 
-    <section>
-      <h2 id="languagesTitle"></h2>
-      <ul id="languages"></ul>
+    <!-- Education Section -->
+    <section class="cv-section" id="educationSection">
+      <div class="section-header">
+        <span class="section-icon"><i class="fa-solid fa-graduation-cap"></i></span>
+        <h2 id="educationHeading" class="section-title">المؤهلات التعليمية</h2>
+      </div>
+      <div class="section-body">
+        <div id="educationTimeline" class="timeline-container"></div>
+      </div>
     </section>
 
-    <footer style="text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); color: var(--muted); font-size: 12px;">
-      <p id="tr_footer"><span class="date">© 2024</span> | <span lang="ar" data-i18n-author>محمد عبدالله العتيبي</span> <span lang="en" data-i18n-author>Mohammed Abdullah Al Otaibi</span> </p>
+    <!-- Certifications Section -->
+    <section class="cv-section" id="certificationsSection">
+      <div class="section-header">
+        <span class="section-icon"><i class="fa-solid fa-award"></i></span>
+        <h2 id="certificationsHeading" class="section-title">الشهادات المهنية والدورات</h2>
+      </div>
+      <div class="section-body">
+        <div id="certificationsGrid" class="certifications-grid"></div>
+      </div>
+    </section>
+
+    <!-- Languages Section -->
+    <section class="cv-section" id="languagesSection">
+      <div class="section-header">
+        <span class="section-icon"><i class="fa-solid fa-language"></i></span>
+        <h2 id="languagesHeading" class="section-title">اللغات</h2>
+      </div>
+      <div class="section-body">
+        <div id="languagesGrid" class="languages-grid"></div>
+      </div>
+    </section>
+
+    <!-- Modern Clean Footer -->
+    <footer class="cv-footer">
+      <div class="footer-content">
+        <p><span id="footerCopyright">© 2026</span> • <strong id="footerAuthor">محمد عبدالله العتيبي</strong></p>
+        <p class="footer-sub">سيرة ذاتية تفاعلية مطابقة لمعايير أنظمة التوظيف الحديثة</p>
+      </div>
     </footer>
+
   </main>
 
+  <!-- Interactive Toast Notification -->
+  <div id="toastNotification" class="toast-notification hidden" role="status" aria-live="polite">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toastMessage">تمت العملية بنجاح</span>
+  </div>
+
+  <!-- Application Logic & Data -->
   <script src="data.js"></script>
   <script src="script.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+  <!-- Service Worker Registration for Offline PWA -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(err => {
+          console.debug('ServiceWorker registration optional notice:', err);
+        });
+      });
+    }
+  </script>
 </body>
 </html>

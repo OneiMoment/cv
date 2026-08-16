@@ -2,11 +2,24 @@ const cvData = {
   ar: {
     labels: {
       summary: "الملخص المهني",
-      skills: "المهارات",
-      certifications: "الشهادات والدورات",
-      education: "التعليم",
-      experience: "الخبرات العملية",
-      languages: "اللغات"
+      metricsTitle: "أبرز المؤشرات المهنية",
+      skills: "المهارات التقنية والإدارية",
+      projects: "المشاريع والمبادرات البارزة",
+      certifications: "الشهادات المهنية والدورات",
+      education: "المؤهلات التعليمية",
+      experience: "الخبرات المهنية",
+      languages: "اللغات",
+      contact: "بيانات التواصل",
+      downloadPdf: "تحميل PDF",
+      printCv: "طباعة السيرة",
+      saveVCard: "حفظ كجهة اتصال",
+      shareProfile: "مشاركة السيرة",
+      searchPlaceholder: "ابحث في المهارات، المشاريع، والخبرات...",
+      viewCert: "عرض الشهادة",
+      viewProject: "تفاصيل المشروع",
+      filterAll: "الكل",
+      copied: "تم النسخ إلى الحافظة بنجاح!",
+      present: "حتى الآن"
     },
     personal: {
       name: "محمد عبدالله العتيبي",
@@ -15,45 +28,92 @@ const cvData = {
       email: "mohammed@alotaibi.site",
       phone: "+966583809000",
       github: "https://github.com/OneiMoment",
-      linkedin: "https://www.linkedin.com/in/your-username",
-      birthDate: "21 نوفمبر 1985"
+      linkedin: "https://www.linkedin.com/in/OneiMoment",
+      birthDate: "21 نوفمبر 1985",
+      image: "images/profile.JPG"
     },
-    summary: "متخصص في تقنية المعلومات والخدمات الحكومية مع خبرة طويلة في إدارة المشاريع والبنية التحتية. أسعى لتطوير حلول مبتكرة وتحسين الأداء التقني في القطاع الحكومي.",
+    metrics: [
+      { value: "+15", label: "عاماً من الخبرة القيادية والتقنية" },
+      { value: "100%", label: "أتمتة وربط المنظومات والخدمات الحكومية" },
+      { value: "+20", label: "مشروعاً وبنية تحتية منجزة بنجاح" },
+      { value: "+4", label: "شهادات ودورات تخصصية معتمدة" }
+    ],
+    summary: "متخصص متمرس في إدارة مشاريع تقنية المعلومات والبنية التحتية والخدمات الحكومية بخبرة تمتد لأكثر من 15 عاماً. أمتلك سجلاً حافلاً في قيادة فرق العمل التقنية، تأسيس مراكز البيانات والشبكات، أتمتة الإجراءات والربط مع المنصات والأنظمة الحكومية (ERP, أبشر، قوى، التأمينات)، وتطوير حلول تقنية ذكية ترفع الكفاءة التشغيلية وتقلل التكاليف.",
     skills: [
       { 
-        label: "أنظمة التشغيل", 
+        id: "os-servers",
+        label: "أنظمة التشغيل والخوادم", 
         items: [
-          { name: "Linux", level: 90 },
-          { name: "Windows", level: 95 },
-          { name: "macOS", level: 95 }
+          { name: "Linux (Ubuntu/Debian/RHEL)", level: 90 },
+          { name: "Windows Server & Active Directory", level: 95 },
+          { name: "macOS Ecosystem", level: 95 }
         ] 
       },
       { 
-        label: "الشبكات والبنية التحتية", 
+        id: "networking",
+        label: "الشبكات والبنية التحتية والأمان", 
         items: [
-          { name: "Wireless Network", level: 92 },
-          { name: "Ethernet & Fiber", level: 90 },
-          { name: "VPN", level: 88 },
-          { name: "Firewalls", level: 90 }
+          { name: "Wireless Networks & Ubiquiti", level: 92 },
+          { name: "Fiber Optic & Ethernet Cabling", level: 90 },
+          { name: "Site-to-Site VPN & Remote Access", level: 88 },
+          { name: "Firewalls & Network Security", level: 90 }
         ] 
       },
       { 
-        label: "البرمجيات والخدمات", 
+        id: "enterprise-cloud",
+        label: "الأنظمة المؤسسية والخدمات السحابية", 
         items: [
-          { name: "Cloud & Virtual PC", level: 85 },
-          { name: "ERP Systems", level: 85 },
-          { name: "PBX & VOIP", level: 88 },
-          { name: "Email & Messaging", level: 90 }
+          { name: "Cloud & Virtualization (VMware, Virtual PC)", level: 88 },
+          { name: "ERP Systems & Database Integration", level: 85 },
+          { name: "IP Telephony (PBX & VOIP Systems)", level: 88 },
+          { name: "Mail Servers & Cloud Collaboration (M365/Teams)", level: 92 },
+          { name: "أنظمة المراقبة والتحكم بالدخول (CCTV & Access Control)", level: 92 }
         ] 
       },
       { 
-        label: "الكفاءات الإدارية", 
+        id: "leadership",
+        label: "القيادة وإدارة المشاريع والخدمات الحكومية", 
         items: [
-          { name: "إدارة المشاريع", level: 92 },
-          { name: "الإشراف والتطوير", level: 88 },
-          { name: "التخطيط الاستراتيجي", level: 85 },
-          { name: "إدارة الفريق", level: 90 }
+          { name: "إدارة المشاريع والموازنات", level: 92 },
+          { name: "الربط وإدارة المنصات الحكومية (أبشر، التأمينات، وزارة العمل)", level: 95 },
+          { name: "التخطيط الاستراتيجي وتطوير الأعمال", level: 88 },
+          { name: "قيادة وتطوير الفرق التقنية", level: 90 }
         ] 
+      }
+    ],
+    projects: [
+      {
+        title: "تأسيس البنية التحتية والربط الشبكي المتكامل للقطاع الصناعي",
+        role: "مدير وقائد المشروع التقني",
+        period: "2016 — 2021",
+        description: "تصميم وتنفيذ شبكة متكاملة من الألياف الضوئية (Fiber) والشبكات اللاسلكية تغطي المقرات والمستودعات مع ربط VPN فوري وأنظمة أمان متقدمة.",
+        tags: ["Fiber Optic", "Firewalls", "Site-to-Site VPN", "Active Directory", "VoIP PBX"],
+        highlights: [
+          "ربط أكثر من 4 مواقع ومستودعات جغرافية بشبكة مركزية آمنة.",
+          "تشغيل نظام سنترال IP PBX موحد خفض تكاليف الاتصالات بأكثر من 40%."
+        ]
+      },
+      {
+        title: "التحول الرقمي وأتمتة المنظومات والخدمات الحكومية",
+        role: "مدير تقنية المعلومات والخدمات الحكومية",
+        period: "2018 — 2022",
+        description: "أتمتة إدارة معاملات الموارد البشرية والخدمات الحكومية عبر منصات قوى، أبشر أعمال، التأمينات الاجتماعية، ووزارة الموارد البشرية.",
+        tags: ["Government Portals", "Qiwa", "Absher Business", "GOSI", "ERP Integration"],
+        highlights: [
+          "تحقيق نسبة امتثال حكومي 100% وتسريع استخراج وتجديد الرخص والمعاملات.",
+          "ربط أنظمة الحضور الذكي بالبصمة مع نظام الرواتب والمستحقات."
+        ]
+      },
+      {
+        title: "إدارة وتنفيذ مشاريع البنية التحتية وإنارة الطرق مع البلديات",
+        role: "مدير تنفيذي للمشاريع والعقود",
+        period: "2003 — 2016",
+        description: "قيادة وتنسيق مشاريع إنارة الطرق الكبرى مع وزارة الشؤون البلدية والقروية والأمانات، من فتح المظاريف حتى التسليم النهائي والمستخلصات.",
+        tags: ["Project Management", "Contracts", "Municipalities", "Budgeting", "Public Tenders"],
+        highlights: [
+          "إدارة ميزانيات ومستخلصات حكومية مع إنجاز المشاريع في المواعيد المحددة.",
+          "الإشراف على فرق العمل الميدانية واستخراج رخص الحفر واعتماد محاضر الاستلام."
+        ]
       }
     ],
     certifications: [
@@ -84,120 +144,175 @@ const cvData = {
     ],
     education: [
       { 
-        degree: "دبلوم تقنية المعلومات - تخصص الشبكات", 
-        institution: "معهد العالمية للحاسب والتقنية", 
-        year: "2007 - 2009",
-        details: "درجة 82 من 100 بمعدل جيد جداً"
-      },
-      { 
-        degree: "دبلوم علوم الحاسب - تخصص تقنية الشبكات", 
-        institution: "معهد بدرة - جدة", 
-        year: "بعد 2009",
-        details: "مدة التدريب سنتان"
-      },
-      { 
         degree: "اجتياز الاختبار الشامل للتدريب التقني والمهني", 
         institution: "المؤسسة العامة للتدريب التقني والمهني", 
         year: "2010",
-        details: "برنامج شامل في التقنية والمهارات العملية"
+        details: "برنامج وطني شامل ومكثف في التقنية والتطبيقات والمهارات العملية."
+      },
+      { 
+        degree: "دبلوم علوم الحاسب - تخصص تقنية الشبكات", 
+        institution: "معهد بدرة للتدريب - جدة", 
+        year: "2009 - 2011",
+        details: "تدريب أكاديمي وعملي متخصص في تصميم وإدارة شبكات الحاسب الآلي (سنتان)."
+      },
+      { 
+        degree: "دبلوم تقنية المعلومات - تخصص الشبكات", 
+        institution: "معهد العالمية للحاسب والتقنية", 
+        year: "2007 - 2009",
+        details: "الدرجة: 82 من 100 بتقدير جيد جداً."
       }
     ],
     experience: [
       { 
-        company: "جهة قطاع صناعي", 
+        company: "جهة قطاع صناعي رائدة", 
         role: "مدير تقنية المعلومات والخدمات الحكومية", 
         period: "2016 — 2022",
-        details: "قيادة فريق تقني متعدد التخصصات وإدارة البنية التحتية الحكومية",
+        details: "قيادة البنية التحتية التكنولوجية بالكامل للمنشأة وإدارة الفريق التقني وعلاقات الربط مع الجهات الحكومية.",
         achievements: [
-          "ﺗﺄﺳﻴﺲ وإدارة أﻧﻈﻤﺔ اﻟﺸﺒﻜﺔ اﻟﻜﺘﺮوﻧﻴﺔ ﻣﻦ Fiber و Ethernet و Wireless Network.",
-          "ﺗﺄﺳﻴﺲ وإدارة أﺟﻬﺰة اﻟﺤﺎﺳﺐ اﻟﻲ واﻟﻄﺎﺑﻌﺎت ﻣﻦ ﺗﺠﻤﻴﻊ وﺗﺮﻛﻴﺐ وﺻﻴﺎﻧﺔ ﺑﺘﺄﻣﻴﻨﻬﺎ وﺗﺜﻴﺒﺖ اﻟﺒﺮاﻣﺞ اﻟﻤﻜﺘﺒﻴﺔ واﻟﺤﻤﺎﻳﺔ وﺗﺜﺒﻴﺖ اﻧﻈﻤﺔ اﻟﺘﺸﻐﻴﻠﻴﺔ ﻣﺜـﻞ Windows و Linux و macOS و Cloud PC و virtual PC.",
-          "ﺗﺄﺳﻴﺲ وإدارة أﺟﻬﺰة اﻟﺮاوﺗﺮ وأﺟﻬﺰة firewalls واﻟﺘﺤﻜﻢ ﺑﻤﺮور اﻟﺒﻴﺎﻧﺎت واﻻﺗﺼﺎﻻت واﻻﻧﺘﺮﻧﺖ ورﺑﻂ اﻟﻤﻮاﻗﻊ واﻟﻤﺴﺘﻮدﻋﺎت ب VPN.",
-          "ﺗﺄﺳﻴﺲ وإدارة ﺳﻴﺮﻓﺮات اﻟﺴﻨﺘﺮاﻻت PBX وﺗﺤﻮﻳﻼت اﻟﻤﻮﻇﻔﻴﻦ ب VOIP ورﺑﻄﻬﺎ ﺑﺄرﻗﺎم اﻟﻤﻨﺸﺄة.",
-          "ﺗﺄﺳﻴﺲ وإدارة ﺳﻴﺮﻓﺮات اﻟـ NAS و SAN واﻟﺒﻴﺎﻧﺎت اﻟﻤﺎﻟﻴﺔ واﻟﻤﺤﺎﺳﺒﻴﺔ وﺗﺄﻣﻴﻨﻬﺎ ورﺑﻄﻬﺎ ﻣﻊ أﻧﻈﻤﺔ ERP.",
-          "ﺗﻮزﻳﻊ اﻟﺼﻼﺣﻴﺎت ﻟﻠﻤﻮﻇﻔﻴﻦ ﻋﻠﻰ ﻛﻞ اﻟﻤﺴﺘﻮﻳﺎت.",
-          "ﺗﺄﺳﻴﺲ وإدارة أﻧﻈﻤﺔ ﻛﺎﻣﻴﺮات اﻟﻤﺮاﻗﺒﺔ.",
-          "ﺗﺄﺳﻴﺲ وإدارة أﻧﻈﻤﺔ اﻟﺒﺼـﻤﺔ واﻟﺤﻀـﻮر واﻻﻧﺼﺮاف واﻟﺘﺤﻜﻢ ﺑﺎﻟﻮﺻـﻮل ﺑﺎﺑﻮاب، وإﺿﺎﻓﺔ وﺗﺤﺪﻳﺚ ﺑﻴﺎﻧﺎت اﻟﻤﻮﻇﻔﻴﻦ ورﺑﻂ اﺟﻬﺰة ﻓﻲ داﺧﻞ اﻟﻤﻨﺸﺄة وﺧﺎرﺟﻬﺎ ﻓﻲ ﺣﺎل ﺗﻌﺪد اﻟﻤﻮاﻗﻊ.",
-          "ﺗﺄﺳﻴﺲ وإدارة أﻧﻈﻤﺔ اﻟﻌﻤﻞ ﻋﻦ ﺑﻌـﺪ ﻣﺜـﻞ teams واﻟﺘﺨﺰﻳﻦ اﻟﺴﺤﺎﺑﻲ ورﺑﻄﻬﺎ ﺑﺴﻴﺮﻓﺮ اﻳﻤﻴﻞ اﻟﺨﺎص ﺑﺎﻟﻤﻨﺸﺄة.",
-          "إدارة اﻟﺨﺪﻣﺎت اﻟﺤﻜﻮﻣﻴﺔ ﻟﻠﻤﻨﺸﺄة ﻣﺜﻞ أﺑﺸﺮ واﻟﺘﺄﻣﻴﻨﺎت اﺟﺘﻤﺎﻋﻴﺔ و وزارة اﻟﻌﻤﻞ وﻏﻴﺮﻫﺎ.",
-          "تأسيس إدارة أنظمة الموارد البشرية والمتابعة من داخل المنشأة"
+          "تأسيس وإدارة شبكات الاتصال بالكامل (Fiber Optic, Ethernet, Wireless) وربط كافة الفروع والمستودعات عبر شبكات VPN آمنة.",
+          "تصميم وتجهيز الخوادم ومحطات العمل وتأمينها (Windows, Linux, macOS, Cloud & Virtual PC) وتركيب حلول الحماية المتقدمة.",
+          "تهيئة وإدارة الجدران النارية (Firewalls) والتحكم في أمن البيانات والترافيك والوصول للإنترنت.",
+          "تأسيس وتشغيل سنترالات IP PBX وربط تحويلات الموظفين بتقنية VoIP بأرقام المنشأة الموحدة.",
+          "إنشاء وإدارة وحدات التخزين الشبكي NAS و SAN وتأمين البيانات المالية والمحاسبية وربطها بأنظمة ERP.",
+          "بناء منظومة أمنية متكاملة شملت كاميرات المراقبة الرقمية (CCTV) وأجهزة البصمة والتحكم بالأبواب (Access Control).",
+          "إدارة الخدمات والمنصات الحكومية للمنشأة (أبشر أعمال، التأمينات الاجتماعية، وزارة الموارد البشرية، منصة قوى وغيرها).",
+          "تطبيق وتدريب الموظفين على منصات العمل عن بعد والتخزين السحابي (Microsoft Teams, Cloud Storage)."
         ]
       },
       { 
-        company: "جهة قطاع مقاولات - مع وزارة الشؤون البلدية والقروية", 
+        company: "جهة قطاع مقاولات كبرى (مشاريع وزارة الشؤون البلدية والقروية)", 
         role: "مدير تنفيذي للعقد والمشاريع", 
         period: "2003 — 2016",
-        details: "إدارة المشاريع الهندسية والتقنية والمقاولات",
+        details: "إدارة العقود الحكومية، المناقصات، وتخطيط وتنفيذ المشاريع الكبرى بالتنسيق مع الأمانات والبلديات.",
         achievements: [
-          "ﺣﻀﻮر ﻓﺘﺢ اﻟﻤﻈﺎرﻳﻒ واﻟﻤﻨﺎﻗﺼﺎت ﻓﻲ اﻟﺠﻬﺎت اﻟﺤﻜﻮﻣﻴﺔ.",
-          "ﺗﻮﻗﻴﻊ اﻟﻌﻘﻮد واﺳﺘﻼم ﻣﻮاﻗﻊ اﻟﻤﺸﺎرﻳﻊ ﺑﻤﺤﺎﺿﺮ رﺳﻤﻴﺔ.",
-          "إعداد وتنسيق الخطط لتنفيذ مشاريع الاﻧﺎرة في طرق ومناطق السكنية والإشراف على استخراج ﺮﺧﺺالحفر اللازمة.",
-          "ﺗﺴﻜﻴﻦ وﺗﺠﻬﻴﺰ اﻟﻌﻤﺎﻟﺔ واﻟﻜﺎدر اﻟﻔﻨﻲ وﺗﻮﻓﻴﺮ اﻟﻤﻌﺪات واﻟﻤﻮاد اﻟﻼزﻣﺔ وﺻﺮف وإﻋﺪاد ﻣﺴﻴﺮات اﻟﺮواﺗﺐ. ",
-          "إﻋﺪاد اﻟﻤﺴﺘﺨﻠﺼﺎت اﻟﻤﺎﻟﻴﺔ ﻣﻦ اﻟﺒﻠﺪﻳﺎت والاﻣﺎﻧﺎت وﻣﺤﺎﺿﺮ اﻟﺘﺴﻠﻴﻢ اﻟﻨﻬﺎﺋﻲ وﻣﺘﺎﺑﻌﺔ ﺻﺮف اﻟﻤﺴﺘﺨﻠﺼﺎت اﻟﺨﺘﺎﻣﻴﺔ.",
-          "إعداد المتطلبات والموازنات والبحث اللازم للمشاريع. ",
-          "معالجة وتحسين المشاريع ومتابعة المراحل المختلفة. "
+          "حضور فتح المظاريف والمنافسات والمناقصات الحكومية وتوقيع العقود واستلام مواقع المشاريع رسمياً.",
+          "إعداد وتنفيذ الخطط التشغيلية لمشاريع إنارة الطرق والمناطق السكنية واستخراج رخص وتصاريح الحفر المعتمدة.",
+          "إدارة الكوادر البشرية والفنية وتأمين المعدات والمواد وصرف مسيرات الرواتب وضمان سلامة بيئة العمل.",
+          "إعداد المستخلصات المالية الدورية والختامية من الأمانات والبلديات ومتابعة إجراءات الاعتماد والصرف حتى التسليم النهائي.",
+          "إعداد دراسات الجدوى والميزانيات التقديرية والتنسيق المباشر مع اللجان الهندسية والاستشارية."
         ]
       }
     ],
     languages: [
-      { name: "العربية", level: "اللغة الأم" },
-      { name: "الإنجليزية", level: "ممتازة" }
+      { name: "العربية", level: "اللغة الأم", proficiency: 100 },
+      { name: "الإنجليزية", level: "مستوى متقدم وممتاز", proficiency: 85 }
     ]
   },
   en: {
     labels: {
       summary: "Professional Summary",
-      skills: "Skills",
+      metricsTitle: "Key Highlights & Performance",
+      skills: "Technical & Management Skills",
+      projects: "Key Projects & Initiatives",
       certifications: "Certifications & Courses",
-      education: "Education",
-      experience: "Experience",
-      languages: "Languages"
+      education: "Education & Qualifications",
+      experience: "Professional Experience",
+      languages: "Languages",
+      contact: "Contact Information",
+      downloadPdf: "Download PDF",
+      printCv: "Print CV",
+      saveVCard: "Save Contact (vCard)",
+      shareProfile: "Share Profile",
+      searchPlaceholder: "Search skills, projects, experience...",
+      viewCert: "View Credential",
+      viewProject: "Project Details",
+      filterAll: "All",
+      copied: "Copied to clipboard!",
+      present: "Present"
     },
     personal: {
       name: "Mohammed Abdullah Al Otaibi",
-      title: "IT Manager & Government Services Specialist",
+      title: "IT Manager, Project Director & Government Services Specialist",
       location: "Jeddah, Saudi Arabia",
       email: "mohammed@alotaibi.site",
       phone: "+966583809000",
       github: "https://github.com/OneiMoment",
-      linkedin: "https://www.linkedin.com/in/your-username",
-      birthDate: "November 21, 1985"
+      linkedin: "https://www.linkedin.com/in/OneiMoment",
+      birthDate: "November 21, 1985",
+      image: "images/profile.JPG"
     },
-    summary: "Specialized in Information Technology and Government Services with extensive experience in project management and infrastructure. Committed to developing innovative solutions and improving technical performance in the government sector.",
+    metrics: [
+      { value: "+15", label: "Years of Technical & Leadership Experience" },
+      { value: "100%", label: "Government Platforms & Systems Integration" },
+      { value: "+20", label: "Infrastructure & IT Projects Delivered" },
+      { value: "+4", label: "Professional Certifications & Diplomas" }
+    ],
+    summary: "Accomplished IT and Project Management professional with over 15 years of leadership experience directing complex IT infrastructure, government platforms integration, and enterprise operations. Proven track record in establishing resilient network topologies, enterprise ERP and VOIP systems, robust cybersecurity protocols, and optimizing cross-departmental operations.",
     skills: [
       { 
-        label: "Operating Systems", 
+        id: "os-servers",
+        label: "Operating Systems & Servers", 
         items: [
-          { name: "Linux", level: 90 },
-          { name: "Windows", level: 95 },
-          { name: "macOS", level: 95 }
+          { name: "Linux (Ubuntu/Debian/RHEL)", level: 90 },
+          { name: "Windows Server & Active Directory", level: 95 },
+          { name: "macOS Ecosystem", level: 95 }
         ] 
       },
       { 
-        label: "Networking & Infrastructure", 
+        id: "networking",
+        label: "Networking, Infrastructure & Security", 
         items: [
-          { name: "Wireless Networks", level: 92 },
-          { name: "Ethernet & Fiber", level: 90 },
-          { name: "VPN", level: 88 },
-          { name: "Firewalls", level: 90 }
+          { name: "Wireless Networks & Ubiquiti", level: 92 },
+          { name: "Fiber Optic & Structured Ethernet", level: 90 },
+          { name: "Site-to-Site VPN & Remote Access", level: 88 },
+          { name: "Enterprise Firewalls & Cybersecurity", level: 90 }
         ] 
       },
       { 
-        label: "Software & Services", 
+        id: "enterprise-cloud",
+        label: "Enterprise Solutions & Cloud", 
         items: [
-          { name: "Cloud & Virtual PC", level: 85 },
-          { name: "ERP Systems", level: 85 },
-          { name: "PBX & VOIP", level: 88 },
-          { name: "Email & Messaging", level: 90 }
+          { name: "Cloud & Virtualization (VMware, Virtual PC)", level: 88 },
+          { name: "ERP Systems & Database Integration", level: 85 },
+          { name: "IP Telephony (PBX & VOIP Systems)", level: 88 },
+          { name: "Mail Servers & Cloud Collaboration (M365/Teams)", level: 92 },
+          { name: "Surveillance & Access Control (CCTV / Biometrics)", level: 92 }
         ] 
       },
       { 
-        label: "Management Skills", 
+        id: "leadership",
+        label: "Leadership & Government Affairs", 
         items: [
-          { name: "Project Management", level: 92 },
-          { name: "Team Leadership", level: 88 },
-          { name: "Strategic Planning", level: 85 },
-          { name: "Team Development", level: 90 }
+          { name: "Project Management & Budgeting", level: 92 },
+          { name: "Government Platforms (Absher, Qiwa, GOSI, Muqeem)", level: 95 },
+          { name: "Strategic Planning & Resource Allocation", level: 88 },
+          { name: "Cross-Functional Team Leadership", level: 90 }
         ] 
+      }
+    ],
+    projects: [
+      {
+        title: "Industrial Sector Multi-Site Network Infrastructure Deployment",
+        role: "IT Lead & Infrastructure Director",
+        period: "2016 — 2021",
+        description: "Engineered and deployed an end-to-end fiber optic and wireless networking architecture connecting corporate headquarters, production facilities, and remote warehouses.",
+        tags: ["Fiber Optic", "Firewalls", "Site-to-Site VPN", "Active Directory", "VoIP PBX"],
+        highlights: [
+          "Interconnected 4+ geographically dispersed sites via resilient IPsec VPN tunnels.",
+          "Deployed unified IP PBX VoIP telephony slashing telecommunication overhead by 40%."
+        ]
+      },
+      {
+        title: "Corporate Digital Transformation & Government Integration",
+        role: "IT Manager & Government Services Director",
+        period: "2018 — 2022",
+        description: "Spearheaded digital transformation automating HR workflows and government integration across Qiwa, Absher Business, GOSI, and Muqeem portals.",
+        tags: ["Government Portals", "Qiwa", "Absher Business", "GOSI", "ERP Integration"],
+        highlights: [
+          "Attained 100% regulatory compliance rating across municipal and labor entities.",
+          "Synchronized biometric time-attendance records with enterprise payroll systems."
+        ]
+      },
+      {
+        title: "Municipal Road Infrastructure & Lighting Engineering Projects",
+        role: "Executive Manager of Contracts & Projects",
+        period: "2003 — 2016",
+        description: "Directed government contracting tenders and large-scale residential infrastructure lighting projects in collaboration with Saudi municipalities and secretariats.",
+        tags: ["Project Management", "Contracts", "Municipalities", "Budgeting", "Public Tenders"],
+        highlights: [
+          "Oversaw multi-million SAR government allocations delivering projects on schedule.",
+          "Managed technical field teams, excavation clearances, and formal site completion handovers."
+        ]
       }
     ],
     certifications: [
@@ -228,62 +343,58 @@ const cvData = {
     ],
     education: [
       { 
-        degree: "Diploma in Information Technology - Network Specialization", 
-        institution: "Al-Alamiah Institute for Computers and Technology", 
-        year: "2007 - 2009",
-        details: "Score 82 out of 100 with very good grade"
-      },
-      { 
-        degree: "Diploma in Computer Science - Network Technology Specialization", 
-        institution: "Badrah Institute, Jeddah", 
-        year: "After 2009",
-        details: "Two years of training period"
-      },
-      { 
-        degree: "Comprehensive Exam in Technical and Vocational Training", 
-        institution: "General Organization for Technical and Vocational Training", 
+        degree: "Comprehensive Exam in Technical & Vocational Training", 
+        institution: "Technical and Vocational Training Corporation (TVTC)", 
         year: "2010",
-        details: "Comprehensive program in technology and practical skills"
+        details: "Nationwide comprehensive program in technical implementations and practical skills."
+      },
+      { 
+        degree: "Diploma in Computer Science - Network Technology", 
+        institution: "Badrah Training Institute, Jeddah", 
+        year: "2009 - 2011",
+        details: "Two-year specialized vocational program in network infrastructure and system management."
+      },
+      { 
+        degree: "Diploma in Information Technology - Networking Specialization", 
+        institution: "Al-Alamiah Institute for Computers & Technology", 
+        year: "2007 - 2009",
+        details: "Grade: 82/100 (Very Good Honors)."
       }
     ],
     experience: [
       { 
-        company: "Industrial sector entity", 
+        company: "Leading Industrial Sector Enterprise", 
         role: "IT Manager & Government Services Director", 
         period: "2016 — 2022",
-        details: "Leading a multidisciplinary technical team and managing government infrastructure",
+        details: "Directed overall corporate IT infrastructure, security policy, multidisciplinary technical teams, and government compliance operations.",
         achievements: [
-          "Establish and manage networks from Fiber, Ethernet, and Wireless Network.",
-          "Establish and manage computers and printers from our collection, installation, maintenance, and security, and install software, security, and install operating systems such as Windows, Linux, macOS, Cloud PC, and virtual PC.",
-          "Establish and manage routers and firewalls, and control data, communications, the Internet, website connections, and warehouses via VPN.",
-          "Establish and manage PBX internet servers and convert employees via VOIP, and connect them to the establishment's numbers.",
-          "Establish and manage NAS and SAN internet servers, financial and accounting data, and security, and connect them to ERP systems.",
-          "Distribute privileges to employees at all levels.",
-          "Establish and manage monitoring cameras systems.",
-          "Establish and manage camera, presence, departure, and control of access via doors, add and update employee data, and connect devices inside and outside the establishment in case of site expansion.",
-          "Establish and manage remote work systems such as teams, cloud storage, and connect them to the establishment's private email servers.",
-          "Human resources systems management"
+          "Engineered enterprise networks (Fiber Optic, Ethernet, High-density Wireless) interconnecting multi-site facilities and warehouses via secure IPsec VPNs.",
+          "Supervised hardware provisioning, workstation security (Windows, Linux, macOS, Virtual PC), and enterprise endpoint protection.",
+          "Configured enterprise Next-Gen Firewalls, content filtering, bandwidth management, and intrusion prevention policies.",
+          "Deployed IP PBX and VOIP communication systems integrated with unified corporate landlines.",
+          "Architected centralized NAS / SAN storage architectures securing core financial, accounting, and ERP database backups.",
+          "Implemented comprehensive access control security, digital biometric time-attendance, and high-definition CCTV surveillance systems.",
+          "Managed end-to-end corporate governmental portal relations (Absher Business, Qiwa, GOSI, Ministry of Labor, Muqeem).",
+          "Orchestrated cloud migration to Microsoft 365, Teams collaboration, and private corporate mail services."
         ]
       },
       { 
-        company: "Construction sector entity - with the Ministry of Municipal and Rural Affairs", 
+        company: "Major Contracting & Engineering Entity (Ministry of Municipal & Rural Affairs Projects)", 
         role: "Executive Manager of Contracts & Projects", 
         period: "2003 — 2016",
-        details: "Management of engineering, technical and contracting projects",
+        details: "Managed municipal contracting tenders, large-scale infrastructure projects, and administrative coordination with Saudi municipalities.",
         achievements: [
-          "Attendance at the opening of tenders and negotiations in the governmental departments.",
-          "Signing contracts and receiving the locations of the projects in official papers.",
-          "Preparing and coordinating plans to implement lighting projects in residential roads and areas and supervising the extraction of necessary drilling permits.",
-          "Housing and preparing the workers and technical staff and providing the necessary equipment and materials and issuing and preparing the schedules of the salaries.",
-          "Preparation of financial statements from municipalities, ‏municipality, final delivery reports and follow-up on the disbursement of the acquired assets.",
-          "Project requirements and budget preparation. ",
-          "Project improvement and phase management. "
+          "Represented the company in governmental bidding, tender evaluations, contract signings, and site acquisition handovers.",
+          "Formulated execution master plans for municipal street lighting networks and coordinated excavation permits across residential sectors.",
+          "Directed workforce allocations, technical labor camps, plant machinery logistics, and payroll operations.",
+          "Prepared interim and final financial claim disbursements with municipal authorities through final completion certificates.",
+          "Conducted feasibility studies, project budget forecasting, and daily coordination with engineering consultants."
         ]
       }
     ],
     languages: [
-      { name: "Arabic", level: "Native" },
-      { name: "English", level: "Excellent" }
+      { name: "Arabic", level: "Native", proficiency: 100 },
+      { name: "English", level: "Professional Working Proficiency", proficiency: 85 }
     ]
   }
 };

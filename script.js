@@ -1,251 +1,664 @@
+/**
+ * Dynamic CV Application Script
+ * Developer: Mohammed Al Otaibi
+ * Version: 2.1 (Advanced: vCard, WebShare, Projects, Metrics, Offline PWA, Quick Filters)
+ */
+
+// Application State
 let currentLang = 'ar';
+let currentTheme = 'dark';
+let activeSearchQuery = '';
+let activeSkillCategory = 'all';
 
-// DOM Cache for Performance Optimization
-const domCache = {
-  searchBar: null,
-  searchInput: null,
-  skillsEl: null,
-  eduEl: null,
-  expEl: null,
-  cersEl: null,
-  profileImage: null
-};
+// DOM Elements Reference Cache
+const DOM = {};
 
-// Initialize DOM Cache
+/**
+ * Initialize DOM Elements Cache
+ */
 function initDOMCache() {
-  domCache.searchBar = document.getElementById('searchBar');
-  domCache.searchInput = document.getElementById('searchInput');
-  domCache.skillsEl = document.getElementById('skills');
-  domCache.eduEl = document.getElementById('education');
-  domCache.expEl = document.getElementById('experience');
-  domCache.cersEl = document.getElementById('certifications');
-  domCache.profileImage = document.getElementById('profileImage');
+  DOM.html = document.documentElement;
+  DOM.body = document.body;
+  
+  // Navigation & Controls
+  DOM.btnAr = document.getElementById('btnAr');
+  DOM.btnEn = document.getElementById('btnEn');
+  DOM.navBrandName = document.getElementById('navBrandName');
+  DOM.themeToggleBtn = document.getElementById('themeToggleBtn');
+  DOM.printBtn = document.getElementById('printBtn');
+  DOM.pdfBtnText = document.getElementById('pdfBtnText');
+  DOM.saveContactBtn = document.getElementById('saveContactBtn');
+  DOM.shareBtn = document.getElementById('shareBtn');
+  
+  // Search
+  DOM.searchToggleBtn = document.getElementById('searchToggleBtn');
+  DOM.searchBarContainer = document.getElementById('searchBarContainer');
+  DOM.searchInput = document.getElementById('searchInput');
+  DOM.clearSearchBtn = document.getElementById('clearSearchBtn');
+  DOM.searchResultsCount = document.getElementById('searchResultsCount');
+
+  // Hero Card & Metrics
+  DOM.profileImage = document.getElementById('profileImage');
+  DOM.heroName = document.getElementById('heroName');
+  DOM.heroTitle = document.getElementById('heroTitle');
+  DOM.heroLocation = document.getElementById('heroLocation');
+  DOM.heroEmail = document.getElementById('heroEmail');
+  DOM.heroPhone = document.getElementById('heroPhone');
+  DOM.chipEmail = document.getElementById('chipEmail');
+  DOM.chipPhone = document.getElementById('chipPhone');
+  DOM.chipLinkedin = document.getElementById('chipLinkedin');
+  DOM.chipGithub = document.getElementById('chipGithub');
+  DOM.metricsContainer = document.getElementById('metricsContainer');
+
+  // Section Headings & Content Areas
+  DOM.summaryHeading = document.getElementById('summaryHeading');
+  DOM.summaryText = document.getElementById('summaryText');
+  
+  DOM.projectsSection = document.getElementById('projectsSection');
+  DOM.projectsHeading = document.getElementById('projectsHeading');
+  DOM.projectsGrid = document.getElementById('projectsGrid');
+  
+  DOM.skillsHeading = document.getElementById('skillsHeading');
+  DOM.skillFilters = document.getElementById('skillFilters');
+  DOM.skillsGrid = document.getElementById('skillsGrid');
+  
+  DOM.experienceHeading = document.getElementById('experienceHeading');
+  DOM.experienceTimeline = document.getElementById('experienceTimeline');
+  
+  DOM.educationHeading = document.getElementById('educationHeading');
+  DOM.educationTimeline = document.getElementById('educationTimeline');
+  
+  DOM.certificationsHeading = document.getElementById('certificationsHeading');
+  DOM.certificationsGrid = document.getElementById('certificationsGrid');
+  DOM.certificationsSection = document.getElementById('certificationsSection');
+  
+  DOM.languagesHeading = document.getElementById('languagesHeading');
+  DOM.languagesGrid = document.getElementById('languagesGrid');
+  
+  DOM.footerAuthor = document.getElementById('footerAuthor');
+  DOM.footerCopyright = document.getElementById('footerCopyright');
+  
+  // Toast
+  DOM.toastNotification = document.getElementById('toastNotification');
+  DOM.toastMessage = document.getElementById('toastMessage');
 }
 
-// Debounce function for performance optimization
-function debounce(func, wait) {
-  let timeout;
-  return function(...args) {
-    clearTimeout(timeout);
-    timeout = setTimeout(() => func.apply(this, args), wait);
-  };
+/**
+ * Initialize Application Settings (Theme & Language)
+ */
+function initSettings() {
+  // 1. Language Preference
+  const savedLang = localStorage.getItem('cv_lang');
+  if (savedLang && (savedLang === 'ar' || savedLang === 'en')) {
+    currentLang = savedLang;
+  } else {
+    currentLang = 'ar';
+  }
+
+  // 2. Theme Preference
+  const savedTheme = localStorage.getItem('cv_theme');
+  if (savedTheme && (savedTheme === 'dark' || savedTheme === 'light')) {
+    currentTheme = savedTheme;
+  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+    currentTheme = 'light';
+  } else {
+    currentTheme = 'dark';
+  }
+
+  applyTheme(currentTheme);
 }
 
+/**
+ * Apply Theme (Dark / Light)
+ */
+function applyTheme(theme) {
+  currentTheme = theme;
+  DOM.html.setAttribute('data-theme', theme);
+  localStorage.setItem('cv_theme', theme);
+}
+
+/**
+ * Toggle Theme
+ */
+function toggleTheme() {
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  applyTheme(newTheme);
+}
+
+/**
+ * Set and Switch Language (AR / EN)
+ */
 function setLanguage(lang) {
+  if (lang !== 'ar' && lang !== 'en') return;
+  
   currentLang = lang;
-  localStorage.setItem('language', lang);
+  localStorage.setItem('cv_lang', lang);
+  
+  // Update HTML Attributes
+  DOM.html.setAttribute('lang', lang);
+  DOM.html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+  
+  // Update Active Tab UI
+  if (lang === 'ar') {
+    DOM.btnAr.classList.add('active');
+    DOM.btnAr.setAttribute('aria-pressed', 'true');
+    DOM.btnEn.classList.remove('active');
+    DOM.btnEn.setAttribute('aria-pressed', 'false');
+  } else {
+    DOM.btnEn.classList.add('active');
+    DOM.btnEn.setAttribute('aria-pressed', 'true');
+    DOM.btnAr.classList.remove('active');
+    DOM.btnAr.setAttribute('aria-pressed', 'false');
+  }
+
+  activeSkillCategory = 'all';
+
+  // Reset Search if active
+  if (activeSearchQuery) {
+    clearSearch();
+  }
+
+  // Re-render Page Content
   renderCV();
 }
 
-function toggleTheme() {
-  const currentTheme = document.documentElement.getAttribute("data-theme");
-  if (currentTheme === "dark") {
-    document.documentElement.setAttribute("data-theme", "light");
-    localStorage.setItem("theme", "light");
-  } else {
-    document.documentElement.setAttribute("data-theme", "dark");
-    localStorage.setItem("theme", "dark");
-  }
-}
-
-function toggleSearch() {
-  domCache.searchBar.classList.toggle('hidden');
-  if (!domCache.searchBar.classList.contains('hidden')) {
-    domCache.searchInput.focus();
-  }
-}
-
-// Optimized filter function
-function filterContent() {
-  const searchTerm = domCache.searchInput.value.toLowerCase();
+/**
+ * Toast Notification Helper
+ */
+let toastTimeout = null;
+function showToast(message) {
+  if (!DOM.toastNotification) return;
   
-  if (!searchTerm) {
-    document.querySelectorAll('.skill-category, .education-item, .experience-item, .certification-card').forEach(el => {
-      el.style.display = '';
-      el.style.opacity = '1';
+  DOM.toastMessage.textContent = message;
+  DOM.toastNotification.classList.remove('hidden');
+  
+  clearTimeout(toastTimeout);
+  toastTimeout = setTimeout(() => {
+    DOM.toastNotification.classList.add('hidden');
+  }, 3000);
+}
+
+/**
+ * Render Complete CV with Dynamic Data
+ */
+function renderCV() {
+  const data = cvData[currentLang] || cvData['ar'];
+  const labels = data.labels || {};
+  const personal = data.personal || {};
+
+  // 1. Update Document Title & Navbar
+  if (currentLang === 'ar') {
+    document.title = `${personal.name} | سيرة ذاتية تفاعلية - ${personal.title}`;
+    DOM.navBrandName.textContent = 'السيرة الذاتية المهنية';
+  } else {
+    document.title = `${personal.name} | Interactive Resume - ${personal.title}`;
+    DOM.navBrandName.textContent = 'Professional Resume';
+  }
+
+  DOM.pdfBtnText.textContent = labels.downloadPdf || (currentLang === 'ar' ? 'تحميل PDF' : 'Download PDF');
+  DOM.saveContactBtn.title = labels.saveVCard || (currentLang === 'ar' ? 'حفظ كجهة اتصال' : 'Save Contact');
+  DOM.shareBtn.title = labels.shareProfile || (currentLang === 'ar' ? 'مشاركة السيرة' : 'Share Profile');
+  DOM.searchInput.placeholder = labels.searchPlaceholder || (currentLang === 'ar' ? 'ابحث في المهارات والمشاريع...' : 'Search skills & projects...');
+
+  // 2. Render Hero Profile Section
+  if (personal.image) {
+    DOM.profileImage.src = personal.image;
+  }
+  DOM.profileImage.alt = personal.name;
+  DOM.heroName.textContent = personal.name;
+  DOM.heroTitle.textContent = personal.title;
+  DOM.heroLocation.textContent = personal.location;
+  
+  DOM.heroEmail.textContent = personal.email;
+  DOM.chipEmail.href = `mailto:${personal.email}`;
+  
+  DOM.heroPhone.textContent = personal.phone;
+  DOM.chipPhone.href = `tel:${personal.phone.replace(/\s+/g, '')}`;
+  
+  if (personal.linkedin) {
+    DOM.chipLinkedin.href = personal.linkedin;
+    DOM.chipLinkedin.style.display = 'inline-flex';
+  } else {
+    DOM.chipLinkedin.style.display = 'none';
+  }
+
+  if (personal.github) {
+    DOM.chipGithub.href = personal.github;
+    DOM.chipGithub.style.display = 'inline-flex';
+  } else {
+    DOM.chipGithub.style.display = 'none';
+  }
+
+  // 3. Render Metrics Bar
+  DOM.metricsContainer.innerHTML = '';
+  if (Array.isArray(data.metrics)) {
+    data.metrics.forEach(metric => {
+      const card = document.createElement('div');
+      card.className = 'metric-card';
+      card.innerHTML = `
+        <div class="metric-value">${metric.value}</div>
+        <div class="metric-label">${metric.label}</div>
+      `;
+      DOM.metricsContainer.appendChild(card);
     });
+  }
+
+  // 4. Render Professional Summary
+  DOM.summaryHeading.textContent = labels.summary;
+  DOM.summaryText.textContent = data.summary || '';
+
+  // 5. Render Featured Projects Section
+  if (Array.isArray(data.projects) && data.projects.length > 0) {
+    DOM.projectsSection.style.display = '';
+    DOM.projectsHeading.textContent = labels.projects || 'المشاريع والمبادرات البارزة';
+    DOM.projectsGrid.innerHTML = '';
+    
+    data.projects.forEach(project => {
+      const card = document.createElement('article');
+      card.className = 'project-card';
+      
+      let highlightsHTML = '';
+      if (Array.isArray(project.highlights)) {
+        highlightsHTML = `
+          <ul class="project-highlights-list">
+            ${project.highlights.map(h => `<li>${h}</li>`).join('')}
+          </ul>
+        `;
+      }
+
+      let tagsHTML = '';
+      if (Array.isArray(project.tags)) {
+        tagsHTML = `
+          <div class="project-tags-row">
+            ${project.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}
+          </div>
+        `;
+      }
+
+      card.innerHTML = `
+        <div>
+          <div class="project-title-row">
+            <h3 class="project-title">${project.title}</h3>
+            <span class="timeline-date-badge">${project.period}</span>
+          </div>
+          <div class="project-role">${project.role}</div>
+          <p class="project-desc" style="margin-top: 8px;">${project.description}</p>
+          ${highlightsHTML}
+        </div>
+        ${tagsHTML}
+      `;
+      DOM.projectsGrid.appendChild(card);
+    });
+  } else {
+    DOM.projectsSection.style.display = 'none';
+  }
+
+  // 6. Render Skills Section & Filter Pills
+  DOM.skillsHeading.textContent = labels.skills;
+  renderSkillFilters(data.skills, labels);
+  renderSkillCards(data.skills);
+
+  // 7. Render Work Experience Timeline
+  DOM.experienceHeading.textContent = labels.experience;
+  DOM.experienceTimeline.innerHTML = '';
+  
+  if (Array.isArray(data.experience)) {
+    data.experience.forEach(exp => {
+      const card = document.createElement('article');
+      card.className = 'timeline-card';
+      
+      let achievementsHTML = '';
+      if (Array.isArray(exp.achievements) && exp.achievements.length > 0) {
+        achievementsHTML = `
+          <ul class="timeline-achievements-list">
+            ${exp.achievements.map(ach => `<li>${ach}</li>`).join('')}
+          </ul>
+        `;
+      }
+
+      card.innerHTML = `
+        <div class="timeline-node"></div>
+        <div class="timeline-header-row">
+          <h3 class="timeline-main-title">${exp.role}</h3>
+          <span class="timeline-date-badge"><i class="fa-regular fa-calendar"></i> ${exp.period}</span>
+        </div>
+        <div class="timeline-org">${exp.company}</div>
+        ${exp.details ? `<p class="timeline-description">${exp.details}</p>` : ''}
+        ${achievementsHTML}
+      `;
+      DOM.experienceTimeline.appendChild(card);
+    });
+  }
+
+  // 8. Render Education Timeline
+  DOM.educationHeading.textContent = labels.education;
+  DOM.educationTimeline.innerHTML = '';
+  
+  if (Array.isArray(data.education)) {
+    data.education.forEach(edu => {
+      const card = document.createElement('article');
+      card.className = 'timeline-card';
+      
+      card.innerHTML = `
+        <div class="timeline-node"></div>
+        <div class="timeline-header-row">
+          <h3 class="timeline-main-title">${edu.degree}</h3>
+          <span class="timeline-date-badge"><i class="fa-regular fa-calendar"></i> ${edu.year}</span>
+        </div>
+        <div class="timeline-org">${edu.institution}</div>
+        ${edu.details ? `<p class="timeline-description">${edu.details}</p>` : ''}
+      `;
+      DOM.educationTimeline.appendChild(card);
+    });
+  }
+
+  // 9. Render Certifications Grid
+  DOM.certificationsHeading.textContent = labels.certifications;
+  DOM.certificationsGrid.innerHTML = '';
+  
+  if (Array.isArray(data.certifications) && data.certifications.length > 0) {
+    DOM.certificationsSection.style.display = '';
+    data.certifications.forEach(cert => {
+      const card = document.createElement('div');
+      card.className = 'cert-card';
+      
+      card.innerHTML = `
+        <div>
+          <h3 class="cert-title">${cert.title}</h3>
+          <div class="cert-issuer">${cert.issuer}</div>
+        </div>
+        <div class="cert-meta-row">
+          <span><i class="fa-solid fa-location-dot"></i> ${cert.location || ''}</span>
+          <span><i class="fa-regular fa-calendar-check"></i> ${cert.date}</span>
+        </div>
+        ${cert.url ? `
+          <div style="margin-top: 8px;">
+            <a href="${cert.url}" target="_blank" rel="noopener noreferrer" class="cert-link">
+              ${labels.viewCert || 'View Credential'} <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        ` : ''}
+      `;
+      DOM.certificationsGrid.appendChild(card);
+    });
+  } else {
+    DOM.certificationsSection.style.display = 'none';
+  }
+
+  // 10. Render Languages Grid
+  DOM.languagesHeading.textContent = labels.languages;
+  DOM.languagesGrid.innerHTML = '';
+  
+  if (Array.isArray(data.languages)) {
+    data.languages.forEach(langItem => {
+      const card = document.createElement('div');
+      card.className = 'lang-card';
+      card.innerHTML = `
+        <div class="lang-name">${langItem.name}</div>
+        <div class="lang-level">${langItem.level}</div>
+      `;
+      DOM.languagesGrid.appendChild(card);
+    });
+  }
+
+  // 11. Update Footer Info
+  DOM.footerAuthor.textContent = personal.name;
+  DOM.footerCopyright.textContent = `© ${new Date().getFullYear()}`;
+}
+
+/**
+ * Render Skill Category Filter Pills
+ */
+function renderSkillFilters(skills, labels) {
+  DOM.skillFilters.innerHTML = '';
+  if (!Array.isArray(skills)) return;
+
+  // 'All' Pill
+  const allPill = document.createElement('button');
+  allPill.className = `filter-pill ${activeSkillCategory === 'all' ? 'active' : ''}`;
+  allPill.textContent = labels.filterAll || 'الكل';
+  allPill.onclick = () => filterSkillCategory('all');
+  DOM.skillFilters.appendChild(allPill);
+
+  skills.forEach(category => {
+    const pill = document.createElement('button');
+    pill.className = `filter-pill ${activeSkillCategory === category.id ? 'active' : ''}`;
+    pill.textContent = category.label;
+    pill.onclick = () => filterSkillCategory(category.id);
+    DOM.skillFilters.appendChild(pill);
+  });
+}
+
+/**
+ * Filter Skill Category
+ */
+function filterSkillCategory(categoryId) {
+  activeSkillCategory = categoryId;
+  const data = cvData[currentLang] || cvData['ar'];
+  renderSkillFilters(data.skills, data.labels || {});
+  renderSkillCards(data.skills);
+}
+
+/**
+ * Render Skill Category Cards
+ */
+function renderSkillCards(skills) {
+  DOM.skillsGrid.innerHTML = '';
+  if (!Array.isArray(skills)) return;
+
+  const filteredCategories = activeSkillCategory === 'all' 
+    ? skills 
+    : skills.filter(cat => cat.id === activeSkillCategory);
+
+  filteredCategories.forEach(category => {
+    const card = document.createElement('div');
+    card.className = 'skill-category-card';
+    card.setAttribute('data-category', category.id);
+    
+    let itemsHTML = '';
+    if (Array.isArray(category.items)) {
+      category.items.forEach(item => {
+        itemsHTML += `
+          <div class="skill-item-row">
+            <div class="skill-item-header">
+              <span class="skill-name">${item.name}</span>
+              <span class="skill-pct">${item.level}%</span>
+            </div>
+            <div class="skill-track">
+              <div class="skill-progress-bar" style="width: ${item.level}%;"></div>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    card.innerHTML = `
+      <h3 class="skill-category-title">${category.label}</h3>
+      <div class="skill-items-list">${itemsHTML}</div>
+    `;
+    DOM.skillsGrid.appendChild(card);
+  });
+}
+
+/**
+ * Toggle Search Drawer
+ */
+function toggleSearch() {
+  const isHidden = DOM.searchBarContainer.classList.contains('hidden');
+  if (isHidden) {
+    DOM.searchBarContainer.classList.remove('hidden');
+    DOM.searchInput.focus();
+  } else {
+    DOM.searchBarContainer.classList.add('hidden');
+    if (activeSearchQuery) {
+      clearSearch();
+    }
+  }
+}
+
+/**
+ * Handle Live Search Input
+ */
+let searchDebounceTimer = null;
+function handleSearch(query) {
+  activeSearchQuery = query.trim();
+  
+  if (activeSearchQuery) {
+    DOM.clearSearchBtn.classList.remove('hidden');
+  } else {
+    DOM.clearSearchBtn.classList.add('hidden');
+  }
+
+  clearTimeout(searchDebounceTimer);
+  searchDebounceTimer = setTimeout(() => {
+    filterContent(activeSearchQuery);
+  }, 150);
+}
+
+/**
+ * Clear Search Input and Reset Filter
+ */
+function clearSearch() {
+  DOM.searchInput.value = '';
+  DOM.clearSearchBtn.classList.add('hidden');
+  activeSearchQuery = '';
+  filterContent('');
+}
+
+/**
+ * Filter Content and Highlight Matches
+ */
+function filterContent(query) {
+  const searchableCards = document.querySelectorAll(
+    '.skill-category-card, .timeline-card, .cert-card, .lang-card, .project-card, .metric-card'
+  );
+  
+  if (!query) {
+    searchableCards.forEach(card => {
+      card.style.display = '';
+      card.style.opacity = '1';
+    });
+    DOM.searchResultsCount.classList.add('hidden');
     return;
   }
 
-  // Single query for better performance
-  document.querySelectorAll('.skill-category, .education-item, .experience-item, .certification-card').forEach(el => {
-    const text = el.textContent.toLowerCase();
-    el.style.opacity = text.includes(searchTerm) ? '1' : '0.3';
-    el.style.display = '';
-  });
-}
+  const lowerQuery = query.toLowerCase();
+  let matchCount = 0;
 
-// Debounced filter function
-const debouncedFilter = debounce(filterContent, 300);
-
-function downloadPDF() {
-  const element = document.querySelector('main');
-  const opt = {
-    margin: 10,
-    filename: `CV-${cvData[currentLang].personal.name.replace(/\s+/g, '-')}.pdf`,
-    image: { type: 'jpeg', quality: 0.98 },
-    html2canvas: { scale: 2 },
-    jsPDF: { orientation: 'portrait', unit: 'mm', format: 'a4' }
-  };
-  try {
-  html2pdf().set(opt).from(element).save();
-  } catch (error) {
-  console.error("Error generating PDF:", error);
-  alert("Failed to generate PDF. Please try again.");
-  }
-}
-
-// Initialize theme and language on page load
-(function() {
-  const savedTheme = localStorage.getItem("theme") || "dark";
-  const savedLang = localStorage.getItem('language') || 'ar';
-  document.documentElement.setAttribute("data-theme", savedTheme);
-  currentLang = savedLang;
-})();
-
-function renderCV() {
-  const Arabic = cvData[currentLang];
-  const English = currentLang === 'ar' ? cvData.en : cvData.ar;
-  
-  // Update page language and direction
-  document.documentElement.lang = currentLang;
-  document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
-  
-  // Update PDF label
-  const pdfLabel = document.getElementById('pdfLabel');
-  if (currentLang === 'ar') {
-    pdfLabel.textContent = 'تحميل PDF';
-  } else {
-    pdfLabel.textContent = 'PDF';
-  }
-  
-  // Profile Image - Use image from data or English
-  if (Arabic.personal.image) {
-    domCache.profileImage.src = Arabic.personal.image;
-    domCache.profileImage.alt = Arabic.personal.name;
-  }
-
-  // Header
-  document.getElementById('name').textContent = Arabic.personal?.name || English?.personal?.name || '';
-  document.getElementById('title').textContent = Arabic.personal?.title || English?.personal?.title || '';
-  document.getElementById('location').textContent = Arabic.personal?.location || English?.personal?.location || '';
-
-  const contactsEl = document.getElementById('contacts');
-  contactsEl.innerHTML = `
-      <li>📧 <a href="mailto:${Arabic.personal?.email || English?.personal?.email}">${Arabic.personal?.email || English?.personal?.email}</a></li>
-      <li>📞 ${Arabic.personal?.phone || English?.personal?.phone}</li>
-      <li>💻 <a href="${Arabic.personal?.github || English?.personal?.github}" target="_blank" rel="noopener">${Arabic.personal?.github || English?.personal?.github}</a></li>
-      <li>🔗 <a href="${Arabic.personal?.linkedin || English?.personal?.linkedin}" target="_blank" rel="noopener">${Arabic.personal?.linkedin || English?.personal?.linkedin}</a></li>
-  `;
-
-  // Summary
-  document.getElementById('summaryTitle').textContent = Arabic.labels?.summary || English?.labels?.summary || '';
-  document.getElementById('summary').textContent = Arabic.summary || English?.summary || '';
-
-  // Skills with Progress Bars
-  document.getElementById('skillsTitle').textContent = Arabic.labels?.skills || English?.labels?.skills || '';
-  domCache.skillsEl.innerHTML = "";
-  Arabic.skills.forEach((category) => {
-    const div = document.createElement('div');
-    div.className = 'skill-category';
+  searchableCards.forEach(card => {
+    const text = card.textContent.toLowerCase();
+    const isMatch = text.includes(lowerQuery);
     
-    let skillsHTML = `<h3>${category.label}</h3>`;
-    category.items.forEach(item => {
-      skillsHTML += `
-        <div class="skill-item">
-          <div class="skill-name">
-            <span>${item.name}</span>
-            <span>${item.level}%</span>
-          </div>
-          <div class="skill-bar">
-            <div class="skill-progress" style="width: ${item.level}%"></div>
-          </div>
-        </div>
-      `;
-    });
-    
-    div.innerHTML = skillsHTML;
-    domCache.skillsEl.appendChild(div);
-  });
-
-  // Certifications
-  const certSection = document.getElementById('certificationsSection');
-  if (Arabic.certifications && Arabic.certifications.length > 0) {
-    certSection.classList.remove('hidden');
-    document.getElementById('certificationsTitle').textContent = Arabic.labels?.certifications || English?.labels?.certifications || '';
-    domCache.cersEl.innerHTML = "";
-    Arabic.certifications.forEach(cert => {
-      const div = document.createElement('div');
-      div.className = 'certification-card';
-      div.innerHTML = `
-        <h3>${cert.title}</h3>
-        <p><strong>${cert.issuer}</strong></p>
-        <p>${cert.date}</p>
-        ${cert.url ? `<a href="${cert.url}" target="_blank" rel="noopener">📎 ${currentLang === 'ar' ? 'عرض الشهادة' : 'View Certificate'}</a>` : ''}
-      `;
-      domCache.cersEl.appendChild(div);
-    });
-  } else {
-    certSection.classList.add('hidden');
-  }
-
-  // Education
-  document.getElementById('educationTitle').textContent = Arabic.labels?.education || English?.labels?.education || '';
-  domCache.eduEl.innerHTML = "";
-  Arabic.education.forEach(e => {
-    const div = document.createElement('div');
-    div.className = 'education-item';
-    div.innerHTML = `
-      <h3>${e.degree}</h3>
-      <p><strong>${e.institution}</strong> — ${e.year}</p>
-      ${e.details ? `<p class="details-text">${e.details}</p>` : ''}
-    `;
-    domCache.eduEl.appendChild(div);
-  });
-
-  // Experience
-  document.getElementById('experienceTitle').textContent = Arabic.labels?.experience || English?.labels?.experience || '';
-  domCache.expEl.innerHTML = "";
-  Arabic.experience.forEach(x => {
-    const div = document.createElement('div');
-    div.className = 'experience-item';
-    let achievementsHTML = '';
-    if (x.achievements && x.achievements.length > 0) {
-      achievementsHTML = `
-        <ul class="achievements">
-          ${x.achievements.map(a => `<li>✓ ${a}</li>`).join('')}
-        </ul>
-      `;
+    if (isMatch) {
+      card.style.display = '';
+      card.style.opacity = '1';
+      card.style.borderColor = 'var(--accent-primary)';
+      matchCount++;
+    } else {
+      card.style.display = 'none';
     }
-    div.innerHTML = `
-      <h3>${x.role}</h3>
-      <p><strong>${x.company}</strong> — ${x.period}</p>
-      ${x.details ? `<p class="details-text">${x.details}</p>` : ''}
-      ${achievementsHTML}
-    `;
-    domCache.expEl.appendChild(div);
   });
 
-  // Languages
-  document.getElementById('languagesTitle').textContent = Arabic.labels?.languages || English?.labels?.languages || '';
-  const langEl = document.getElementById('languages');
-  langEl.innerHTML = "";
-  Arabic.languages.forEach(l => {
-    const li = document.createElement('li');
-    li.innerHTML = `<strong>${l.name}</strong><br><span style="font-size: 12px; opacity: 0.7;">${l.level}</span>`;
-    langEl.appendChild(li);
-  });
-
-  // Update search bar placeholder
+  DOM.searchResultsCount.classList.remove('hidden');
   if (currentLang === 'ar') {
-    domCache.searchInput.placeholder = 'ابحث عن مهارة أو خبرة...';
+    DOM.searchResultsCount.textContent = `تم العثور على (${matchCount}) نتيجة مطابقة`;
   } else {
-    domCache.searchInput.placeholder = 'Search for skills or experience...';
+    DOM.searchResultsCount.textContent = `Found (${matchCount}) matching results`;
   }
 }
 
-// Initialize on page load
-document.addEventListener('DOMContentLoaded', function() {
+/**
+ * Generate and Download vCard (.vcf) Contact Card
+ */
+function saveContactVCard() {
+  const data = cvData[currentLang] || cvData['ar'];
+  const p = data.personal || {};
+
+  const vCardData = [
+    'BEGIN:VCARD',
+    'VERSION:3.0',
+    `FN;CHARSET=UTF-8:${p.name}`,
+    `N;CHARSET=UTF-8:Al Otaibi;Mohammed;;;`,
+    `TITLE;CHARSET=UTF-8:${p.title}`,
+    `TEL;TYPE=CELL,VOICE:${p.phone.replace(/\s+/g, '')}`,
+    `EMAIL;TYPE=INTERNET,PREF:${p.email}`,
+    `URL;CHARSET=UTF-8:https://cv.mohammed.alotaibi.site`,
+    `ADR;TYPE=WORK;CHARSET=UTF-8:;;${p.location};;;;`,
+    `NOTE;CHARSET=UTF-8:${data.summary ? data.summary.slice(0, 150) : ''}...`,
+    'END:VCARD'
+  ].join('\r\n');
+
+  const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const downloadLink = document.createElement('a');
+  downloadLink.href = url;
+  downloadLink.setAttribute('download', `Mohammed-Al-Otaibi.vcf`);
+  document.body.appendChild(downloadLink);
+  downloadLink.click();
+  document.body.removeChild(downloadLink);
+  URL.revokeObjectURL(url);
+
+  showToast(currentLang === 'ar' ? 'تم تجهيز ملف جهة الاتصال (vCard) للتحميل!' : 'Contact card (vCard) downloaded!');
+}
+
+/**
+ * Share Profile via Web Share API or Clipboard Fallback
+ */
+async function shareProfile() {
+  const shareData = {
+    title: document.title,
+    text: `${cvData[currentLang]?.personal?.name} - ${cvData[currentLang]?.personal?.title}`,
+    url: window.location.href
+  };
+
+  if (navigator.share) {
+    try {
+      await navigator.share(shareData);
+    } catch (err) {
+      if (err.name !== 'AbortError') {
+        copyProfileLink();
+      }
+    }
+  } else {
+    copyProfileLink();
+  }
+}
+
+/**
+ * Copy Link Fallback
+ */
+function copyProfileLink() {
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      showToast(cvData[currentLang]?.labels?.copied || 'تم نسخ الرابط للحافظة!');
+    });
+  }
+}
+
+/**
+ * Print or Save as Vector PDF (ATS-Compliant)
+ */
+function printOrDownloadPDF() {
+  const originalTitle = document.title;
+  const personName = (cvData[currentLang]?.personal?.name || 'Mohammed-Al-Otaibi').replace(/\s+/g, '-');
+  
+  // Set clean filename for print PDF dialog
+  document.title = `CV-${personName}`;
+  
+  // Execute clean vector print
+  window.print();
+  
+  // Restore document title
+  setTimeout(() => {
+    document.title = originalTitle;
+  }, 1000);
+}
+
+/**
+ * Initialize on DOM Content Loaded
+ */
+document.addEventListener('DOMContentLoaded', () => {
   initDOMCache();
-  renderCV();
+  initSettings();
+  setLanguage(currentLang);
 });

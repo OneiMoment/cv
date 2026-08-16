@@ -1,15 +1,7 @@
 /**
  * Dynamic CV Application Script
  * Developer: Mohammed Al Otaibi
-<<<<<<< HEAD
-<<<<<<< Updated upstream
- * Version: 2.1 (Advanced: vCard, WebShare, Projects, Metrics, Offline PWA, Quick Filters)
-=======
- * Version: 2.3 (Bilingual UI, Standard QR Generator, vCard, WebShare, PWA)
->>>>>>> Stashed changes
-=======
- * Version: 2.2 (Advanced: QR Modal, vCard, WebShare, Projects, Metrics, Offline PWA)
->>>>>>> 0e36a63c4457314c92bdc8ff5a9149653ecf0ad7
+ * Version: 2.5 (Clean, Multilingual, Standard ISO 18004 QR, PWA, Back-to-top)
  */
 
 // Application State
@@ -89,33 +81,23 @@ function initDOMCache() {
   DOM.footerCopyright = document.getElementById('footerCopyright');
   DOM.footerSub = document.getElementById('footerSub');
   
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> 0e36a63c4457314c92bdc8ff5a9149653ecf0ad7
   // QR Modal
   DOM.qrModal = document.getElementById('qrModal');
   DOM.qrModalTitle = document.getElementById('qrModalTitle');
   DOM.qrModalScanHint = document.getElementById('qrModalScanHint');
   DOM.qrDownloadText = document.getElementById('qrDownloadText');
   DOM.qrCopyLinkText = document.getElementById('qrCopyLinkText');
-<<<<<<< HEAD
   DOM.qrModalCloseBtn = document.getElementById('qrModalCloseBtn');
   DOM.qrCanvas = document.getElementById('qrCanvas');
   
->>>>>>> Stashed changes
-=======
-  DOM.qrCanvas = document.getElementById('qrCanvas');
-  
->>>>>>> 0e36a63c4457314c92bdc8ff5a9149653ecf0ad7
-  // Toast
+  // Toast & Back-to-top
   DOM.toastNotification = document.getElementById('toastNotification');
   DOM.toastMessage = document.getElementById('toastMessage');
+  DOM.backToTopBtn = document.getElementById('backToTopBtn');
 }
 
 /**
- * Standard ISO/IEC 18004 QR Code Generator Engine (Zero Dependencies)
+ * Standard ISO/IEC 18004 QR Code Generator Engine (Zero External Dependencies)
  */
 const QRGen = (function() {
   function QRCode(typeNumber, errorCorrectionLevel) {
@@ -128,7 +110,6 @@ const QRGen = (function() {
   }
 
   const QRMode = { MODE_8BIT_BYTE: 1 << 2 };
-  const QRErrorCorrectionLevel = { L: 1, M: 0, Q: 3, H: 2 };
   const QRMaskPattern = {
     PATTERN000: 0, PATTERN001: 1, PATTERN010: 2, PATTERN011: 3,
     PATTERN100: 4, PATTERN101: 5, PATTERN110: 6, PATTERN111: 7
@@ -299,7 +280,7 @@ const QRGen = (function() {
     make: function() {
       let typeNumber = 1;
       for (typeNumber = 1; typeNumber < 10; typeNumber++) {
-        const rsBlocks = QRRSBlock.getRSBlocks(typeNumber, this.errorCorrectionLevel);
+        const rsBlocks = QRRSBlock.getRSBlocks(typeNumber, 0); // Level M
         const buffer = new QRBitBuffer();
         let totalDataCount = 0;
         for (let i = 0; i < rsBlocks.length; i++) totalDataCount += rsBlocks[i].dataCount;
@@ -323,7 +304,7 @@ const QRGen = (function() {
       this.setupPositionAdjustPattern();
       this.setupTimingPattern();
       this.setupTypeInfo(false, QRMaskPattern.PATTERN000);
-      this.dataCache = QRCode.createData(this.typeNumber, this.errorCorrectionLevel, this.dataList);
+      this.dataCache = QRCode.createData(this.typeNumber, 0, this.dataList);
       this.mapData(this.dataCache, QRMaskPattern.PATTERN000);
     },
     setupPositionProbePattern: function(row, col) {
@@ -366,7 +347,7 @@ const QRGen = (function() {
       }
     },
     setupTypeInfo: function(test, maskPattern) {
-      const data = (this.errorCorrectionLevel << 3) | maskPattern;
+      const data = (0 << 3) | maskPattern; // Level M
       const bits = QRUtil.getBCHTypeInfo(data);
       for (let i = 0; i < 15; i++) {
         const mod = !test && ((bits >> i) & 1) == 1;
@@ -479,7 +460,6 @@ const QRGen = (function() {
 
   return {
     generate: function(text) {
-      // 0 = Auto typeNumber, 0 = ErrorCorrection Level M
       const qr = new QRCode(0, 0);
       qr.addData(text);
       qr.make();
@@ -609,11 +589,6 @@ function renderCV() {
   DOM.saveContactBtn.setAttribute('aria-label', labels.saveVCard || 'Save Contact');
   
   DOM.shareBtn.title = labels.shareProfile || (currentLang === 'ar' ? 'مشاركة السيرة' : 'Share Profile');
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-  DOM.searchInput.placeholder = labels.searchPlaceholder || (currentLang === 'ar' ? 'ابحث في المهارات والمشاريع...' : 'Search skills & projects...');
-
-=======
   DOM.shareBtn.setAttribute('aria-label', labels.shareProfile || 'Share Profile');
   
   DOM.qrToggleBtn.title = labels.qrCodeBtn || (currentLang === 'ar' ? 'عرض رمز QR' : 'View QR Code');
@@ -628,28 +603,23 @@ function renderCV() {
   DOM.clearSearchBtn.title = labels.searchClear || (currentLang === 'ar' ? 'مسح البحث' : 'Clear Search');
   DOM.clearSearchBtn.setAttribute('aria-label', labels.searchClear || 'Clear Search');
 
+  if (DOM.backToTopBtn) {
+    DOM.backToTopBtn.title = labels.backToTop || (currentLang === 'ar' ? 'العودة لأعلى الصفحة' : 'Back to top');
+    DOM.backToTopBtn.setAttribute('aria-label', labels.backToTop || 'Back to top');
+  }
+
   DOM.searchInput.placeholder = labels.searchPlaceholder || (currentLang === 'ar' ? 'ابحث في المهارات والمشاريع...' : 'Search skills & projects...');
 
-=======
-  DOM.qrToggleBtn.title = labels.qrCodeBtn || (currentLang === 'ar' ? 'عرض رمز QR' : 'View QR Code');
-  DOM.searchInput.placeholder = labels.searchPlaceholder || (currentLang === 'ar' ? 'ابحث في المهارات والمشاريع...' : 'Search skills & projects...');
-
->>>>>>> 0e36a63c4457314c92bdc8ff5a9149653ecf0ad7
   // Modal Labels
   if (DOM.qrModalTitle) DOM.qrModalTitle.textContent = labels.qrTitle || 'رمز الاستجابة السريعة (QR Code)';
   if (DOM.qrModalScanHint) DOM.qrModalScanHint.textContent = labels.qrScanHint || 'امسح الرمز بكاميرا هاتفك لفتح السيرة الذاتية ومشاركتها فوراً';
   if (DOM.qrDownloadText) DOM.qrDownloadText.textContent = labels.qrDownload || 'تحميل صورة الرمز';
-<<<<<<< HEAD
   if (DOM.qrCopyLinkText) DOM.qrCopyLinkText.textContent = labels.qrCopyLink || 'نسخ الرابط';
   if (DOM.qrModalCloseBtn) {
     DOM.qrModalCloseBtn.title = labels.close || 'إغلاق';
     DOM.qrModalCloseBtn.setAttribute('aria-label', labels.close || 'إغلاق');
   }
 
->>>>>>> Stashed changes
-=======
-
->>>>>>> 0e36a63c4457314c92bdc8ff5a9149653ecf0ad7
   // 2. Render Hero Profile Section
   if (personal.image) {
     DOM.profileImage.src = personal.image;
@@ -1091,10 +1061,7 @@ function copyProfileLink() {
 }
 
 /**
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
- * Render QR Code on Canvas using Verified Standards-Compliant Generator
+ * Render QR Code on Canvas using Standard ISO 18004 Generator
  */
 function drawQRCode(canvas, urlText) {
   const ctx = canvas.getContext('2d');
@@ -1116,55 +1083,6 @@ function drawQRCode(canvas, urlText) {
         ctx.fillRect(
           Math.round(padding + c * cellSize),
           Math.round(padding + r * cellSize),
-=======
- * Interactive QR Code Generation (Pure Client-Side Canvas)
- */
-function renderQRCodeOnCanvas(canvas, text) {
-  const ctx = canvas.getContext('2d');
-  const size = canvas.width;
-  ctx.clearRect(0, 0, size, size);
-
-  // Background
-  ctx.fillStyle = '#ffffff';
-  ctx.fillRect(0, 0, size, size);
-
-  // QR Code Pattern Matrix for "https://cv.mohammed.alotaibi.site/"
-  const matrix = [
-    [1,1,1,1,1,1,1,0,0,1,0,1,0,0,1,1,1,1,1,1,1],
-    [1,0,0,0,0,0,1,0,1,0,1,1,1,0,1,0,0,0,0,0,1],
-    [1,0,1,1,1,0,1,0,0,1,0,0,1,0,1,0,1,1,1,0,1],
-    [1,0,1,1,1,0,1,0,1,0,1,0,0,0,1,0,1,1,1,0,1],
-    [1,0,1,1,1,0,1,0,0,1,1,1,0,0,1,0,1,1,1,0,1],
-    [1,0,0,0,0,0,1,0,1,0,0,1,1,0,1,0,0,0,0,0,1],
-    [1,1,1,1,1,1,1,0,1,0,1,0,1,0,1,1,1,1,1,1,1],
-    [0,0,0,0,0,0,0,0,1,1,0,1,0,0,0,0,0,0,0,0,0],
-    [1,1,0,1,0,1,1,1,0,0,1,1,0,1,1,0,1,1,0,1,0],
-    [0,1,1,0,1,0,0,1,1,0,1,0,1,1,0,1,0,1,1,0,1],
-    [1,0,0,1,0,1,1,0,1,1,0,1,0,0,1,0,1,0,0,1,0],
-    [0,1,1,0,1,1,0,1,0,1,0,1,1,0,1,1,0,1,1,0,1],
-    [1,0,1,1,0,0,1,1,1,0,1,0,1,1,0,0,1,1,0,1,0],
-    [0,0,0,0,0,0,0,0,1,0,1,1,0,1,1,0,0,1,0,1,1],
-    [1,1,1,1,1,1,1,0,1,1,0,0,1,0,1,0,1,0,1,1,0],
-    [1,0,0,0,0,0,1,0,0,1,1,1,0,1,1,1,0,1,0,0,1],
-    [1,0,1,1,1,0,1,0,1,0,1,0,1,0,0,1,1,0,1,1,0],
-    [1,0,1,1,1,0,1,0,0,1,0,1,0,1,1,0,1,0,0,1,1],
-    [1,0,1,1,1,0,1,0,1,1,1,0,1,0,1,1,0,1,1,0,1],
-    [1,0,0,0,0,0,1,0,0,1,0,1,0,1,0,1,1,0,1,1,0],
-    [1,1,1,1,1,1,1,0,1,0,1,1,1,0,1,0,0,1,0,1,1]
-  ];
-
-  const cells = matrix.length;
-  const padding = 16;
-  const cellSize = (size - (padding * 2)) / cells;
-
-  ctx.fillStyle = '#0f172a';
-  for (let r = 0; r < cells; r++) {
-    for (let c = 0; c < cells; c++) {
-      if (matrix[r][c]) {
-        ctx.fillRect(
-          Math.round(padding + (c * cellSize)),
-          Math.round(padding + (r * cellSize)),
->>>>>>> 0e36a63c4457314c92bdc8ff5a9149653ecf0ad7
           Math.ceil(cellSize),
           Math.ceil(cellSize)
         );
@@ -1178,11 +1096,7 @@ function renderQRCodeOnCanvas(canvas, text) {
  */
 function openQrModal() {
   if (DOM.qrCanvas) {
-<<<<<<< HEAD
     drawQRCode(DOM.qrCanvas, 'https://cv.mohammed.alotaibi.site/');
-=======
-    renderQRCodeOnCanvas(DOM.qrCanvas, 'https://cv.mohammed.alotaibi.site/');
->>>>>>> 0e36a63c4457314c92bdc8ff5a9149653ecf0ad7
   }
   DOM.qrModal.classList.remove('hidden');
 }
@@ -1214,18 +1128,17 @@ function downloadQrImage() {
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
-<<<<<<< HEAD
   showToast(cvData[currentLang]?.labels?.qrDownloaded || 'تم تحميل صورة رمز QR بنجاح!');
 }
 
 /**
->>>>>>> Stashed changes
-=======
-  showToast(currentLang === 'ar' ? 'تم تحميل صورة رمز QR بنجاح!' : 'QR Code downloaded successfully!');
+ * Scroll to Top Smoothly
+ */
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 /**
->>>>>>> 0e36a63c4457314c92bdc8ff5a9149653ecf0ad7
  * Print or Save as Vector PDF (ATS-Compliant)
  */
 function printOrDownloadPDF() {
@@ -1256,6 +1169,17 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && DOM.qrModal && !DOM.qrModal.classList.contains('hidden')) {
       closeQrModal();
+    }
+  });
+
+  // Scroll Listener for Back to Top Button
+  window.addEventListener('scroll', () => {
+    if (DOM.backToTopBtn) {
+      if (window.scrollY > 300) {
+        DOM.backToTopBtn.classList.add('visible');
+      } else {
+        DOM.backToTopBtn.classList.remove('visible');
+      }
     }
   });
 });

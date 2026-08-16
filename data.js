@@ -16,22 +16,12 @@ const cvData = {
       printCv: "طباعة السيرة",
       saveVCard: "حفظ كجهة اتصال",
       shareProfile: "مشاركة السيرة",
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> 0e36a63c4457314c92bdc8ff5a9149653ecf0ad7
       qrCodeBtn: "عرض رمز QR",
       qrTitle: "رمز الاستجابة السريعة (QR Code)",
       qrScanHint: "امسح الرمز بكاميرا هاتفك لفتح السيرة الذاتية ومشاركتها فوراً",
       qrDownload: "تحميل صورة الرمز",
-<<<<<<< HEAD
       qrCopyLink: "نسخ الرابط",
       close: "إغلاق",
->>>>>>> Stashed changes
-=======
-      close: "إغلاق",
->>>>>>> 0e36a63c4457314c92bdc8ff5a9149653ecf0ad7
       searchPlaceholder: "ابحث في المهارات، المشاريع، والخبرات...",
       searchToggle: "فتح البحث",
       searchClear: "مسح البحث",
@@ -43,7 +33,8 @@ const cvData = {
       vcardDownloaded: "تم تجهيز ملف جهة الاتصال (vCard) للتحميل!",
       qrDownloaded: "تم تحميل صورة رمز QR بنجاح!",
       searchResults: "تم العثور على ({count}) نتيجة مطابقة",
-      footerSub: "سيرة ذاتية تفاعلية مطابقة لمعايير أنظمة التوظيف الحديثة (ATS)",
+      footerSub: "سيرة ذاتية تفاعلية مطابقة لمعايير أنظمة التوظيف الحديثة",
+      backToTop: "العودة لأعلى الصفحة",
       emailTooltip: "انقر للمراسلة عبر البريد الإلكتروني",
       phoneTooltip: "انقر للاتصال المباشر",
       linkedinTooltip: "زيارة الملف المهني على LinkedIn",
@@ -244,22 +235,12 @@ const cvData = {
       printCv: "Print CV",
       saveVCard: "Save Contact (vCard)",
       shareProfile: "Share Profile",
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> 0e36a63c4457314c92bdc8ff5a9149653ecf0ad7
       qrCodeBtn: "View QR Code",
       qrTitle: "Scan QR Code",
       qrScanHint: "Scan with your smartphone camera to open and share this CV instantly",
       qrDownload: "Download QR Image",
-<<<<<<< HEAD
       qrCopyLink: "Copy Link",
       close: "Close",
->>>>>>> Stashed changes
-=======
-      close: "Close",
->>>>>>> 0e36a63c4457314c92bdc8ff5a9149653ecf0ad7
       searchPlaceholder: "Search skills, projects, experience...",
       searchToggle: "Open Search",
       searchClear: "Clear Search",
@@ -272,6 +253,7 @@ const cvData = {
       qrDownloaded: "QR Code image downloaded successfully!",
       searchResults: "Found ({count}) matching results",
       footerSub: "Interactive CV compliant with modern ATS recruitment standards",
+      backToTop: "Back to top",
       emailTooltip: "Click to send email",
       phoneTooltip: "Click to call directly",
       linkedinTooltip: "Visit LinkedIn profile",

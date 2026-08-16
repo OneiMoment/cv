@@ -42,7 +42,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=2.4" />
+  <link rel="stylesheet" href="styles.css?v=2.5" />
   
   <!-- Structured Data: Schema.org JSON-LD -->
   <script type="application/ld+json">
@@ -77,7 +77,7 @@
     <div class="nav-container">
       <div class="nav-brand">
         <span class="brand-badge"><i class="fa-solid fa-id-card"></i></span>
-        <span class="brand-name" id="navBrandName">السيرة الذاتية</span>
+        <span class="brand-name" id="navBrandName">السيرة الذاتية المهنية</span>
       </div>
 
       <div class="nav-actions">
@@ -151,7 +151,7 @@
     <section class="profile-hero-card" id="heroCard">
       <div class="profile-avatar-area">
         <div class="avatar-ring">
-          <img id="profileImage" src="images/profile.JPG" alt="صورة الملف الشخصي" class="avatar-img" />
+          <img id="profileImage" src="images/profile.JPG" alt="صورة الملف الشخصي" class="avatar-img" width="140" height="140" fetchpriority="high" loading="eager" />
         </div>
       </div>
       
@@ -166,15 +166,7 @@
             <i class="fa-solid fa-location-dot"></i>
             <span id="heroLocation">جدة، المملكة العربية السعودية</span>
           </div>
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-          <a class="contact-chip" id="chipEmail" href="mailto:mohammed@alotaibi.site" title="انقر للمراسلة أو النسخ">
-=======
           <a class="contact-chip" id="chipEmail" href="mailto:mohammed@alotaibi.site">
->>>>>>> Stashed changes
-=======
-          <a class="contact-chip" id="chipEmail" href="mailto:mohammed@alotaibi.site" title="انقر للمراسلة">
->>>>>>> 0e36a63c4457314c92bdc8ff5a9149653ecf0ad7
             <i class="fa-solid fa-envelope"></i>
             <span id="heroEmail">mohammed@alotaibi.site</span>
           </a>
@@ -288,31 +280,18 @@
 
   </main>
 
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> 0e36a63c4457314c92bdc8ff5a9149653ecf0ad7
   <!-- Interactive QR Code Modal -->
   <div id="qrModal" class="modal-backdrop hidden" onclick="handleModalBackdropClick(event)">
     <div class="modal-card">
       <div class="modal-header">
         <h3 id="qrModalTitle" class="modal-title">رمز الاستجابة السريعة (QR Code)</h3>
-<<<<<<< HEAD
         <button id="qrModalCloseBtn" class="modal-close-btn" onclick="closeQrModal()" aria-label="إغلاق">
-=======
-        <button class="modal-close-btn" onclick="closeQrModal()" aria-label="إغلاق">
->>>>>>> 0e36a63c4457314c92bdc8ff5a9149653ecf0ad7
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
       <div class="modal-body">
         <div class="qr-code-frame">
-<<<<<<< HEAD
           <canvas id="qrCanvas" width="240" height="240"></canvas>
-=======
-          <canvas id="qrCanvas" width="220" height="220"></canvas>
->>>>>>> 0e36a63c4457314c92bdc8ff5a9149653ecf0ad7
         </div>
         <p id="qrModalScanHint" class="qr-scan-hint">امسح الرمز بكاميرا هاتفك لفتح السيرة الذاتية ومشاركتها فوراً</p>
         <div class="modal-actions">
@@ -329,35 +308,27 @@
     </div>
   </div>
 
-<<<<<<< HEAD
->>>>>>> Stashed changes
-=======
->>>>>>> 0e36a63c4457314c92bdc8ff5a9149653ecf0ad7
   <!-- Interactive Toast Notification -->
   <div id="toastNotification" class="toast-notification hidden" role="status" aria-live="polite">
     <i class="fa-solid fa-circle-check"></i>
     <span id="toastMessage">تمت العملية بنجاح</span>
   </div>
 
+  <!-- Back to Top Floating Button -->
+  <button id="backToTopBtn" class="back-to-top-btn no-print" onclick="scrollToTop()" title="العودة لأعلى الصفحة" aria-label="العودة لأعلى الصفحة">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
   <!-- Application Logic & Data -->
-  <script src="data.js?v=2.4"></script>
-  <script src="script.js?v=2.4"></script>
+  <script src="data.js?v=2.5"></script>
+  <script src="script.js?v=2.5"></script>
 
   <!-- Service Worker Registration for Offline PWA -->
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-<<<<<<< Updated upstream
-        navigator.serviceWorker.register('sw.js').catch(err => {
-<<<<<<< HEAD
-          console.debug('ServiceWorker registration optional notice:', err);
-=======
-        navigator.serviceWorker.register('sw.js?v=2.4').catch(err => {
+        navigator.serviceWorker.register('sw.js?v=2.5').catch(err => {
           console.debug('ServiceWorker registration notice:', err);
->>>>>>> Stashed changes
-=======
-          console.debug('ServiceWorker registration notice:', err);
->>>>>>> 0e36a63c4457314c92bdc8ff5a9149653ecf0ad7
         });
       });
     }

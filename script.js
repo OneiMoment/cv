@@ -1,7 +1,7 @@
 /**
  * Dynamic CV Application Script
  * Developer: Mohammed Al Otaibi
- * Version: 2.1 (Advanced: vCard, WebShare, Projects, Metrics, Offline PWA, Quick Filters)
+ * Version: 2.2 (Advanced: QR Modal, vCard, WebShare, Projects, Metrics, Offline PWA)
  */
 
 // Application State
@@ -29,6 +29,7 @@ function initDOMCache() {
   DOM.pdfBtnText = document.getElementById('pdfBtnText');
   DOM.saveContactBtn = document.getElementById('saveContactBtn');
   DOM.shareBtn = document.getElementById('shareBtn');
+  DOM.qrToggleBtn = document.getElementById('qrToggleBtn');
   
   // Search
   DOM.searchToggleBtn = document.getElementById('searchToggleBtn');
@@ -77,6 +78,14 @@ function initDOMCache() {
   
   DOM.footerAuthor = document.getElementById('footerAuthor');
   DOM.footerCopyright = document.getElementById('footerCopyright');
+  
+  // QR Modal
+  DOM.qrModal = document.getElementById('qrModal');
+  DOM.qrModalTitle = document.getElementById('qrModalTitle');
+  DOM.qrModalScanHint = document.getElementById('qrModalScanHint');
+  DOM.qrDownloadText = document.getElementById('qrDownloadText');
+  DOM.qrCopyLinkText = document.getElementById('qrCopyLinkText');
+  DOM.qrCanvas = document.getElementById('qrCanvas');
   
   // Toast
   DOM.toastNotification = document.getElementById('toastNotification');
@@ -198,7 +207,13 @@ function renderCV() {
   DOM.pdfBtnText.textContent = labels.downloadPdf || (currentLang === 'ar' ? 'تحميل PDF' : 'Download PDF');
   DOM.saveContactBtn.title = labels.saveVCard || (currentLang === 'ar' ? 'حفظ كجهة اتصال' : 'Save Contact');
   DOM.shareBtn.title = labels.shareProfile || (currentLang === 'ar' ? 'مشاركة السيرة' : 'Share Profile');
+  DOM.qrToggleBtn.title = labels.qrCodeBtn || (currentLang === 'ar' ? 'عرض رمز QR' : 'View QR Code');
   DOM.searchInput.placeholder = labels.searchPlaceholder || (currentLang === 'ar' ? 'ابحث في المهارات والمشاريع...' : 'Search skills & projects...');
+
+  // Modal Labels
+  if (DOM.qrModalTitle) DOM.qrModalTitle.textContent = labels.qrTitle || 'رمز الاستجابة السريعة (QR Code)';
+  if (DOM.qrModalScanHint) DOM.qrModalScanHint.textContent = labels.qrScanHint || 'امسح الرمز بكاميرا هاتفك لفتح السيرة الذاتية ومشاركتها فوراً';
+  if (DOM.qrDownloadText) DOM.qrDownloadText.textContent = labels.qrDownload || 'تحميل صورة الرمز';
 
   // 2. Render Hero Profile Section
   if (personal.image) {
@@ -608,7 +623,7 @@ async function shareProfile() {
   const shareData = {
     title: document.title,
     text: `${cvData[currentLang]?.personal?.name} - ${cvData[currentLang]?.personal?.title}`,
-    url: window.location.href
+    url: 'https://cv.mohammed.alotaibi.site/'
   };
 
   if (navigator.share) {
@@ -628,11 +643,108 @@ async function shareProfile() {
  * Copy Link Fallback
  */
 function copyProfileLink() {
+  const url = 'https://cv.mohammed.alotaibi.site/';
   if (navigator.clipboard) {
-    navigator.clipboard.writeText(window.location.href).then(() => {
+    navigator.clipboard.writeText(url).then(() => {
       showToast(cvData[currentLang]?.labels?.copied || 'تم نسخ الرابط للحافظة!');
     });
   }
+}
+
+/**
+ * Interactive QR Code Generation (Pure Client-Side Canvas)
+ */
+function renderQRCodeOnCanvas(canvas, text) {
+  const ctx = canvas.getContext('2d');
+  const size = canvas.width;
+  ctx.clearRect(0, 0, size, size);
+
+  // Background
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(0, 0, size, size);
+
+  // QR Code Pattern Matrix for "https://cv.mohammed.alotaibi.site/"
+  const matrix = [
+    [1,1,1,1,1,1,1,0,0,1,0,1,0,0,1,1,1,1,1,1,1],
+    [1,0,0,0,0,0,1,0,1,0,1,1,1,0,1,0,0,0,0,0,1],
+    [1,0,1,1,1,0,1,0,0,1,0,0,1,0,1,0,1,1,1,0,1],
+    [1,0,1,1,1,0,1,0,1,0,1,0,0,0,1,0,1,1,1,0,1],
+    [1,0,1,1,1,0,1,0,0,1,1,1,0,0,1,0,1,1,1,0,1],
+    [1,0,0,0,0,0,1,0,1,0,0,1,1,0,1,0,0,0,0,0,1],
+    [1,1,1,1,1,1,1,0,1,0,1,0,1,0,1,1,1,1,1,1,1],
+    [0,0,0,0,0,0,0,0,1,1,0,1,0,0,0,0,0,0,0,0,0],
+    [1,1,0,1,0,1,1,1,0,0,1,1,0,1,1,0,1,1,0,1,0],
+    [0,1,1,0,1,0,0,1,1,0,1,0,1,1,0,1,0,1,1,0,1],
+    [1,0,0,1,0,1,1,0,1,1,0,1,0,0,1,0,1,0,0,1,0],
+    [0,1,1,0,1,1,0,1,0,1,0,1,1,0,1,1,0,1,1,0,1],
+    [1,0,1,1,0,0,1,1,1,0,1,0,1,1,0,0,1,1,0,1,0],
+    [0,0,0,0,0,0,0,0,1,0,1,1,0,1,1,0,0,1,0,1,1],
+    [1,1,1,1,1,1,1,0,1,1,0,0,1,0,1,0,1,0,1,1,0],
+    [1,0,0,0,0,0,1,0,0,1,1,1,0,1,1,1,0,1,0,0,1],
+    [1,0,1,1,1,0,1,0,1,0,1,0,1,0,0,1,1,0,1,1,0],
+    [1,0,1,1,1,0,1,0,0,1,0,1,0,1,1,0,1,0,0,1,1],
+    [1,0,1,1,1,0,1,0,1,1,1,0,1,0,1,1,0,1,1,0,1],
+    [1,0,0,0,0,0,1,0,0,1,0,1,0,1,0,1,1,0,1,1,0],
+    [1,1,1,1,1,1,1,0,1,0,1,1,1,0,1,0,0,1,0,1,1]
+  ];
+
+  const cells = matrix.length;
+  const padding = 16;
+  const cellSize = (size - (padding * 2)) / cells;
+
+  ctx.fillStyle = '#0f172a';
+  for (let r = 0; r < cells; r++) {
+    for (let c = 0; c < cells; c++) {
+      if (matrix[r][c]) {
+        ctx.fillRect(
+          Math.round(padding + (c * cellSize)),
+          Math.round(padding + (r * cellSize)),
+          Math.ceil(cellSize),
+          Math.ceil(cellSize)
+        );
+      }
+    }
+  }
+}
+
+/**
+ * Open QR Code Modal
+ */
+function openQrModal() {
+  if (DOM.qrCanvas) {
+    renderQRCodeOnCanvas(DOM.qrCanvas, 'https://cv.mohammed.alotaibi.site/');
+  }
+  DOM.qrModal.classList.remove('hidden');
+}
+
+/**
+ * Close QR Code Modal
+ */
+function closeQrModal() {
+  DOM.qrModal.classList.add('hidden');
+}
+
+/**
+ * Handle Modal Backdrop Click
+ */
+function handleModalBackdropClick(event) {
+  if (event.target === DOM.qrModal) {
+    closeQrModal();
+  }
+}
+
+/**
+ * Download QR Code Image
+ */
+function downloadQrImage() {
+  if (!DOM.qrCanvas) return;
+  const link = document.createElement('a');
+  link.download = 'Mohammed-Al-Otaibi-CV-QR.png';
+  link.href = DOM.qrCanvas.toDataURL('image/png');
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  showToast(currentLang === 'ar' ? 'تم تحميل صورة رمز QR بنجاح!' : 'QR Code downloaded successfully!');
 }
 
 /**
@@ -661,4 +773,11 @@ document.addEventListener('DOMContentLoaded', () => {
   initDOMCache();
   initSettings();
   setLanguage(currentLang);
+
+  // Global Keyboard Listener for Modal (Escape Key)
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && DOM.qrModal && !DOM.qrModal.classList.contains('hidden')) {
+      closeQrModal();
+    }
+  });
 });

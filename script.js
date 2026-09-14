@@ -211,7 +211,8 @@ function renderCV() {
   }
 
   DOM.pdfBtnText.textContent = labels.downloadPdf || (currentLang === 'ar' ? 'تحميل PDF' : 'Download PDF');
-  DOM.printBtn.title = labels.printCv || (currentLang === 'ar' ? 'طباعة السيرة' : 'Print CV');
+  DOM.printBtn.title = labels.downloadPdf || (currentLang === 'ar' ? 'تحميل PDF' : 'Download PDF');
+  DOM.printBtn.setAttribute('aria-label', labels.downloadPdf || (currentLang === 'ar' ? 'تحميل PDF' : 'Download PDF'));
   
   DOM.saveContactBtn.title = labels.saveVCard || (currentLang === 'ar' ? 'حفظ كجهة اتصال' : 'Save Contact');
   DOM.saveContactBtn.setAttribute('aria-label', labels.saveVCard || 'Save Contact');
@@ -288,7 +289,7 @@ function renderCV() {
       const card = document.createElement('div');
       card.className = 'metric-card';
       card.innerHTML = `
-        <div class="metric-value">${metric.value}</div>
+        <div class="metric-value" dir="ltr">${metric.value}</div>
         <div class="metric-label">${metric.label}</div>
       `;
       DOM.metricsContainer.appendChild(card);

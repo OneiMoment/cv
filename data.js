@@ -53,12 +53,12 @@ const cvData = {
       image: "images/profile.JPG"
     },
     metrics: [
-      { value: "+15", label: "عاماً من الخبرة القيادية والتقنية" },
+      { value: "19+", label: "عاماً من الخبرة القيادية والتقنية" },
       { value: "100%", label: "أتمتة وربط المنظومات والخدمات الحكومية" },
       { value: "+20", label: "مشروعاً وبنية تحتية منجزة بنجاح" },
       { value: "+4", label: "شهادات ودورات تخصصية معتمدة" }
     ],
-    summary: "متخصص متمرس في إدارة مشاريع تقنية المعلومات والبنية التحتية والخدمات الحكومية بخبرة تمتد لأكثر من 15 عاماً. أمتلك سجلاً حافلاً في قيادة فرق العمل التقنية، تأسيس مراكز البيانات والشبكات، أتمتة الإجراءات والربط مع المنصات والأنظمة الحكومية (ERP, أبشر، قوى، التأمينات)، وتطوير حلول تقنية ذكية ترفع الكفاءة التشغيلية وتقلل التكاليف.",
+    summary: "متخصص متمرس في إدارة مشاريع تقنية المعلومات والبنية التحتية والخدمات الحكومية بخبرة تمتد لأكثر من 19 عاماً. أمتلك سجلاً حافلاً في قيادة فرق العمل التقنية، تأسيس مراكز البيانات والشبكات، أتمتة الإجراءات والربط مع المنصات والأنظمة الحكومية (ERP, أبشر، قوى، التأمينات)، وتطوير حلول تقنية ذكية ترفع الكفاءة التشغيلية وتقلل التكاليف.",
     skills: [
       { 
         id: "os-servers",
@@ -158,7 +158,7 @@ const cvData = {
       { 
         title: "IELTS Academic Overall Band Score 5.0", 
         issuer: "Department Of Language Studies - Unitec Institute of Technology",
-        date: "2015",
+        date: "2014",
         location: "نيوزيلندا - أوكلاند"
       }
     ],
@@ -170,15 +170,9 @@ const cvData = {
         details: "برنامج وطني شامل ومكثف في التقنية والتطبيقات والمهارات العملية."
       },
       { 
-        degree: "دبلوم علوم الحاسب - تخصص تقنية الشبكات", 
-        institution: "معهد بدرة للتدريب - جدة", 
-        year: "2009 - 2011",
-        details: "تدريب أكاديمي وعملي متخصص في تصميم وإدارة شبكات الحاسب الآلي (سنتان)."
-      },
-      { 
         degree: "دبلوم تقنية المعلومات - تخصص الشبكات", 
         institution: "معهد العالمية للحاسب والتقنية", 
-        year: "2007 - 2009",
+        year: "2008 - 2010",
         details: "الدرجة: 82 من 100 بتقدير جيد جداً."
       }
     ],
@@ -272,12 +266,12 @@ const cvData = {
       image: "images/profile.JPG"
     },
     metrics: [
-      { value: "+15", label: "Years of Technical & Leadership Experience" },
+      { value: "19+", label: "Years of Technical & Leadership Experience" },
       { value: "100%", label: "Government Platforms & Systems Integration" },
       { value: "+20", label: "Infrastructure & IT Projects Delivered" },
       { value: "+4", label: "Professional Certifications & Diplomas" }
     ],
-    summary: "Accomplished IT and Project Management professional with over 15 years of leadership experience directing complex IT infrastructure, government platforms integration, and enterprise operations. Proven track record in establishing resilient network topologies, enterprise ERP and VOIP systems, robust cybersecurity protocols, and optimizing cross-departmental operations.",
+    summary: "Accomplished IT and Project Management professional with over 19 years of leadership experience directing complex IT infrastructure, government platforms integration, and enterprise operations. Proven track record in establishing resilient network topologies, enterprise ERP and VOIP systems, robust cybersecurity protocols, and optimizing cross-departmental operations.",
     skills: [
       { 
         id: "os-servers",
@@ -377,7 +371,7 @@ const cvData = {
       { 
         title: "IELTS Academic Overall Band Score 5.0", 
         issuer: "Department Of Language Studies - Unitec Institute of Technology",
-        date: "2015",
+        date: "2014",
         location: "Auckland, New Zealand"
       }
     ],
@@ -389,15 +383,9 @@ const cvData = {
         details: "Nationwide comprehensive program in technical implementations and practical skills."
       },
       { 
-        degree: "Diploma in Computer Science - Network Technology", 
-        institution: "Badrah Training Institute, Jeddah", 
-        year: "2009 - 2011",
-        details: "Two-year specialized vocational program in network infrastructure and system management."
-      },
-      { 
         degree: "Diploma in Information Technology - Networking Specialization", 
         institution: "Al-Alamiah Institute for Computers & Technology", 
-        year: "2007 - 2009",
+        year: "2008 - 2010",
         details: "Grade: 82/100 (Very Good Honors)."
       }
     ],

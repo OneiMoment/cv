@@ -237,6 +237,22 @@ a:hover {
   height: 40px;
   padding: 0;
   border-radius: var(--radius-md);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.btn-icon i,
+#printBtn i {
+  font-size: 1rem;
+  line-height: 1;
+  display: inline-block;
+}
+
+#printBtn {
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
 }
 
 .btn-tab {
@@ -1252,6 +1268,26 @@ div.contact-chip:hover {
 
   .nav-container {
     padding: 10px 14px;
+    gap: 8px;
+  }
+
+  .nav-actions {
+    gap: 6px;
+  }
+
+  #printBtn {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    gap: 0;
+    border-radius: var(--radius-md);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #printBtn #pdfBtnText {
+    display: none;
   }
 
   .hero-name {
@@ -1274,14 +1310,25 @@ div.contact-chip:hover {
     display: none;
   }
 
+  .nav-actions {
+    gap: 5px;
+  }
+
   .btn {
     padding: 6px 10px;
     font-size: 0.82rem;
   }
 
-  .btn-icon {
+  .btn-icon,
+  #printBtn {
     width: 36px;
     height: 36px;
+    font-size: 0.9rem;
+  }
+
+  .btn-icon i,
+  #printBtn i {
+    font-size: 0.95rem;
   }
 
   .avatar-ring {
@@ -1306,6 +1353,33 @@ div.contact-chip:hover {
 
   .metrics-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 380px) {
+  .nav-container {
+    padding: 8px 8px;
+    gap: 4px;
+  }
+
+  .nav-actions {
+    gap: 4px;
+  }
+
+  .btn-icon,
+  #printBtn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .btn-icon i,
+  #printBtn i {
+    font-size: 0.85rem;
+  }
+
+  .lang-switch-group .btn-tab {
+    padding: 3px 6px;
+    font-size: 0.72rem;
   }
 }
 

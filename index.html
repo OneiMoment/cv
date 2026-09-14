@@ -45,7 +45,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=2.6" />
+  <link rel="stylesheet" href="styles.css?v=2.8" />
   
   <!-- Structured Data: Schema.org JSON-LD -->
   <script type="application/ld+json">
@@ -121,7 +121,7 @@
         </button>
 
         <!-- Print / PDF Action -->
-        <button id="printBtn" class="btn btn-primary" onclick="printOrDownloadPDF()" title="تحميل أو طباعة">
+        <button id="printBtn" class="btn btn-primary" onclick="printOrDownloadPDF()" title="تحميل PDF" aria-label="تحميل PDF">
           <i class="fa-solid fa-file-arrow-down"></i>
           <span id="pdfBtnText">تحميل PDF</span>
         </button>
@@ -323,14 +323,14 @@
   </button>
 
   <!-- Application Logic & Data -->
-  <script src="data.js?v=2.6"></script>
-  <script src="script.js?v=2.6"></script>
+  <script src="data.js?v=2.8"></script>
+  <script src="script.js?v=2.8"></script>
 
   <!-- Service Worker Registration for Offline PWA -->
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=2.6').catch(err => {
+        navigator.serviceWorker.register('sw.js?v=2.8').catch(err => {
           console.debug('ServiceWorker registration notice:', err);
         });
       });

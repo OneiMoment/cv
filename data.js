@@ -64,7 +64,7 @@ const cvData = {
         id: "os-servers",
         label: "أنظمة التشغيل والخوادم", 
         items: [
-          { name: "Linux (Ubuntu/Debian/RHEL)", level: 90 },
+          { name: "Linux (Ubuntu/Debian/RHEL)", level: 95 },
           { name: "Windows Server & Active Directory", level: 95 },
           { name: "macOS Ecosystem", level: 95 }
         ] 
@@ -73,10 +73,10 @@ const cvData = {
         id: "networking",
         label: "الشبكات والبنية التحتية والأمان", 
         items: [
-          { name: "Wireless Networks & Ubiquiti", level: 92 },
-          { name: "Fiber Optic & Ethernet Cabling", level: 90 },
+          { name: "Wireless Networks", level: 100 },
+          { name: "Fiber Optic & Ethernet Cabling", level: 95 },
           { name: "Site-to-Site VPN & Remote Access", level: 88 },
-          { name: "Firewalls & Network Security", level: 90 }
+          { name: "Firewalls & Network Security", level: 100 }
         ] 
       },
       { 
@@ -126,7 +126,7 @@ const cvData = {
       },
       {
         title: "إدارة وتنفيذ مشاريع البنية التحتية وإنارة الطرق مع البلديات",
-        role: "مدير تنفيذي للمشاريع والعقود",
+        role: "مدير تنفيذي للمقاولات والمشاريع",
         period: "2003 — 2016",
         description: "قيادة وتنسيق مشاريع إنارة الطرق الكبرى مع وزارة الشؤون البلدية والقروية والأمانات، من فتح المظاريف حتى التسليم النهائي والمستخلصات.",
         tags: ["Project Management", "Contracts", "Municipalities", "Budgeting", "Public Tenders"],
@@ -195,7 +195,7 @@ const cvData = {
       },
       { 
         company: "جهة قطاع مقاولات كبرى (مشاريع وزارة الشؤون البلدية والقروية)", 
-        role: "مدير تنفيذي للعقد والمشاريع", 
+        role: "مدير تنفيذي للمقاولات والمشاريع", 
         period: "2003 — 2016",
         details: "إدارة العقود الحكومية، المناقصات، وتخطيط وتنفيذ المشاريع الكبرى بالتنسيق مع الأمانات والبلديات.",
         achievements: [
@@ -277,7 +277,7 @@ const cvData = {
         id: "os-servers",
         label: "Operating Systems & Servers", 
         items: [
-          { name: "Linux (Ubuntu/Debian/RHEL)", level: 90 },
+          { name: "Linux (Ubuntu/Debian/RHEL)", level: 95 },
           { name: "Windows Server & Active Directory", level: 95 },
           { name: "macOS Ecosystem", level: 95 }
         ] 
@@ -286,10 +286,10 @@ const cvData = {
         id: "networking",
         label: "Networking, Infrastructure & Security", 
         items: [
-          { name: "Wireless Networks & Ubiquiti", level: 92 },
-          { name: "Fiber Optic & Structured Ethernet", level: 90 },
+          { name: "Wireless Networks", level: 100 },
+          { name: "Fiber Optic & Structured Ethernet", level: 95 },
           { name: "Site-to-Site VPN & Remote Access", level: 88 },
-          { name: "Enterprise Firewalls & Cybersecurity", level: 90 }
+          { name: "Enterprise Firewalls & Cybersecurity", level: 100 }
         ] 
       },
       { 
@@ -339,7 +339,7 @@ const cvData = {
       },
       {
         title: "Municipal Road Infrastructure & Lighting Engineering Projects",
-        role: "Executive Manager of Contracts & Projects",
+        role: "Executive Manager of Contracting & Projects",
         period: "2003 — 2016",
         description: "Directed government contracting tenders and large-scale residential infrastructure lighting projects in collaboration with Saudi municipalities and secretariats.",
         tags: ["Project Management", "Contracts", "Municipalities", "Budgeting", "Public Tenders"],
@@ -408,7 +408,7 @@ const cvData = {
       },
       { 
         company: "Major Contracting & Engineering Entity (Ministry of Municipal & Rural Affairs Projects)", 
-        role: "Executive Manager of Contracts & Projects", 
+        role: "Executive Manager of Contracting & Projects", 
         period: "2003 — 2016",
         details: "Managed municipal contracting tenders, large-scale infrastructure projects, and administrative coordination with Saudi municipalities.",
         achievements: [

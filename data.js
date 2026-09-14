@@ -105,12 +105,12 @@ const cvData = {
       {
         title: "تأسيس البنية التحتية والربط الشبكي المتكامل للقطاع الصناعي",
         role: "مدير وقائد المشروع التقني",
-        period: "2016 — 2021",
-        description: "تصميم وتنفيذ شبكة متكاملة من الألياف الضوئية (Fiber) والشبكات اللاسلكية تغطي المقرات والمستودعات مع ربط VPN فوري وأنظمة أمان متقدمة.",
-        tags: ["Fiber Optic", "Firewalls", "Site-to-Site VPN", "Active Directory", "VoIP PBX"],
+        period: "2016 — 2022",
+        description: "تصميم وتنفيذ بنية تحتية تقنية متكاملة تشمل الخوادم (Servers)، وحدات التخزين المركزية (NAS & SAN)، وشبكات الألياف الضوئية واللاسلكية لربط المقرات والمستودعات مع VPN فوري وأنظمة أمان متقدمة.",
+        tags: ["Servers", "NAS", "SAN", "Fiber Optic", "Firewalls", "Site-to-Site VPN", "Active Directory", "VoIP PBX"],
         highlights: [
           "ربط أكثر من 4 مواقع ومستودعات جغرافية بشبكة مركزية آمنة.",
-          "تشغيل نظام سنترال IP PBX موحد خفض تكاليف الاتصالات بأكثر من 40%."
+          "تشغيل نظام سنترال IP PBX موحد خفض تكاليف الاتصالات بأكثر من 60%."
         ]
       },
       {
@@ -318,12 +318,12 @@ const cvData = {
       {
         title: "Industrial Sector Multi-Site Network Infrastructure Deployment",
         role: "IT Lead & Infrastructure Director",
-        period: "2016 — 2021",
-        description: "Engineered and deployed an end-to-end fiber optic and wireless networking architecture connecting corporate headquarters, production facilities, and remote warehouses.",
-        tags: ["Fiber Optic", "Firewalls", "Site-to-Site VPN", "Active Directory", "VoIP PBX"],
+        period: "2016 — 2022",
+        description: "Engineered and deployed an end-to-end IT infrastructure encompassing Enterprise Servers, central storage architectures (NAS & SAN), fiber optic and wireless networking connecting headquarters and warehouses.",
+        tags: ["Servers", "NAS", "SAN", "Fiber Optic", "Firewalls", "Site-to-Site VPN", "Active Directory", "VoIP PBX"],
         highlights: [
           "Interconnected 4+ geographically dispersed sites via resilient IPsec VPN tunnels.",
-          "Deployed unified IP PBX VoIP telephony slashing telecommunication overhead by 40%."
+          "Deployed unified IP PBX VoIP telephony slashing telecommunication overhead by over 60%."
         ]
       },
       {

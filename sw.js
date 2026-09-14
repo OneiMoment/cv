@@ -3,7 +3,7 @@
  * Provides full offline cache-first & network-fallback capability with instant cache updating
  */
 
-const CACHE_NAME = 'cv-cache-v6';
+const CACHE_NAME = 'cv-cache-v7';
 const STATIC_ASSETS = [
   './',
   './index.html',

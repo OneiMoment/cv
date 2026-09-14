@@ -45,7 +45,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=2.8" />
+  <link rel="stylesheet" href="styles.css?v=2.9" />
   
   <!-- Structured Data: Schema.org JSON-LD -->
   <script type="application/ld+json">
@@ -323,14 +323,14 @@
   </button>
 
   <!-- Application Logic & Data -->
-  <script src="data.js?v=2.8"></script>
-  <script src="script.js?v=2.8"></script>
+  <script src="data.js?v=2.9"></script>
+  <script src="script.js?v=2.9"></script>
 
   <!-- Service Worker Registration for Offline PWA -->
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=2.8').catch(err => {
+        navigator.serviceWorker.register('sw.js?v=2.9').catch(err => {
           console.debug('ServiceWorker registration notice:', err);
         });
       });

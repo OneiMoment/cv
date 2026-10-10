@@ -17,14 +17,19 @@
   <meta property="og:title" content="محمد عبدالله العتيبي | سيرة ذاتية تفاعلية" />
   <meta property="og:description" content="مدير مشاريع وتقنية معلومات وخبير البنية التحتية والخدمات الحكومية - جدة، المملكة العربية السعودية." />
   <meta property="og:url" content="https://cv.mohammed.alotaibi.site/" />
-  <meta property="og:image" content="images/profile.JPG" />
+  <meta property="og:image" content="https://cv.mohammed.alotaibi.site/images/profile.JPG" />
+  <meta property="og:image:width" content="800" />
+  <meta property="og:image:height" content="800" />
+  <meta property="og:image:alt" content="محمد عبدالله العتيبي" />
   <meta property="og:site_name" content="Mohammed Al Otaibi CV" />
+  <meta property="og:locale" content="ar_SA" />
+  <meta property="og:locale:alternate" content="en_US" />
   
   <!-- Twitter Cards -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="محمد عبدالله العتيبي | سيرة ذاتية تفاعلية" />
   <meta name="twitter:description" content="مدير مشاريع وتقنية معلومات وخبير البنية التحتية والخدمات الحكومية." />
-  <meta name="twitter:image" content="images/profile.JPG" />
+  <meta name="twitter:image" content="https://cv.mohammed.alotaibi.site/images/profile.JPG" />
   
   <!-- Favicons and Web App Manifest -->
   <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
@@ -45,7 +50,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=3.1" />
+  <link rel="stylesheet" href="styles.css?v=3.2" />
   
   <!-- Structured Data: Schema.org JSON-LD -->
   <script type="application/ld+json">
@@ -55,6 +60,7 @@
     "name": "محمد عبدالله العتيبي",
     "alternateName": "Mohammed Abdullah Al Otaibi",
     "jobTitle": "مدير مشاريع وتقنية معلومات والخدمات الحكومية",
+    "description": "مدير مشاريع وتقنية معلومات ومتخصص بالبنية التحتية والشبكات والخدمات الحكومية بخبرة تتجاوز 19 عاماً.",
     "telephone": "+966583809000",
     "email": "mailto:mohammed@alotaibi.site",
     "url": "https://cv.mohammed.alotaibi.site",
@@ -64,6 +70,15 @@
       "addressLocality": "Jeddah",
       "addressCountry": "Saudi Arabia"
     },
+    "knowsAbout": [
+      "IT Project Management",
+      "Network Infrastructure",
+      "Cisco CCNA",
+      "Government Portals Integration",
+      "Linux & Windows Server",
+      "Enterprise Systems & Storage NAS SAN",
+      "Cybersecurity & Firewalls"
+    ],
     "sameAs": [
       "https://github.com/OneiMoment",
       "https://www.linkedin.com/in/OneiMoment"
@@ -154,7 +169,7 @@
     <section class="profile-hero-card" id="heroCard">
       <div class="profile-avatar-area">
         <div class="avatar-ring">
-          <img id="profileImage" src="images/profile.JPG" alt="صورة الملف الشخصي" class="avatar-img" width="140" height="140" fetchpriority="high" loading="eager" />
+          <img id="profileImage" src="images/profile.JPG" alt="صورة الملف الشخصي" class="avatar-img" width="140" height="140" fetchpriority="high" loading="eager" decoding="async" />
         </div>
       </div>
       
@@ -323,14 +338,14 @@
   </button>
 
   <!-- Application Logic & Data -->
-  <script src="data.js?v=3.1"></script>
-  <script src="script.js?v=3.1"></script>
+  <script src="data.js?v=3.2"></script>
+  <script src="script.js?v=3.2"></script>
 
   <!-- Service Worker Registration for Offline PWA -->
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=3.1').catch(err => {
+        navigator.serviceWorker.register('sw.js?v=3.2').catch(err => {
           console.debug('ServiceWorker registration notice:', err);
         });
       });

@@ -3,7 +3,7 @@
  * Provides full offline cache-first & network-fallback capability with instant cache updating
  */
 
-const CACHE_NAME = 'cv-cache-v9';
+const CACHE_NAME = 'cv-cache-v10';
 const STATIC_ASSETS = [
   './',
   './index.html',
@@ -17,6 +17,8 @@ const STATIC_ASSETS = [
   './images/favicon-32x32.png',
   './images/favicon-16x16.png',
   './images/apple-touch-icon.png',
+  './images/android-chrome-192x192.png',
+  './images/android-chrome-512x512.png',
   './images/site.webmanifest',
   './certificates/Diploma1.pdf',
   './certificates/Diploma2.pdf',

@@ -611,6 +611,20 @@ function clearSearch() {
 }
 
 /**
+ * Normalize text for intelligent bilingual and Arabic searching
+ */
+function normalizeSearchText(text) {
+  if (!text) return '';
+  return text
+    .normalize('NFD')
+    .replace(/[\u064B-\u065F\u0670]/g, '') // remove tashkeel/diacritics
+    .replace(/[أإآٱ]/g, 'ا')
+    .replace(/ة/g, 'ه')
+    .replace(/ى/g, 'ي')
+    .toLowerCase();
+}
+
+/**
  * Filter Content and Highlight Matches
  */
 function filterContent(query) {
@@ -622,17 +636,18 @@ function filterContent(query) {
     searchableCards.forEach(card => {
       card.style.display = '';
       card.style.opacity = '1';
+      card.style.borderColor = '';
     });
     DOM.searchResultsCount.classList.add('hidden');
     return;
   }
 
-  const lowerQuery = query.toLowerCase();
+  const normalizedQuery = normalizeSearchText(query);
   let matchCount = 0;
 
   searchableCards.forEach(card => {
-    const text = card.textContent.toLowerCase();
-    const isMatch = text.includes(lowerQuery);
+    const text = normalizeSearchText(card.textContent);
+    const isMatch = text.includes(normalizedQuery);
     
     if (isMatch) {
       card.style.display = '';
@@ -641,6 +656,7 @@ function filterContent(query) {
       matchCount++;
     } else {
       card.style.display = 'none';
+      card.style.borderColor = '';
     }
   });
 
@@ -665,10 +681,12 @@ function saveContactVCard() {
     `TEL;TYPE=CELL,VOICE:${p.phone.replace(/\s+/g, '')}`,
     `EMAIL;TYPE=INTERNET,PREF:${p.email}`,
     `URL;CHARSET=UTF-8:https://cv.mohammed.alotaibi.site`,
+    p.linkedin ? `X-SOCIALPROFILE;type=linkedin:${p.linkedin}` : '',
+    p.github ? `X-SOCIALPROFILE;type=github:${p.github}` : '',
     `ADR;TYPE=WORK;CHARSET=UTF-8:;;${p.location};;;;`,
     `NOTE;CHARSET=UTF-8:${data.summary ? data.summary.slice(0, 150) : ''}...`,
     'END:VCARD'
-  ].join('\r\n');
+  ].filter(Boolean).join('\r\n');
 
   const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8;' });
   const url = URL.createObjectURL(blob);
@@ -751,8 +769,8 @@ function generateWebsiteQRCode() {
  * Open QR Code Modal
  */
 function openQrModal() {
-  generateWebsiteQRCode();
   DOM.qrModal.classList.remove('hidden');
+  generateWebsiteQRCode();
 }
 
 /**
@@ -779,22 +797,50 @@ function downloadQrImage() {
   const canvas = DOM.qrcodeContainer.querySelector('canvas');
   const img = DOM.qrcodeContainer.querySelector('img');
 
-  let dataUrl = '';
   if (canvas) {
-    dataUrl = canvas.toDataURL('image/png');
-  } else if (img) {
-    dataUrl = img.src;
+    try {
+      const dataUrl = canvas.toDataURL('image/png');
+      triggerQrDownload(dataUrl);
+      return;
+    } catch (e) {
+      console.debug('Canvas export notice:', e);
+    }
   }
 
-  if (dataUrl) {
-    const link = document.createElement('a');
-    link.download = 'Mohammed-Al-Otaibi-CV-QR.png';
-    link.href = dataUrl;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    showToast(cvData[currentLang]?.labels?.qrDownloaded || 'تم تحميل صورة رمز QR بنجاح!');
+  if (img && img.src) {
+    if (img.src.startsWith('data:')) {
+      triggerQrDownload(img.src);
+    } else {
+      const offCanvas = document.createElement('canvas');
+      offCanvas.width = 220;
+      offCanvas.height = 220;
+      const ctx = offCanvas.getContext('2d');
+      const tempImg = new Image();
+      tempImg.crossOrigin = 'anonymous';
+      tempImg.onload = () => {
+        ctx.drawImage(tempImg, 0, 0, 220, 220);
+        try {
+          triggerQrDownload(offCanvas.toDataURL('image/png'));
+        } catch (err) {
+          window.open(img.src, '_blank');
+        }
+      };
+      tempImg.onerror = () => {
+        window.open(img.src, '_blank');
+      };
+      tempImg.src = img.src;
+    }
   }
+}
+
+function triggerQrDownload(dataUrl) {
+  const link = document.createElement('a');
+  link.download = 'Mohammed-Al-Otaibi-CV-QR.png';
+  link.href = dataUrl;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  showToast(cvData[currentLang]?.labels?.qrDownloaded || 'تم تحميل صورة رمز QR بنجاح!');
 }
 
 /**

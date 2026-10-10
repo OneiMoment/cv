@@ -91,6 +91,7 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -100,9 +101,15 @@ body {
   line-height: 1.7;
   font-size: 16px;
   font-weight: 400;
+  overflow-x: hidden;
   transition: background-color var(--transition-normal), color var(--transition-normal);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
 }
 
 /* Dynamic Typography per language */
@@ -211,6 +218,21 @@ a:hover {
   cursor: pointer;
   transition: all var(--transition-fast);
   user-select: none;
+  touch-action: manipulation;
+}
+
+.btn:focus-visible,
+.btn-icon:focus-visible,
+.btn-tab:focus-visible,
+.filter-pill:focus-visible,
+.contact-chip:focus-visible,
+.cert-link:focus-visible,
+.timeline-title-link:focus-visible,
+.cert-title-link:focus-visible,
+.modal-close-btn:focus-visible,
+.back-to-top-btn:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
 }
 
 .btn:hover {
@@ -1487,13 +1509,30 @@ div.contact-chip:hover {
     gap: 14px !important;
   }
 
-  .profile-hero-card,
-  .cv-section {
+  .profile-hero-card {
     border: 1px solid #d1d5db !important;
     border-radius: 6px !important;
     padding: 12px !important;
     page-break-inside: avoid;
     break-inside: avoid;
+  }
+
+  .cv-section {
+    border: 1px solid #d1d5db !important;
+    border-radius: 6px !important;
+    padding: 12px !important;
+    page-break-inside: auto;
+    break-inside: auto;
+  }
+
+  .section-header {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  .cert-open-icon,
+  .cert-link {
+    display: none !important;
   }
 
   .avatar-ring {

@@ -392,14 +392,32 @@ function renderCV() {
       const card = document.createElement('article');
       card.className = 'timeline-card';
       
+      const titleContent = edu.url 
+        ? `<a href="${edu.url}" target="_blank" rel="noopener noreferrer" class="timeline-title-link" title="${labels.viewCert || 'عرض الشهادة'}">
+            <span>${edu.degree}</span>
+            <span class="cert-open-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+           </a>`
+        : `<span>${edu.degree}</span>`;
+
+      const linkButton = edu.url 
+        ? `<div style="margin-top: 10px;">
+            <a href="${edu.url}" target="_blank" rel="noopener noreferrer" class="cert-link">
+              <i class="fa-solid fa-file-pdf"></i>
+              <span>${labels.viewCert || 'عرض الشهادة'}</span>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+           </div>`
+        : '';
+
       card.innerHTML = `
         <div class="timeline-node"></div>
         <div class="timeline-header-row">
-          <h3 class="timeline-main-title">${edu.degree}</h3>
+          <h3 class="timeline-main-title">${titleContent}</h3>
           <span class="timeline-date-badge"><i class="fa-regular fa-calendar"></i> ${edu.year}</span>
         </div>
         <div class="timeline-org">${edu.institution}</div>
         ${edu.details ? `<p class="timeline-description">${edu.details}</p>` : ''}
+        ${linkButton}
       `;
       DOM.educationTimeline.appendChild(card);
     });
@@ -415,22 +433,33 @@ function renderCV() {
       const card = document.createElement('div');
       card.className = 'cert-card';
       
+      const titleContent = cert.url 
+        ? `<a href="${cert.url}" target="_blank" rel="noopener noreferrer" class="cert-title-link" title="${labels.viewCert || 'عرض الشهادة'}">
+            <span>${cert.title}</span>
+            <span class="cert-open-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+           </a>`
+        : `<span>${cert.title}</span>`;
+
+      const linkButton = cert.url 
+        ? `<div style="margin-top: 10px;">
+            <a href="${cert.url}" target="_blank" rel="noopener noreferrer" class="cert-link">
+              <i class="fa-solid fa-file-pdf"></i>
+              <span>${labels.viewCert || 'عرض الشهادة'}</span>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+           </div>`
+        : '';
+
       card.innerHTML = `
         <div>
-          <h3 class="cert-title">${cert.title}</h3>
+          <h3 class="cert-title">${titleContent}</h3>
           <div class="cert-issuer">${cert.issuer}</div>
         </div>
         <div class="cert-meta-row">
           <span><i class="fa-solid fa-location-dot"></i> ${cert.location || ''}</span>
           <span><i class="fa-regular fa-calendar-check"></i> ${cert.date}</span>
         </div>
-        ${cert.url ? `
-          <div style="margin-top: 8px;">
-            <a href="${cert.url}" target="_blank" rel="noopener noreferrer" class="cert-link">
-              ${labels.viewCert || 'View Credential'} <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
-          </div>
-        ` : ''}
+        ${linkButton}
       `;
       DOM.certificationsGrid.appendChild(card);
     });

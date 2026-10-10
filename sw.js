@@ -3,7 +3,7 @@
  * Provides full offline cache-first & network-fallback capability with instant cache updating
  */
 
-const CACHE_NAME = 'cv-cache-v8';
+const CACHE_NAME = 'cv-cache-v9';
 const STATIC_ASSETS = [
   './',
   './index.html',
@@ -17,7 +17,13 @@ const STATIC_ASSETS = [
   './images/favicon-32x32.png',
   './images/favicon-16x16.png',
   './images/apple-touch-icon.png',
-  './images/site.webmanifest'
+  './images/site.webmanifest',
+  './certificates/Diploma1.pdf',
+  './certificates/Diploma2.pdf',
+  './certificates/IELTS%202014.pdf',
+  './certificates/LAN%20Switching%20and%20Wireless.pdf',
+  './certificates/Network%20Fundamentals.pdf',
+  './certificates/Routing%20Protocols%20and%20Concepts.pdf'
 ];
 
 // Install Event - Pre-cache core assets and force immediate activation

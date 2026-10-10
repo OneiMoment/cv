@@ -48,6 +48,8 @@ function initDOMCache() {
   DOM.heroPhone = document.getElementById('heroPhone');
   DOM.chipEmail = document.getElementById('chipEmail');
   DOM.chipPhone = document.getElementById('chipPhone');
+  DOM.chipMarital = document.getElementById('chipMarital');
+  DOM.heroMarital = document.getElementById('heroMarital');
   DOM.chipLinkedin = document.getElementById('chipLinkedin');
   DOM.chipGithub = document.getElementById('chipGithub');
   DOM.metricsContainer = document.getElementById('metricsContainer');
@@ -266,6 +268,16 @@ function renderCV() {
   DOM.chipPhone.href = `tel:${personal.phone.replace(/\s+/g, '')}`;
   DOM.chipPhone.title = labels.phoneTooltip || (currentLang === 'ar' ? 'انقر للاتصال' : 'Click to call');
   
+  if (personal.maritalStatus) {
+    if (DOM.heroMarital) DOM.heroMarital.textContent = personal.maritalStatus;
+    if (DOM.chipMarital) {
+      DOM.chipMarital.title = labels.maritalStatus ? `${labels.maritalStatus}: ${personal.maritalStatus}` : personal.maritalStatus;
+      DOM.chipMarital.style.display = 'inline-flex';
+    }
+  } else if (DOM.chipMarital) {
+    DOM.chipMarital.style.display = 'none';
+  }
+
   if (personal.linkedin) {
     DOM.chipLinkedin.href = personal.linkedin;
     DOM.chipLinkedin.title = labels.linkedinTooltip || 'LinkedIn';
@@ -684,7 +696,7 @@ function saveContactVCard() {
     p.linkedin ? `X-SOCIALPROFILE;type=linkedin:${p.linkedin}` : '',
     p.github ? `X-SOCIALPROFILE;type=github:${p.github}` : '',
     `ADR;TYPE=WORK;CHARSET=UTF-8:;;${p.location};;;;`,
-    `NOTE;CHARSET=UTF-8:${data.summary ? data.summary.slice(0, 150) : ''}...`,
+    `NOTE;CHARSET=UTF-8:${p.maritalStatus ? p.maritalStatus + ' | ' : ''}${data.summary ? data.summary.slice(0, 150) : ''}...`,
     'END:VCARD'
   ].filter(Boolean).join('\r\n');
 

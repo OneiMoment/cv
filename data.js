@@ -39,12 +39,14 @@ const cvData = {
       phoneTooltip: "انقر للاتصال المباشر",
       linkedinTooltip: "زيارة الملف المهني على LinkedIn",
       githubTooltip: "زيارة المستودع والمشاريع على GitHub",
+      maritalStatus: "الحالة الاجتماعية",
       present: "حتى الآن"
     },
     personal: {
       name: "محمد عبدالله العتيبي",
       title: "مدير مشاريع وتقنية معلومات والخدمات الحكومية",
       location: "جدة، المملكة العربية السعودية",
+      maritalStatus: "متزوج وأعيل أربعة من أفراد أسرتي",
       email: "mohammed@alotaibi.site",
       phone: "+966583809000",
       github: "https://github.com/OneiMoment",
@@ -258,12 +260,14 @@ const cvData = {
       phoneTooltip: "Click to call directly",
       linkedinTooltip: "Visit LinkedIn profile",
       githubTooltip: "Visit GitHub repository & code",
+      maritalStatus: "Marital Status",
       present: "Present"
     },
     personal: {
       name: "Mohammed Abdullah Al Otaibi",
       title: "IT Manager, Project Director & Government Services Specialist",
       location: "Jeddah, Saudi Arabia",
+      maritalStatus: "Married (Supporting a family of 4)",
       email: "mohammed@alotaibi.site",
       phone: "+966583809000",
       github: "https://github.com/OneiMoment",

@@ -50,7 +50,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=3.2" />
+  <link rel="stylesheet" href="styles.css?v=3.3" />
   
   <!-- Structured Data: Schema.org JSON-LD -->
   <script type="application/ld+json">
@@ -102,10 +102,10 @@
         <!-- Language Switcher -->
         <div class="lang-switch-group" role="group" aria-label="Language selection">
           <button id="btnAr" class="btn btn-tab active" onclick="setLanguage('ar')" aria-pressed="true">
-            🇸🇦 العربية
+            <span class="lang-flag">🇸🇦</span> <span class="lang-text-desktop">العربية</span><span class="lang-text-mobile">عربي</span>
           </button>
           <button id="btnEn" class="btn btn-tab" onclick="setLanguage('en')" aria-pressed="false">
-            🇬🇧 English
+            <span class="lang-flag">🇬🇧</span> <span class="lang-text-desktop">English</span><span class="lang-text-mobile">EN</span>
           </button>
         </div>
 
@@ -183,6 +183,10 @@
           <div class="contact-chip" id="chipLocation">
             <i class="fa-solid fa-location-dot"></i>
             <span id="heroLocation">جدة، المملكة العربية السعودية</span>
+          </div>
+          <div class="contact-chip" id="chipMarital">
+            <i class="fa-solid fa-people-roof"></i>
+            <span id="heroMarital">متزوج وأعيل أربعة من أفراد أسرتي</span>
           </div>
           <a class="contact-chip" id="chipEmail" href="mailto:mohammed@alotaibi.site">
             <i class="fa-solid fa-envelope"></i>
@@ -338,14 +342,14 @@
   </button>
 
   <!-- Application Logic & Data -->
-  <script src="data.js?v=3.2"></script>
-  <script src="script.js?v=3.2"></script>
+  <script src="data.js?v=3.3"></script>
+  <script src="script.js?v=3.3"></script>
 
   <!-- Service Worker Registration for Offline PWA -->
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=3.2').catch(err => {
+        navigator.serviceWorker.register('sw.js?v=3.3').catch(err => {
           console.debug('ServiceWorker registration notice:', err);
         });
       });

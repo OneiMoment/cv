@@ -3,7 +3,7 @@
  * Provides full offline cache-first & network-fallback capability with instant cache updating
  */
 
-const CACHE_NAME = 'cv-cache-v13';
+const CACHE_NAME = 'cv-cache-v14';
 const STATIC_ASSETS = [
   './',
   './index.html',
@@ -49,21 +49,42 @@ self.addEventListener('activate', event => {
   );
 });
 
-// Fetch Event - Network first for JS/CSS/Data, with Cache Fallback for instant updates
+// Fetch Event - Hybrid Performance Strategy:
+// 1. Navigation requests (HTML): Network-first with Cache fallback for fresh content
+// 2. Static Assets (CSS, JS, Fonts, Images, PDFs): Stale-While-Revalidate for instant load
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
 
+  const url = new URL(event.request.url);
+
+  // 1. HTML / Navigation Requests
+  if (event.request.mode === 'navigate' || url.pathname.endsWith('.html') || url.pathname === '/') {
+    event.respondWith(
+      fetch(event.request).then(networkResponse => {
+        if (networkResponse && networkResponse.status === 200) {
+          const responseToCache = networkResponse.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(event.request, responseToCache));
+        }
+        return networkResponse;
+      }).catch(() => {
+        return caches.match(event.request).then(cached => cached || caches.match('./index.html'));
+      })
+    );
+    return;
+  }
+
+  // 2. Static Assets (Images, Fonts, Scripts, Styles, PDFs): Stale-While-Revalidate
   event.respondWith(
-    fetch(event.request).then(networkResponse => {
-      if (networkResponse && networkResponse.status === 200) {
-        const responseToCache = networkResponse.clone();
-        caches.open(CACHE_NAME).then(cache => {
-          cache.put(event.request, responseToCache);
-        });
-      }
-      return networkResponse;
-    }).catch(() => {
-      return caches.match(event.request);
+    caches.match(event.request).then(cachedResponse => {
+      const fetchPromise = fetch(event.request).then(networkResponse => {
+        if (networkResponse && (networkResponse.status === 200 || networkResponse.type === 'opaque')) {
+          const responseToCache = networkResponse.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(event.request, responseToCache));
+        }
+        return networkResponse;
+      }).catch(() => null);
+
+      return cachedResponse || fetchPromise;
     })
   );
 });

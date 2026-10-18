@@ -578,6 +578,11 @@ div.contact-chip:hover {
   transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
 }
 
+.cv-section:not(#summarySection) {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 450px;
+}
+
 .cv-section:hover {
   border-color: var(--border-focus);
 }
@@ -1605,6 +1610,7 @@ div.contact-chip:hover {
     padding: 12px !important;
     page-break-inside: auto;
     break-inside: auto;
+    content-visibility: visible !important;
   }
 
   .section-header {

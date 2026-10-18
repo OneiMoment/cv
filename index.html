@@ -5,7 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>محمد عبدالله العتيبي | سيرة ذاتية تفاعلية - IT & Project Management</title>
   
-  <!-- SEO Meta Tags -->
+  <!-- Search Engine De-indexing Directives (Strict Noindex / Nofollow) -->
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex, notranslate" />
+  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+  <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+
+  <!-- Meta Tags -->
   <meta name="description" content="السيرة الذاتية المهنية لمحمد عبدالله العتيبي - مدير مشاريع وتقنية معلومات ومتخصص بالخدمات الحكومية والبنية التحتية والشبكات في المملكة العربية السعودية." />
   <meta name="keywords" content="محمد العتيبي, سيرة ذاتية, مدير تقنية معلومات, إدارة مشاريع, شبكات, خدمات حكومية, جدة, السعودية, IT Manager, Project Management, CV" />
   <meta name="author" content="محمد عبدالله العتيبي" />
@@ -50,7 +55,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=3.3" />
+  <link rel="stylesheet" href="styles.css?v=3.5" />
   
   <!-- Structured Data: Schema.org JSON-LD -->
   <script type="application/ld+json">
@@ -61,6 +66,7 @@
     "alternateName": "Mohammed Abdullah Al Otaibi",
     "jobTitle": "مدير مشاريع وتقنية معلومات والخدمات الحكومية",
     "description": "مدير مشاريع وتقنية معلومات ومتخصص بالبنية التحتية والشبكات والخدمات الحكومية بخبرة تتجاوز 19 عاماً.",
+    "birthDate": "1985-11",
     "telephone": "+966583809000",
     "email": "mailto:mohammed@alotaibi.site",
     "url": "https://cv.mohammed.alotaibi.site",
@@ -187,6 +193,10 @@
           <div class="contact-chip" id="chipMarital">
             <i class="fa-solid fa-people-roof"></i>
             <span id="heroMarital">متزوج وأعيل أربعة من أفراد أسرتي</span>
+          </div>
+          <div class="contact-chip" id="chipBirth">
+            <i class="fa-solid fa-cake-candles"></i>
+            <span id="heroBirth">نوفمبر 1985</span>
           </div>
           <a class="contact-chip" id="chipEmail" href="mailto:mohammed@alotaibi.site">
             <i class="fa-solid fa-envelope"></i>
@@ -342,14 +352,14 @@
   </button>
 
   <!-- Application Logic & Data -->
-  <script src="data.js?v=3.3"></script>
-  <script src="script.js?v=3.3"></script>
+  <script src="data.js?v=3.5"></script>
+  <script src="script.js?v=3.5"></script>
 
   <!-- Service Worker Registration for Offline PWA -->
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=3.3').catch(err => {
+        navigator.serviceWorker.register('sw.js?v=3.5').catch(err => {
           console.debug('ServiceWorker registration notice:', err);
         });
       });

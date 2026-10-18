@@ -40,6 +40,7 @@ const cvData = {
       linkedinTooltip: "زيارة الملف المهني على LinkedIn",
       githubTooltip: "زيارة المستودع والمشاريع على GitHub",
       maritalStatus: "الحالة الاجتماعية",
+      birthDate: "تاريخ الميلاد",
       present: "حتى الآن"
     },
     personal: {
@@ -47,11 +48,11 @@ const cvData = {
       title: "مدير مشاريع وتقنية معلومات والخدمات الحكومية",
       location: "جدة، المملكة العربية السعودية",
       maritalStatus: "متزوج وأعيل أربعة من أفراد أسرتي",
+      birthDate: "نوفمبر 1985",
       email: "mohammed@alotaibi.site",
       phone: "+966583809000",
       github: "https://github.com/OneiMoment",
       linkedin: "https://www.linkedin.com/in/OneiMoment",
-      birthDate: "21 نوفمبر 1985",
       image: "images/profile.JPG"
     },
     metrics: [
@@ -261,6 +262,7 @@ const cvData = {
       linkedinTooltip: "Visit LinkedIn profile",
       githubTooltip: "Visit GitHub repository & code",
       maritalStatus: "Marital Status",
+      birthDate: "Date of Birth",
       present: "Present"
     },
     personal: {
@@ -268,11 +270,11 @@ const cvData = {
       title: "IT Manager, Project Director & Government Services Specialist",
       location: "Jeddah, Saudi Arabia",
       maritalStatus: "Married (Supporting a family of 4)",
+      birthDate: "November 1985",
       email: "mohammed@alotaibi.site",
       phone: "+966583809000",
       github: "https://github.com/OneiMoment",
       linkedin: "https://www.linkedin.com/in/OneiMoment",
-      birthDate: "November 21, 1985",
       image: "images/profile.JPG"
     },
     metrics: [

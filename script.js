@@ -50,6 +50,8 @@ function initDOMCache() {
   DOM.chipPhone = document.getElementById('chipPhone');
   DOM.chipMarital = document.getElementById('chipMarital');
   DOM.heroMarital = document.getElementById('heroMarital');
+  DOM.chipBirth = document.getElementById('chipBirth');
+  DOM.heroBirth = document.getElementById('heroBirth');
   DOM.chipLinkedin = document.getElementById('chipLinkedin');
   DOM.chipGithub = document.getElementById('chipGithub');
   DOM.metricsContainer = document.getElementById('metricsContainer');
@@ -276,6 +278,16 @@ function renderCV() {
     }
   } else if (DOM.chipMarital) {
     DOM.chipMarital.style.display = 'none';
+  }
+
+  if (personal.birthDate) {
+    if (DOM.heroBirth) DOM.heroBirth.textContent = personal.birthDate;
+    if (DOM.chipBirth) {
+      DOM.chipBirth.title = labels.birthDate ? `${labels.birthDate}: ${personal.birthDate}` : personal.birthDate;
+      DOM.chipBirth.style.display = 'inline-flex';
+    }
+  } else if (DOM.chipBirth) {
+    DOM.chipBirth.style.display = 'none';
   }
 
   if (personal.linkedin) {
@@ -696,7 +708,7 @@ function saveContactVCard() {
     p.linkedin ? `X-SOCIALPROFILE;type=linkedin:${p.linkedin}` : '',
     p.github ? `X-SOCIALPROFILE;type=github:${p.github}` : '',
     `ADR;TYPE=WORK;CHARSET=UTF-8:;;${p.location};;;;`,
-    `NOTE;CHARSET=UTF-8:${p.maritalStatus ? p.maritalStatus + ' | ' : ''}${data.summary ? data.summary.slice(0, 150) : ''}...`,
+    `NOTE;CHARSET=UTF-8:${p.maritalStatus ? p.maritalStatus + ' | ' : ''}${p.birthDate ? (labels.birthDate || 'تاريخ الميلاد') + ': ' + p.birthDate + ' | ' : ''}${data.summary ? data.summary.slice(0, 150) : ''}...`,
     'END:VCARD'
   ].filter(Boolean).join('\r\n');
 
